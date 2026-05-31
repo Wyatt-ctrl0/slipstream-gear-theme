@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shipping &amp; returns · Slipstream Gear</title>
+<meta name="description" content="How Slipstream Gear ships and handles returns. Ships from the U.S., free U.S. shipping over $50, a 14-day return window from delivery, and secure checkout through Shopify.">
+
+<!-- favicon (dark mark for light tab UI; dark-scheme variant on dark tabs) -->
+<link rel="icon" type="image/png" href="../brand/icon.png">
+<link rel="icon" type="image/png" href="../brand/icon-light.png" media="(prefers-color-scheme: dark)">
+
+<!-- Fonts: Saira (headings) + Inter (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/slipstream.css?v=2">
+<link rel="stylesheet" href="assets/pages.css?v=2">
+
+<!-- JS-failure safety net: if the script never runs, reveal everything -->
+<noscript><style>[data-reveal]{opacity:1!important;transform:none!important;filter:none!important}</style></noscript>
+</head>
+<body>
+
+<!-- screen-reader live region for cart updates -->
+<div class="vh" aria-live="polite" data-cart-live></div>
+
+<!-- ===================== STICKY HEADER ===================== -->
+<header class="site-header" data-header>
+  <div class="wrap hdr-inner">
+    <a class="brand" href="index.html" aria-label="Slipstream Gear home">
+      <img src="../brand/logo-lockup-light.png" alt="Slipstream Gear" class="brand-logo">
+    </a>
+    <nav class="hdr-nav" aria-label="Primary">
+      <a href="collection.html">Shop All</a>
+      <a href="index.html#need">Shop by Problem</a>
+      <a href="about.html">Our Story</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="iconbtn" aria-label="Search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+      </button>
+      <a class="iconbtn" href="wishlist.html" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+      </a>
+      <a class="iconbtn" href="cart.html" aria-label="Cart, empty" data-cart-btn>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l-1 12H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <span class="cart-dot" aria-hidden="true" hidden>0</span>
+      </a>
+      <button class="iconbtn burger" aria-label="Menu" data-drawer-toggle aria-expanded="false" aria-controls="mobile-drawer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile nav drawer -->
+<div class="drawer" data-drawer id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="drawer-panel">
+    <a href="collection.html" data-drawer-close>Shop All</a>
+    <a href="index.html#need" data-drawer-close>Shop by Problem</a>
+    <a href="about.html" data-drawer-close>Our Story</a>
+    <a href="faq.html" data-drawer-close>FAQ</a>
+    <a href="wishlist.html" data-drawer-close>Wishlist</a>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- ===================== PAGE HERO ===================== -->
+  <section class="page-hero" aria-label="Shipping and returns">
+    <div class="wrap">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <span aria-current="page">Shipping &amp; returns</span>
+      </nav>
+      <p class="kicker">SHIPPING &amp; RETURNS</p>
+      <span class="streak-rule" aria-hidden="true"></span>
+      <h1 class="page-hero-h1">Shipping &amp; returns.</h1>
+      <p class="page-hero-sub">Plain facts on how your order ships and how to send something back. No fine-print games.</p>
+    </div>
+  </section>
+
+  <!-- ===================== POLICY BODY ===================== -->
+  <section class="prose-section">
+    <div class="wrap">
+      <div class="prose" data-reveal>
+
+        <p class="prose-lead">We keep this simple, because the gear is supposed to make your drive easier, not the checkout. Here is exactly how shipping and returns work at Slipstream Gear.</p>
+        <p class="prose-updated">Last updated May 2026</p>
+
+        <h2>Shipping</h2>
+        <p>Every order ships from within the U.S. <strong>Orders over $50 ship free</strong> within the U.S. For orders under $50, a flat shipping rate is shown at checkout before you pay, so the number you see is the number you pay.</p>
+        <div class="prose-note">
+          <p><strong>Free U.S. shipping over $50.</strong> Under $50, a flat rate appears at checkout. We do not add surprise fees after you place the order.</p>
+        </div>
+        <p>You will get an order confirmation by email as soon as you check out. We pack and hand off orders in the order they come in, and you will get a second email with tracking once your order leaves the warehouse.</p>
+
+        <h2>Returns and refunds</h2>
+        <p>Sometimes a product does not work out. Here is exactly how we handle it.</p>
+
+        <h3>The 14-day window</h3>
+        <p>You have <strong>14 days from the day your order is delivered</strong> to request a return. After 14 days we can no longer accept general returns or issue refunds, regardless of the reason. Tracking is our source of truth, so we use the carrier's confirmed delivery date.</p>
+
+        <h3>30-day window for defective or not-as-described items</h3>
+        <p>If an item arrives <strong>defective</strong>, or is <strong>materially not as described</strong> on the product page, Pennsylvania law gives you 30 days from delivery to request a refund or replacement, separate from the 14-day window above. Email us within that 30-day window with a photo of the issue and we will honor it.</p>
+
+        <h3>What we accept</h3>
+        <p>To be eligible for a general return, the item must be:</p>
+        <ul>
+          <li><strong>Unused.</strong> Not installed, not mounted, not wired in, and not run through a wash.</li>
+          <li><strong>In original condition.</strong> Clean, undamaged, with all original parts, hardware, and inserts.</li>
+          <li><strong>In original packaging.</strong> Please keep the box or bag your order arrived in until you are sure you are keeping it.</li>
+          <li><strong>Accompanied by your order number</strong> or original confirmation email.</li>
+        </ul>
+        <p>If any of those is missing, we cannot process the return, and the item is yours to keep.</p>
+
+        <h3>What we cannot accept</h3>
+        <p>For safety and hygiene reasons, the following are <strong>final sale</strong> and cannot be returned once opened, installed, or used:</p>
+        <ul>
+          <li>Adhesive-mount gear (dash pads, mounts, holders) once the adhesive backing has been applied to a surface</li>
+          <li>Cleaning tools, such as cabin vacuums and brushes, that have been used</li>
+          <li>Organizers, caddies, and trash bins that have held trash, food, or liquids</li>
+          <li>Any product showing road grime, dust, adhesive residue, scuffs, or wear</li>
+          <li>Bundles and kits (returnable only as a complete, unopened set within the 14 days)</li>
+          <li>Sale or discounted items marked "Final Sale" on the product page</li>
+          <li>Gift cards</li>
+        </ul>
+        <p>This is not us being difficult. Once gear has been installed, adhered, or used, we cannot resell it as new. We would rather be upfront than have you ship something back that we would have to discard.</p>
+        <p>The final-sale list above does not apply to items that arrive <strong>defective</strong> or <strong>materially not as described</strong>. Those remain eligible for refund or replacement under the 30-day window noted earlier.</p>
+
+        <h3>We would rather fix it than refund it</h3>
+        <p>Before you send anything back, please reach out. For many issues we can sort it out faster than a return:</p>
+        <ul>
+          <li><strong>Wrong fit:</strong> email us and we will work with you on a replacement or a one-time exchange.</li>
+          <li><strong>Damaged in shipping:</strong> send a photo within 48 hours of delivery and we will make it right.</li>
+          <li><strong>Not as described:</strong> email us a photo and we will make it right.</li>
+          <li><strong>Defective on arrival:</strong> send a photo of the issue and we will work with you on the next step.</li>
+        </ul>
+        <p>Email <a href="mailto:support@slipstreamgear.com">support@slipstreamgear.com</a> with your order number and a clear photo of the issue. We read every email personally, usually within 24 hours.</p>
+        <p>If we cannot resolve it together, the standard return process below is always available within the applicable window: 14 days for general returns, 30 days for defective or not-as-described items.</p>
+
+        <h3>How to start a return</h3>
+        <ol>
+          <li>Email <a href="mailto:support@slipstreamgear.com">support@slipstreamgear.com</a> within the applicable window with your order number and the reason for the return.</li>
+          <li>We will reply with return instructions and an address. <strong>Do not ship anything back before you get this email.</strong> We cannot process unannounced returns.</li>
+          <li><strong>You are responsible for return shipping on general returns.</strong> We recommend a trackable, insured service for anything over $30. Lost return packages are not refundable. For defective or not-as-described items, we cover return shipping.</li>
+          <li>Once we receive and inspect the item, a <strong>4% restocking fee</strong> may apply to general returns to cover processing. We issue your refund to the original payment method within 5 to 7 business days. Defective or not-as-described returns are not charged a restocking fee.</li>
+        </ol>
+
+        <h3>What is refunded</h3>
+        <ul>
+          <li>The full product price, less any 4% restocking fee on general returns.</li>
+          <li>Original shipping is <strong>not</strong> refunded on general returns. For defective or not-as-described items, original shipping is refunded along with the product price.</li>
+          <li>Return shipping is at your expense on general returns. We cover it on defective or not-as-described items.</li>
+        </ul>
+        <p>If your original order qualified for free shipping (over $50) and a general return drops it below $50, we may deduct the original shipping cost from your refund. You will be told upfront if this applies.</p>
+
+        <h3>Late or missing refunds</h3>
+        <p>If 10 business days have passed since we confirmed your refund and you have not seen it, check your original payment method's statement, then contact your bank or card issuer, since refunds can take extra time to post. Email us if it is still missing.</p>
+
+        <h3>Order changes and cancellations</h3>
+        <p>Email us within <strong>12 hours</strong> of placing your order at <a href="mailto:support@slipstreamgear.com">support@slipstreamgear.com</a>. We pre-stage shipments quickly, so anything past that window has likely already shipped and falls under the standard return process.</p>
+
+        <h3>Damaged or lost in shipping</h3>
+        <p>This is different from a return. See the Shipping section above. If a package is lost or arrives damaged, we file the carrier claim, not you. Reach out with your order number and a photo and we will take it from there.</p>
+
+        <h2>Secure checkout</h2>
+        <p>Checkout is handled by Shopify, so your payment details are processed on Shopify's secure, PCI-compliant systems. We never see or store your full card number.</p>
+
+        <h2>Order tracking</h2>
+        <p>When your order ships, we email you a tracking number so you can follow it to your door. If you have not seen a tracking email and it has been a little while since you ordered, check your spam folder first, then reach out from the <a href="contact.html">contact page</a> with your order number and we will look it up.</p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CLOSING CTA ===================== -->
+  <section class="section news">
+    <div class="wrap news-inner" data-reveal>
+      <div class="news-copy">
+        <h2>Still have a question?</h2>
+        <p>If anything here is unclear, or you need help with an order, send us a note. A real person on the crew will get back to you.</p>
+      </div>
+      <div class="news-form">
+        <a class="btn btn-amber" href="contact.html">
+          Contact us
+          <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="wrap fgrid">
+    <div class="fcol fbrand">
+      <img src="../brand/logo-lockup-light.png" alt="Slipstream Gear" class="foot-logo">
+      <p>Clever gear for the daily driver. Organized, charged, road-tested.</p>
+    </div>
+    <div class="fcol">
+      <h4>Shop by need</h4>
+      <a href="collection.html?cat=mess">Tame the Mess</a>
+      <a href="collection.html?cat=clean">Clean &amp; Detail</a>
+      <a href="collection.html?cat=charged">Charged &amp; Connected</a>
+      <a href="collection.html?cat=road">Road-Trip Ready</a>
+    </div>
+    <div class="fcol">
+      <h4>Company</h4>
+      <a href="about.html">Our Story</a>
+      <a href="about.html#promise">Road-tested promise</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="collection.html">Shop All</a>
+    </div>
+    <div class="fcol">
+      <h4>Help</h4>
+      <a href="shipping-returns.html">Shipping</a>
+      <a href="shipping-returns.html">14-day returns</a>
+      <a href="wishlist.html">Wishlist</a>
+      <a href="shipping-returns.html">Secure checkout</a>
+    </div>
+  </div>
+  <div class="wrap fbar">
+    <span>&copy; 2026 Slipstream Gear</span>
+    <span>Secure checkout. Powered by Shopify</span>
+  </div>
+</footer>
+
+<script src="assets/slipstream.js?v=2"></script>
+</body>
+</html>

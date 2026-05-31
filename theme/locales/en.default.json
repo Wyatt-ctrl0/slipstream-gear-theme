@@ -1,0 +1,62 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Skip to content",
+      "close": "Close",
+      "menu": "Menu",
+      "search": "Search",
+      "cart": "Cart",
+      "wishlist": "Wishlist"
+    },
+    "404": {
+      "title": "Page not found",
+      "subtext": "The page you were looking for slipped the stream.",
+      "link": "Back to home"
+    },
+    "search": {
+      "placeholder": "Search gear",
+      "no_results": "No gear matched “{{ terms }}”.",
+      "results_for": "Results for “{{ terms }}”"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "load_more": "Load more"
+    },
+    "newsletter": {
+      "success": "Thanks. Watch your inbox for the next drop."
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "quantity": "Quantity",
+      "from_price": "From {{ price }}",
+      "on_sale": "Sale",
+      "save_to_wishlist": "Save to wishlist"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your cart",
+      "empty": "Your cart is empty",
+      "continue_shopping": "Shop all gear",
+      "subtotal": "Subtotal",
+      "checkout": "Checkout",
+      "remove": "Remove",
+      "free_shipping": "You qualify for free U.S. shipping.",
+      "free_shipping_progress": "You are {{ amount }} away from free U.S. shipping.",
+      "view_cart": "View full cart"
+    }
+  },
+  "sections": {
+    "header": {
+      "shop_all": "Shop All",
+      "shop_by_problem": "Shop by Problem",
+      "our_story": "Our Story",
+      "faq": "FAQ"
+    }
+  }
+}

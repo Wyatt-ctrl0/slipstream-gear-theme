@@ -1,0 +1,20 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+
+# Node / tooling
+node_modules/
+*.log
+
+# Shopify CLI
+.shopify/
+*.shopifyignore
+
+# Scratch / validation artifacts
+_*.js
+_*.txt
+RC_*
+INTEGRITY_*
+_z_*

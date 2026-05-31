@@ -1,0 +1,129 @@
+<section class="hero hero-c" data-hero-section aria-label="{{ section.settings.aria_label | default: shop.name | escape }}">
+  <span class="hc-slash" aria-hidden="true"></span>
+  <span class="hc-mark" aria-hidden="true">{{ section.settings.watermark | escape }}</span>
+  <div class="wrap hero-cwrap">
+    {% if section.settings.eyebrow != blank %}
+      <p class="eyebrow" data-hero style="--i:0">
+        {{ section.settings.eyebrow | escape }}
+        <span class="streak-rule" data-hero style="--i:1"></span>
+      </p>
+    {% endif %}
+    <h1 class="hc-h1" data-hero style="--i:1">{{ section.settings.heading }}</h1>
+    {% if section.settings.subheading != blank %}
+      <p class="hc-sub" data-hero style="--i:2">{{ section.settings.subheading | escape }}</p>
+    {% endif %}
+    <div class="hero-cta" data-hero style="--i:3">
+      {% if section.settings.primary_label != blank %}
+        <a class="btn btn-amber" href="{{ section.settings.primary_link | default: routes.all_products_collection_url }}">
+          {{ section.settings.primary_label | escape }}
+          <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      {% endif %}
+      {% if section.settings.secondary_label != blank %}
+        <a class="btn btn-ghost" href="{{ section.settings.secondary_link | default: '#kit' }}">{{ section.settings.secondary_label | escape }}</a>
+      {% endif %}
+    </div>
+    {% if section.blocks.size > 0 %}
+      <div class="hc-spec" data-hero style="--i:4">
+        {% for block in section.blocks %}
+          <span {{ block.shopify_attributes }}><i></i>{{ block.settings.text | escape }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "tag": "section",
+  "class": "shopify-section-hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "watermark",
+      "label": "Background watermark word",
+      "default": "SLIPSTREAM"
+    },
+    {
+      "type": "text",
+      "id": "aria_label",
+      "label": "Accessible section label",
+      "default": "Slipstream Gear"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "BUILT FOR THE DAILY DRIVER"
+    },
+    {
+      "type": "html",
+      "id": "heading",
+      "label": "Heading (use <em> for emphasis)",
+      "default": "Gear that <em>keeps up.</em>"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Clever gadgets for your vehicle, road-tested before they earn a spot in your cabin."
+    },
+    {
+      "type": "header",
+      "content": "Primary button"
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primary button label",
+      "default": "Shop all gear"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "header",
+      "content": "Secondary button"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary button label",
+      "default": "The starter kit"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "spec",
+      "name": "Spec item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Road-tested picks"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Hero",
+      "blocks": [
+        { "type": "spec", "settings": { "text": "Free U.S. shipping over $50" } },
+        { "type": "spec", "settings": { "text": "14-day returns" } },
+        { "type": "spec", "settings": { "text": "Road-tested picks" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

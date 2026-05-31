@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "show_cross_sell": true,
+        "cross_sell_kicker": "PAIRS WELL WITH",
+        "cross_sell_heading": "Round out the dash.",
+        "show_bundle": true,
+        "bundle_tag": "Bundle & save",
+        "bundle_save_label": "Save $16",
+        "bundle_items_text": "Dashcam, MagLock Mount, and Surge 65W Charger.",
+        "bundle_cta_label": "Add the kit and save $16",
+        "show_trust_pills": true,
+        "trust_free_shipping": true,
+        "trust_returns": true,
+        "trust_road_tested": true,
+        "trust_secure": true,
+        "shipping_heading": "Shipping & returns",
+        "shipping_body": "<p>Orders over $50 ship free within the U.S., and smaller orders show a flat rate at checkout before you pay. You have 14 days from delivery to return it. Start a return from your order email and we send return instructions.</p><p>Reviews open after launch. Until then the promise stands on policy: every pick is driven before it goes live, and checkout is secured by Shopify.</p>"
+      }
+    }
+  },
+  "order": ["main"]
+}

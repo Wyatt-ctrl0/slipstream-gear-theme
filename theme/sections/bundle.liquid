@@ -1,0 +1,167 @@
+<section class="section kit" id="kit">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      {% if section.settings.kicker != blank %}<p class="kicker">{{ section.settings.kicker | escape }}</p>{% endif %}
+      {% if section.settings.heading != blank %}<h2>{{ section.settings.heading | escape }}</h2>{% endif %}
+    </div>
+    <div class="bundle" data-reveal>
+      <div class="bundle-items">
+        <div class="bi" data-reveal-group>
+          {% for block in section.blocks %}
+            {% unless forloop.first %}<span class="bi-plus" aria-hidden="true">+</span>{% endunless %}
+            <span class="bi-cell" data-reveal style="--i:{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 240 | image_tag: loading: 'lazy', class: 'bi-svg', alt: block.settings.label }}
+              {%- else -%}
+                {% case forloop.index %}
+                  {% when 1 %}
+                    <svg viewBox="0 0 120 120" class="bi-svg" aria-hidden="true"><rect x="30" y="44" width="44" height="32" rx="9" fill="#2b3138"/><rect x="22" y="48" width="20" height="24" rx="6" fill="#3a4047"/><rect x="27" y="54" width="11" height="5" rx="2.5" fill="#0e1116"/><rect x="27" y="62" width="11" height="5" rx="2.5" fill="#0e1116"/><circle cx="58" cy="60" r="6" fill="none" stroke="#E11D2A" stroke-width="2.4"/><circle cx="58" cy="60" r="2" fill="#E11D2A"/></svg>
+                  {% when 2 %}
+                    <svg viewBox="0 0 120 120" class="bi-svg" aria-hidden="true"><g transform="rotate(-8 60 60)"><rect x="42" y="30" width="36" height="60" rx="8" fill="#2b3138"/><rect x="47" y="35" width="26" height="50" rx="5" fill="#0e1116"/><circle cx="60" cy="60" r="11" fill="none" stroke="#E11D2A" stroke-width="3.5"/></g></svg>
+                  {% else %}
+                    <svg viewBox="0 0 120 120" class="bi-svg" aria-hidden="true"><path d="M28 48 H92 L86 86 H34 Z" fill="#2b3138"/><path d="M28 48 H92 L88 56 H32 Z" fill="#0B0C0E"/><line x1="50" y1="54" x2="48" y2="86" stroke="#0B0C0E" stroke-width="3"/><line x1="72" y1="54" x2="74" y2="86" stroke="#0B0C0E" stroke-width="3"/><rect x="28" y="45" width="64" height="5" rx="2.5" fill="#E11D2A"/></svg>
+                {% endcase %}
+              {%- endif -%}
+              <b>{{ block.settings.label | escape }}</b>
+            </span>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="bundle-buy">
+        {% if section.settings.eyebrow != blank %}<p class="bundle-eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
+        {%- assign bundle_product = section.settings.product -%}
+        <div class="bundle-price">
+          {%- if bundle_product != blank -%}
+            {%- assign bundle_variant = bundle_product.selected_or_first_available_variant -%}
+            <span class="price">{{ bundle_variant.price | money }}</span>
+            {%- if bundle_variant.compare_at_price > bundle_variant.price -%}
+              <s class="was">{{ bundle_variant.compare_at_price | money }}</s>
+            {%- elsif section.settings.compare_text != blank -%}
+              <s class="was">{{ section.settings.compare_text | escape }}</s>
+            {%- endif -%}
+          {%- else -%}
+            <span class="price">{{ section.settings.price_text | escape }}</span>
+            {%- if section.settings.compare_text != blank -%}<s class="was">{{ section.settings.compare_text | escape }}</s>{%- endif -%}
+          {%- endif -%}
+        </div>
+        {% if section.settings.note != blank %}<p class="bundle-note">{{ section.settings.note | escape }}</p>{% endif %}
+        <div class="bundle-cta">
+          {%- if bundle_product != blank -%}
+            <button class="btn btn-amber" data-add data-variant-id="{{ bundle_variant.id }}" data-product-title="{{ bundle_product.title | escape }}" data-product-price="{{ bundle_variant.price | money }}" {% unless bundle_product.available %}disabled{% endunless %}>
+              {{ section.settings.primary_label | default: 'Add the kit' | escape }}
+              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          {%- else -%}
+            <a class="btn btn-amber" href="{{ routes.all_products_collection_url }}">
+              {{ section.settings.primary_label | default: 'Add the kit' | escape }}
+              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          {%- endif -%}
+          <a class="btn btn-outline" href="{{ section.settings.secondary_link | default: '#picks' }}">{{ section.settings.secondary_label | default: 'Pick items separately' | escape }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Bundle",
+  "tag": "section",
+  "class": "shopify-section-kit",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "THE STARTER KIT"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "One trip to dialed in."
+    },
+    {
+      "type": "header",
+      "content": "Buy panel"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Bundle product (drives price + add to cart)"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Cabin starter kit"
+    },
+    {
+      "type": "text",
+      "id": "price_text",
+      "label": "Price (fallback when no product)",
+      "default": "$129"
+    },
+    {
+      "type": "text",
+      "id": "compare_text",
+      "label": "Compare-at (fallback when no product)",
+      "default": "$159"
+    },
+    {
+      "type": "textarea",
+      "id": "note",
+      "label": "Note",
+      "default": "Three road-tested picks, one box. Free U.S. shipping included."
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primary button label",
+      "default": "Add the kit"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary button label",
+      "default": "Pick items separately"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Bundle item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Surge 65W Charger"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image (optional; falls back to art)"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Bundle",
+      "blocks": [
+        { "type": "item", "settings": { "label": "Surge 65W Charger" } },
+        { "type": "item", "settings": { "label": "MagLock Mount" } },
+        { "type": "item", "settings": { "label": "Trunk Caddy" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

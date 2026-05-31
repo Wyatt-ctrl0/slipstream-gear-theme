@@ -1,0 +1,68 @@
+{%- comment -%}
+  main-search.liquid — themed search results page (keeps header/footer chrome).
+  Renders the shop's search form + product results using the shared product-card.
+{%- endcomment -%}
+
+<section class="section search-page" data-search-page>
+  <div class="wrap">
+
+    <div class="page-hero search-hero" data-reveal>
+      <p class="kicker">{{ section.settings.kicker | default: 'Search' }}<span class="streak-rule"></span></p>
+      <h1>
+        {%- if search.performed and search.terms != blank -%}
+          Results for &ldquo;{{ search.terms | escape }}&rdquo;
+        {%- else -%}
+          {{ section.settings.heading | default: 'Search the gear' }}
+        {%- endif -%}
+      </h1>
+
+      <form action="{{ routes.search_url }}" method="get" role="search" class="search-page-form">
+        <label class="vh" for="search-page-input">Search</label>
+        <input type="search" id="search-page-input" name="q"
+               value="{{ search.terms | escape }}"
+               placeholder="{{ section.settings.placeholder | default: 'Search gear' }}"
+               autocomplete="off">
+        <input type="hidden" name="type" value="product">
+        <button class="btn btn-amber" type="submit">
+          Search
+          <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </form>
+    </div>
+
+    {%- if search.performed -%}
+      {%- if search.results_count > 0 -%}
+        <p class="search-count" role="status">{{ search.results_count }} result{% if search.results_count != 1 %}s{% endif %}</p>
+        <div class="pgrid" data-reveal-group>
+          {%- for item in search.results -%}
+            {%- if item.object_type == 'product' -%}
+              {%- render 'product-card', product: item -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <div class="empty-search" data-reveal>
+          <h2>{{ section.settings.empty_heading | default: 'Nothing matched that search.' }}</h2>
+          <p>{{ section.settings.empty_body | default: 'Try a broader term, or browse all gear.' }}</p>
+          <a class="btn btn-amber" href="{{ routes.all_products_collection_url }}">Shop all gear</a>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Search results",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Search" },
+    { "type": "text", "id": "heading", "label": "Default heading", "default": "Search the gear" },
+    { "type": "text", "id": "placeholder", "label": "Input placeholder", "default": "Search gear" },
+    { "type": "text", "id": "empty_heading", "label": "No-results heading", "default": "Nothing matched that search." },
+    { "type": "textarea", "id": "empty_body", "label": "No-results body", "default": "Try a broader term, or browse all gear." }
+  ],
+  "presets": [{ "name": "Search results" }]
+}
+{% endschema %}

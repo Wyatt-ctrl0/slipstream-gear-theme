@@ -1,0 +1,80 @@
+<div class="speedrule wrap" aria-hidden="true"><span class="sr-fill" data-pct="100"></span></div>
+
+<section class="section interstitial">
+  <div class="wrap inter-inner">
+    <div class="inter-copy" data-reveal style="--i:0">
+      {% if section.settings.kicker != blank %}<p class="kicker amber-tx">{{ section.settings.kicker | escape }}</p>{% endif %}
+      {% if section.settings.heading != blank %}<h2>{{ section.settings.heading | escape }}</h2>{% endif %}
+      {% if section.settings.lead != blank %}<p class="inter-lead">{{ section.settings.lead | escape }}</p>{% endif %}
+      {% if section.settings.chip != blank %}<span class="info-chip">{{ section.settings.chip | escape }}</span>{% endif %}
+      {% if section.settings.foot != blank %}<p class="inter-foot">{{ section.settings.foot | escape }}</p>{% endif %}
+    </div>
+    <div class="inter-shot" data-reveal style="--i:1" aria-hidden="true">
+      <svg viewBox="0 0 420 300" class="shot-svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="dashG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#23272c"/>
+            <stop offset="100%" stop-color="#0B0C0E"/>
+          </linearGradient>
+          <radialGradient id="glowG" cx="50%" cy="40%" r="60%">
+            <stop offset="0%" stop-color="#E11D2A" stop-opacity=".5"/>
+            <stop offset="100%" stop-color="#E11D2A" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect x="0" y="160" width="420" height="140" fill="url(#dashG)"/>
+        <path d="M0 160 Q210 120 420 160" fill="none" stroke="#2b3138" stroke-width="3"/>
+        <ellipse cx="210" cy="150" rx="150" ry="60" fill="url(#glowG)"/>
+        <rect x="150" y="96" width="48" height="80" rx="8" fill="#2b3138"/>
+        <rect x="156" y="102" width="36" height="62" rx="5" fill="#0e1116"/>
+        <circle cx="174" cy="133" r="9" fill="#E11D2A" opacity=".85"/>
+        <rect x="244" y="150" width="34" height="44" rx="8" fill="#2b3138"/>
+        <circle cx="261" cy="168" r="10" fill="#E11D2A" opacity=".8"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Interstitial",
+  "tag": "section",
+  "class": "shopify-section-interstitial",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "BUILT FOR THE LONG HAUL"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Gear that earns its spot."
+    },
+    {
+      "type": "textarea",
+      "id": "lead",
+      "label": "Lead",
+      "default": "Every pick gets driven before it gets sold. If it rattles, slips, or quits on the highway, it never makes the cut."
+    },
+    {
+      "type": "text",
+      "id": "chip",
+      "label": "Info chip",
+      "default": "Driven before it goes live"
+    },
+    {
+      "type": "text",
+      "id": "foot",
+      "label": "Foot line",
+      "default": "Free U.S. shipping over $50 · 14-day returns · Secure checkout."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Interstitial"
+    }
+  ]
+}
+{% endschema %}

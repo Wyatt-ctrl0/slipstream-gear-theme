@@ -1,0 +1,43 @@
+{%- if section.blocks.size > 0 -%}
+<div class="ribbon" aria-hidden="true">
+  <div class="track" data-marquee>
+    {%- for block in section.blocks -%}
+      {%- if block.settings.text != blank -%}
+        <span class="mq-item" {{ block.shopify_attributes }}>{{ block.settings.text }}</span><i class="mq-tick"></i>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "max_blocks": 12,
+  "blocks": [
+    {
+      "type": "message",
+      "name": "Message",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Free U.S. shipping over $50"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement bar",
+      "blocks": [
+        { "type": "message", "settings": { "text": "Free U.S. shipping over $50" } },
+        { "type": "message", "settings": { "text": "14-day returns" } },
+        { "type": "message", "settings": { "text": "Road-tested picks" } },
+        { "type": "message", "settings": { "text": "Secure checkout" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

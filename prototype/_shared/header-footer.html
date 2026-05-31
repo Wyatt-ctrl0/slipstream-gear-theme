@@ -1,0 +1,113 @@
+<!-- ============================================================
+     SLIPSTREAM GEAR — CANONICAL SHARED HEADER + FOOTER
+     Page agents: paste these blocks VERBATIM into every new page
+     (collection.html, product.html, about.html, wishlist.html).
+     Do NOT redesign. Keep classes, ARIA, data- attributes intact.
+
+     <head> requirements for every page (match index.html):
+       <link rel="stylesheet" href="assets/slipstream.css">
+       <link rel="stylesheet" href="assets/pages.css">   <- new shared page styles
+       Fonts: Saira + Inter (same Google Fonts link as index.html)
+       <noscript> reveal safety-net (copy from index.html)
+       Favicon links (copy from index.html)
+
+     Required just inside <body> (cart live region):
+       <div class="vh" aria-live="polite" data-cart-live></div>
+
+     Script before </body>:
+       <script src="assets/slipstream.js"></script>
+
+     NAV LINKS (real cross-page): brand -> index.html ; Shop All -> collection.html ;
+     Shop by Problem -> index.html#need ; Our Story -> about.html ; FAQ -> faq.html ;
+     wishlist heart -> wishlist.html ; cart stays the demo cart button.
+
+     FOOTER: Company column includes a Contact -> contact.html link. Help column
+     points Shipping / 14-day returns / Secure checkout -> shipping-returns.html.
+     FAQ (Company column) -> faq.html. Wishlist stays wishlist.html.
+
+     The cart drawer (built in slipstream.js) has a "View full cart" link -> cart.html.
+     ============================================================ -->
+
+
+<!-- ============== START: STICKY HEADER (paste verbatim) ============== -->
+<header class="site-header" data-header>
+  <div class="wrap hdr-inner">
+    <a class="brand" href="index.html" aria-label="Slipstream Gear home">
+      <img src="../brand/logo-lockup-light.png" alt="Slipstream Gear" class="brand-logo">
+    </a>
+    <nav class="hdr-nav" aria-label="Primary">
+      <a href="collection.html">Shop All</a>
+      <a href="index.html#need">Shop by Problem</a>
+      <a href="about.html">Our Story</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="iconbtn" aria-label="Search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+      </button>
+      <a class="iconbtn" href="wishlist.html" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+      </a>
+      <a class="iconbtn" href="cart.html" aria-label="Cart, empty" data-cart-btn>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l-1 12H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <span class="cart-dot" aria-hidden="true" hidden>0</span>
+      </a>
+      <button class="iconbtn burger" aria-label="Menu" data-drawer-toggle aria-expanded="false" aria-controls="mobile-drawer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile nav drawer -->
+<div class="drawer" data-drawer id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="drawer-panel">
+    <a href="collection.html" data-drawer-close>Shop All</a>
+    <a href="index.html#need" data-drawer-close>Shop by Problem</a>
+    <a href="about.html" data-drawer-close>Our Story</a>
+    <a href="faq.html" data-drawer-close>FAQ</a>
+    <a href="wishlist.html" data-drawer-close>Wishlist</a>
+  </div>
+</div>
+<!-- ============== END: STICKY HEADER ============== -->
+
+
+<!-- ... page <main> content goes here ... -->
+
+
+<!-- ============== START: FOOTER (paste verbatim) ============== -->
+<footer class="site-footer">
+  <div class="wrap fgrid">
+    <div class="fcol fbrand">
+      <img src="../brand/logo-lockup-light.png" alt="Slipstream Gear" class="foot-logo">
+      <p>Clever gear for the daily driver. Organized, charged, road-tested.</p>
+    </div>
+    <div class="fcol">
+      <h4>Shop by need</h4>
+      <a href="collection.html">Tame the Mess</a>
+      <a href="collection.html">Clean &amp; Detail</a>
+      <a href="collection.html">Charged &amp; Connected</a>
+      <a href="collection.html">Road-Trip Ready</a>
+    </div>
+    <div class="fcol">
+      <h4>Company</h4>
+      <a href="about.html">Our Story</a>
+      <a href="about.html#promise">Road-tested promise</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="collection.html">Shop All</a>
+    </div>
+    <div class="fcol">
+      <h4>Help</h4>
+      <a href="shipping-returns.html">Shipping</a>
+      <a href="shipping-returns.html">14-day returns</a>
+      <a href="wishlist.html">Wishlist</a>
+      <a href="shipping-returns.html">Secure checkout</a>
+    </div>
+  </div>
+  <div class="wrap fbar">
+    <span>&copy; 2026 Slipstream Gear</span>
+    <span>Secure checkout. Powered by Shopify</span>
+  </div>
+</footer>
+<!-- ============== END: FOOTER ============== -->

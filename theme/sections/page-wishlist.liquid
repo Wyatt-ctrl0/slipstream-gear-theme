@@ -1,0 +1,39 @@
+<section class="container" style="padding:40px 0 64px">
+  {%- if section.settings.eyebrow != blank -%}
+    <p class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+  {%- endif -%}
+  <h1 class="page-h1" data-reveal>{{ section.settings.heading | default: 'Your garage' }}</h1>
+  {%- if section.settings.lede != blank -%}
+    <p class="page-lede" data-reveal>{{ section.settings.lede }}</p>
+  {%- endif -%}
+
+  <div class="wishlist-grid" data-wishlist-grid>
+    {%- comment -%} JS (page-wishlist) hydrates saved cards here from localStorage {%- endcomment -%}
+  </div>
+
+  <div class="wishlist-empty" data-wishlist-empty hidden>
+    <p class="we-title">{{ section.settings.empty_title | default: 'No saved gear yet' }}</p>
+    <p class="we-sub">{{ section.settings.empty_sub | default: 'Tap the heart on any product to park it here.' }}</p>
+    <a class="btn btn-amber" href="{{ routes.all_products_collection_url }}">{{ section.settings.empty_cta | default: 'Browse the gear' }}</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Wishlist page",
+  "tag": "section",
+  "class": "section-page-wishlist",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Saved gear" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Your garage" },
+    { "type": "richtext", "id": "lede", "label": "Lede", "default": "<p>The gear you've saved for later. Add it to your cart when you're ready to roll.</p>" },
+    { "type": "header", "content": "Empty state" },
+    { "type": "text", "id": "empty_title", "label": "Empty title", "default": "No saved gear yet" },
+    { "type": "text", "id": "empty_sub", "label": "Empty subtext", "default": "Tap the heart on any product to park it here." },
+    { "type": "text", "id": "empty_cta", "label": "Empty CTA label", "default": "Browse the gear" }
+  ],
+  "presets": [
+    { "name": "Wishlist page" }
+  ]
+}
+{% endschema %}

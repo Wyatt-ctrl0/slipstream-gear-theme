@@ -1,0 +1,203 @@
+{%- liquid
+  assign hero_heading = section.settings.hero_heading
+  if hero_heading == blank
+    assign hero_heading = collection.title
+  endif
+  assign per_page = section.settings.products_per_page | default: 12
+-%}
+
+<section class="page-hero" aria-label="{{ hero_heading | escape }}">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ routes.root_url }}">Home</a>
+      <span class="sep" aria-hidden="true">/</span>
+      <span aria-current="page">{{ collection.title | escape }}</span>
+    </nav>
+    {%- if section.settings.kicker != blank -%}
+      <p class="kicker">{{ section.settings.kicker | escape }}</p>
+    {%- endif -%}
+    <span class="streak-rule" aria-hidden="true"></span>
+    <h1 class="page-hero-h1">{{ hero_heading | escape }}</h1>
+    {%- if section.settings.hero_description != blank -%}
+      <p class="page-hero-sub">{{ section.settings.hero_description }}</p>
+    {%- elsif collection.description != blank -%}
+      <p class="page-hero-sub">{{ collection.description }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+<section class="collection">
+  <div class="wrap">
+
+    <h2 class="vh">{{ collection.title | escape }}</h2>
+
+    {%- paginate collection.products by per_page -%}
+
+    {%- comment -%} filter + sort bar {%- endcomment -%}
+    <div class="collection-bar">
+      <p class="collection-count" role="status" aria-live="polite" aria-atomic="true">
+        <b data-count-visible>{{ collection.products_count }}</b> of <span data-count-total>{{ collection.products_count }}</span> products
+      </p>
+      <div class="collection-tools">
+
+        {%- if section.settings.show_filters -%}
+        <div class="filter-chips" role="group" aria-label="Filter by category" data-filters>
+          {%- assign cur_cat = '' -%}
+          {%- if collection.current_type != blank -%}
+            {%- assign cur_cat = collection.current_type | handle -%}
+          {%- endif -%}
+          <button class="chip" type="button" aria-pressed="{% if cur_cat == '' %}true{% else %}false{% endif %}" data-filter="all">All</button>
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'filter_chip' -%}
+              <button class="chip" type="button" aria-pressed="{% if cur_cat == block.settings.cat %}true{% else %}false{% endif %}" data-filter="{{ block.settings.cat | escape }}" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</button>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+        {%- endif -%}
+
+        <label class="sort-field" for="sort-by">Sort
+          <select class="sort-select" id="sort-by" data-sort name="sort_by">
+            {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+            {%- for option in collection.sort_options -%}
+              <option value="{{ option.value }}"{% if option.value == sort_by %} selected{% endif %}>{{ option.name }}</option>
+            {%- endfor -%}
+          </select>
+        </label>
+      </div>
+    </div>
+
+    {%- if collection.products.size > 0 -%}
+      <div class="pgrid" data-reveal-group data-grid>
+        {%- for product in collection.products -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} no-results state (shown by JS when a client filter empties the grid) {%- endcomment -%}
+      <div class="empty-state" data-empty hidden>
+        <span class="es-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+        </span>
+        <h3>{{ section.settings.empty_heading | escape }}</h3>
+        <p>{{ section.settings.empty_body }}</p>
+        <button class="btn btn-outline" type="button" data-clear-filter>Show all gear</button>
+      </div>
+
+      {%- comment -%} no-JS pagination baseline; load-more / client pager is JS enhancement {%- endcomment -%}
+      <nav class="pager" data-pager aria-label="Collection pages">
+        {{ paginate | default_pagination }}
+      </nav>
+    {%- else -%}
+      <div class="empty-state">
+        <span class="es-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+        </span>
+        <h3>{{ section.settings.empty_heading | escape }}</h3>
+        <p>{{ section.settings.empty_body }}</p>
+        <a class="btn btn-outline" href="{{ routes.all_products_collection_url }}">Show all gear</a>
+      </div>
+    {%- endif -%}
+
+    {%- endpaginate -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection grid",
+  "tag": "section",
+  "class": "collection-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "THE FULL LINEUP"
+    },
+    {
+      "type": "text",
+      "id": "hero_heading",
+      "label": "Heading override",
+      "info": "Leave blank to use the collection title."
+    },
+    {
+      "type": "textarea",
+      "id": "hero_description",
+      "label": "Description override",
+      "info": "Leave blank to use the collection description.",
+      "default": "Every road-tested pick in one place. Filter by how you drive, then load up."
+    },
+    {
+      "type": "header",
+      "content": "Grid"
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "Products per page",
+      "min": 4,
+      "max": 24,
+      "step": 4,
+      "default": 12
+    },
+    {
+      "type": "checkbox",
+      "id": "show_filters",
+      "label": "Show category filter chips",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Empty state"
+    },
+    {
+      "type": "text",
+      "id": "empty_heading",
+      "label": "Empty heading",
+      "default": "Nothing in that lane yet"
+    },
+    {
+      "type": "textarea",
+      "id": "empty_body",
+      "label": "Empty body",
+      "default": "We have not parked anything here. Try another category or browse the full lineup."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "filter_chip",
+      "name": "Filter chip",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Chip label",
+          "default": "Category"
+        },
+        {
+          "type": "text",
+          "id": "cat",
+          "label": "Category value",
+          "info": "Must match the product's type (handleized) so client-side filtering works. e.g. mess, clean, charged, road."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection grid",
+      "blocks": [
+        { "type": "filter_chip", "settings": { "label": "Tame the Mess", "cat": "mess" } },
+        { "type": "filter_chip", "settings": { "label": "Clean & Detail", "cat": "clean" } },
+        { "type": "filter_chip", "settings": { "label": "Charged & Connected", "cat": "charged" } },
+        { "type": "filter_chip", "settings": { "label": "Road-Trip Ready", "cat": "road" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

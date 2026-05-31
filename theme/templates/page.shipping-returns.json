@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-rich-text",
+      "blocks": {
+        "eyebrow-note": { "type": "heading", "settings": { "text": "Shipping" } },
+        "ship-body": { "type": "text", "settings": { "text": "<p>We ship within the United States. Orders over $50 ship free; under $50, a flat rate is shown at checkout before you pay.</p><p>Orders placed before 2pm ET ship the same business day. After that, the next business day.</p>" } },
+        "track-head": { "type": "heading", "settings": { "text": "Tracking" } },
+        "track-body": { "type": "text", "settings": { "text": "<p>As soon as your order leaves our facility, we email you a tracking link. No account required.</p>" } },
+        "returns-head": { "type": "heading", "settings": { "text": "Returns" } },
+        "returns-body": { "type": "text", "settings": { "text": "<p>If gear doesn't hold up to normal driving life, send it back within 14 days for a refund. Items must be unused and in original packaging.</p><p>To start a return, reply to your order confirmation email or contact <a href=\"mailto:support@slipstreamgear.com\">support@slipstreamgear.com</a>.</p>" } },
+        "refunds-head": { "type": "heading", "settings": { "text": "Refunds" } },
+        "refunds-body": { "type": "text", "settings": { "text": "<p>Once we receive your return, refunds are issued to your original payment method within 3-5 business days.</p>" } },
+        "damaged-head": { "type": "heading", "settings": { "text": "Damaged or wrong items" } },
+        "damaged-body": { "type": "text", "settings": { "text": "<p>If something arrives damaged or incorrect, email us within 7 days and we'll make it right.</p>" } }
+      },
+      "block_order": ["eyebrow-note", "ship-body", "track-head", "track-body", "returns-head", "returns-body", "refunds-head", "refunds-body", "damaged-head", "damaged-body"],
+      "settings": {
+        "eyebrow": "Policies",
+        "heading": "Shipping & returns",
+        "lede": "<p>Straight answers on how we ship and how returns work. No fine-print games.</p>"
+      }
+    }
+  },
+  "order": ["main"]
+}

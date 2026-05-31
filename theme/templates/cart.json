@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-cart",
+      "blocks": {
+        "trust-1": { "type": "trust", "settings": { "text": "Free U.S. shipping over $50" } },
+        "trust-2": { "type": "trust", "settings": { "text": "14-day returns" } },
+        "trust-3": { "type": "trust", "settings": { "text": "Secure checkout" } }
+      },
+      "block_order": ["trust-1", "trust-2", "trust-3"],
+      "settings": {
+        "heading": "Your cart"
+      }
+    }
+  },
+  "order": ["main"]
+}

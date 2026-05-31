@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0B0C0E">
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  <title>
+    {{ page_title }}
+    {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+    {%- unless page_title contains shop.name %} &middot; {{ shop.name }}{% endunless -%}
+  </title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  {%- comment -%} Favicon: dark mark for light tab UI, light variant on dark tabs {%- endcomment -%}
+  {% if settings.favicon != blank %}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 64 }}">
+  {% else %}
+    <link rel="icon" type="image/png" href="{{ 'icon.png' | asset_url }}">
+    <link rel="icon" type="image/png" href="{{ 'icon-light.png' | asset_url }}" media="(prefers-color-scheme: dark)">
+  {% endif %}
+
+  {%- comment -%} Fonts: Saira (headings) + Inter (body) {%- endcomment -%}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  {{ 'slipstream.css' | asset_url | stylesheet_tag }}
+  {{ 'pages.css' | asset_url | stylesheet_tag }}
+
+  {%- comment -%} JS-failure safety net: if the script never runs, reveal everything {%- endcomment -%}
+  <noscript><style>[data-reveal]{opacity:1!important;transform:none!important;filter:none!important}</style></noscript>
+
+  {{ content_for_header }}
+</head>
+<body class="template-{{ request.page_type | handle }}">
+
+  <a class="skip-link vh" href="#MainContent">Skip to content</a>
+
+  {%- comment -%} screen-reader live region for cart updates {%- endcomment -%}
+  <div class="vh" aria-live="polite" data-cart-live></div>
+
+  {% section 'header' %}
+
+  <main id="MainContent" role="main">
+    {{ content_for_layout }}
+  </main>
+
+  {% section 'footer' %}
+
+  {%- comment -%} cart drawer + search overlay live here so they persist across the layout {%- endcomment -%}
+  {% render 'cart-drawer' %}
+  {% render 'search-overlay' %}
+
+  <script>
+    window.theme = {
+      moneyFormat: {{ shop.money_format | json }},
+      freeShippingThreshold: {{ settings.free_shipping_threshold | default: 0 | json }},
+      showFreeShippingBar: {{ settings.show_free_shipping_bar | json }}
+    };
+  </script>
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+</body>
+</html>

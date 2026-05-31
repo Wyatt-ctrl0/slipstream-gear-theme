@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-faq",
+      "blocks": {
+        "qa-1": { "type": "qa", "settings": { "question": "When will my order ship?", "answer": "<p>Orders placed before 2pm ET ship the same business day. After that, they go out the next business day.</p>" } },
+        "qa-2": { "type": "qa", "settings": { "question": "Do you offer free shipping?", "answer": "<p>Yes. U.S. orders over $50 ship free. Under $50, a flat rate is calculated at checkout.</p>" } },
+        "qa-3": { "type": "qa", "settings": { "question": "What's your return policy?", "answer": "<p>14-day returns on unused gear in original packaging. Start a return from your order confirmation email.</p>" } },
+        "qa-4": { "type": "qa", "settings": { "question": "Are the specs accurate?", "answer": "<p>Yes. Every output rating, capacity, and dimension is measured by us, not copied from a supplier sheet.</p>" } },
+        "qa-5": { "type": "qa", "settings": { "question": "How do I track my order?", "answer": "<p>You'll get a tracking link by email as soon as your order ships. No account needed.</p>" } },
+        "qa-6": { "type": "qa", "settings": { "question": "Do products come with a warranty?", "answer": "<p>Most gear includes a 1-year limited warranty against defects. Check the product page for specifics.</p>" } }
+      },
+      "block_order": ["qa-1", "qa-2", "qa-3", "qa-4", "qa-5", "qa-6"],
+      "settings": {
+        "eyebrow": "Answers",
+        "heading": "Frequently asked questions",
+        "lede": "<p>Everything about shipping, returns, warranties, and the gear itself.</p>"
+      }
+    }
+  },
+  "order": ["main"]
+}

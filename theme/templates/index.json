@@ -1,0 +1,136 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "spec-1": { "type": "spec", "settings": { "text": "Free U.S. shipping over $50" } },
+        "spec-2": { "type": "spec", "settings": { "text": "14-day returns" } },
+        "spec-3": { "type": "spec", "settings": { "text": "Road-tested picks" } }
+      },
+      "block_order": ["spec-1", "spec-2", "spec-3"],
+      "settings": {
+        "watermark": "SLIPSTREAM",
+        "aria_label": "Slipstream Gear",
+        "eyebrow": "BUILT FOR THE DAILY DRIVER",
+        "heading": "Gear that <em>keeps up.</em>",
+        "subheading": "Clever gadgets for your vehicle, road-tested before they earn a spot in your cabin.",
+        "primary_label": "Shop all gear",
+        "secondary_label": "The starter kit",
+        "secondary_link": "#kit"
+      }
+    },
+    "marquee": {
+      "type": "marquee",
+      "blocks": {
+        "m-1": { "type": "message", "settings": { "text": "Free U.S. shipping over $50" } },
+        "m-2": { "type": "message", "settings": { "text": "14-day returns" } },
+        "m-3": { "type": "message", "settings": { "text": "Road-tested picks" } },
+        "m-4": { "type": "message", "settings": { "text": "Secure checkout" } }
+      },
+      "block_order": ["m-1", "m-2", "m-3", "m-4"],
+      "settings": {}
+    },
+    "shop-by-need": {
+      "type": "shop-by-need",
+      "blocks": {
+        "lane-1": { "type": "lane", "settings": { "number": "01", "title": "Tame the Mess", "body": "Trunk storage, seat-back organizers, and glovebox order." } },
+        "lane-2": { "type": "lane", "settings": { "number": "02", "title": "Clean & Detail", "body": "Detailing tools that keep the cabin showroom-fresh." } },
+        "lane-3": { "type": "lane", "settings": { "number": "03", "title": "Charged & Connected", "body": "Fast chargers, phone mounts, and dashcams for the dash." } },
+        "lane-4": { "type": "lane", "settings": { "number": "04", "title": "Road-Trip Ready", "body": "Comfort and kit that earns its keep on the long haul." } }
+      },
+      "block_order": ["lane-1", "lane-2", "lane-3", "lane-4"],
+      "settings": {
+        "kicker": "SHOP BY PROBLEM",
+        "heading": "Find the fix for how you drive."
+      }
+    },
+    "featured-collection": {
+      "type": "featured-collection",
+      "settings": {
+        "kicker": "CABIN-READY PICKS",
+        "heading": "Gear that keeps up.",
+        "products_to_show": 4
+      }
+    },
+    "interstitial": {
+      "type": "interstitial",
+      "settings": {
+        "kicker": "BUILT FOR THE LONG HAUL",
+        "heading": "Gear that earns its spot.",
+        "lead": "Every pick gets driven before it gets sold. If it rattles, slips, or quits on the highway, it never makes the cut.",
+        "chip": "Driven before it goes live",
+        "foot": "Free U.S. shipping over $50 · 14-day returns · Secure checkout."
+      }
+    },
+    "bundle": {
+      "type": "bundle",
+      "blocks": {
+        "item-1": { "type": "item", "settings": { "label": "Surge 65W Charger" } },
+        "item-2": { "type": "item", "settings": { "label": "MagLock Mount" } },
+        "item-3": { "type": "item", "settings": { "label": "Trunk Caddy" } }
+      },
+      "block_order": ["item-1", "item-2", "item-3"],
+      "settings": {
+        "kicker": "THE STARTER KIT",
+        "heading": "One trip to dialed in.",
+        "eyebrow": "Cabin starter kit",
+        "price_text": "$129",
+        "compare_text": "$159",
+        "note": "Three road-tested picks, one box. Free U.S. shipping included.",
+        "primary_label": "Add the kit",
+        "secondary_label": "Pick items separately",
+        "secondary_link": "#picks"
+      }
+    },
+    "proof": {
+      "type": "proof",
+      "blocks": {
+        "stat-1": { "type": "stat", "settings": { "prefix": "$", "count": "50", "label": "Free U.S. shipping over this" } },
+        "stat-2": { "type": "stat", "settings": { "count": "14", "suffix": "-day", "label": "Returns window, no fuss" } },
+        "stat-3": { "type": "stat", "settings": { "static_value": "Driven", "label": "Every pick before it goes live" } }
+      },
+      "block_order": ["stat-1", "stat-2", "stat-3"],
+      "settings": {
+        "kicker": "THE PROMISE",
+        "heading": "Why drivers can trust the picks.",
+        "note": "Reviews open after launch. Until then, the promise stands on policy: every pick is driven before it goes live, shipping is free over $50, returns run 14 days, and checkout is secured by Shopify."
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "qa-1": { "type": "qa", "settings": { "question": "Does the mount fit my vents?", "answer": "The MagLock clips to most horizontal and vertical vent blades. The magnet plate sticks to any case or directly to the phone back." } },
+        "qa-2": { "type": "qa", "settings": { "question": "How does free shipping work?", "answer": "Orders over $50 ship free within the U.S. Smaller orders show a flat rate at checkout before you pay." } },
+        "qa-3": { "type": "qa", "settings": { "question": "What is the return window?", "answer": "You have 14 days from delivery to return an item. Start a return from your order email and we send return instructions." } },
+        "qa-4": { "type": "qa", "settings": { "question": "What does road-tested mean?", "answer": "We drive each pick before it goes live. If it rattles, slips, or quits on the highway, it does not make the catalog." } }
+      },
+      "block_order": ["qa-1", "qa-2", "qa-3", "qa-4"],
+      "settings": {
+        "kicker": "QUESTIONS",
+        "heading": "Before you load up."
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "New gear, before the rush.",
+        "body": "Get road-tested drops and the occasional driver tip. No spam, unsubscribe anytime.",
+        "placeholder": "you@example.com",
+        "input_label": "Email address",
+        "button_label": "Sign up",
+        "success_msg": "Thanks. Watch your inbox for the next drop."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "marquee",
+    "shop-by-need",
+    "featured-collection",
+    "interstitial",
+    "bundle",
+    "proof",
+    "faq",
+    "newsletter"
+  ]
+}

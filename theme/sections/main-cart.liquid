@@ -1,0 +1,124 @@
+{%- liquid
+  assign threshold_dollars = settings.free_shipping_threshold | default: 0
+  assign threshold_cents = threshold_dollars | times: 100
+  assign remaining_cents = threshold_cents | minus: cart.total_price
+  assign progress_pct = 0
+  if threshold_cents > 0
+    assign progress_pct = cart.total_price | times: 100 | divided_by: threshold_cents
+    if progress_pct > 100
+      assign progress_pct = 100
+    endif
+  endif
+-%}
+<section class="container" style="padding:40px 0 80px">
+  <h1 class="page-h1" data-reveal>{{ section.settings.heading | default: 'Your cart' }}</h1>
+
+  <div class="cart-grid" data-cart-page-shopify>
+    <div class="cart-lines" data-cart-lines>
+      {%- if cart.item_count == 0 -%}
+        <div class="cart-empty" data-reveal>
+          <p class="ce-title">{{ section.settings.empty_title | default: 'Your cart is empty' }}</p>
+          <p class="ce-sub">{{ section.settings.empty_sub | default: 'Gear up before your next drive.' }}</p>
+          <a class="btn btn-amber" href="{{ routes.all_products_collection_url }}">{{ section.settings.empty_cta | default: 'Shop all gear' }}</a>
+        </div>
+      {%- else -%}
+        <form action="{{ routes.cart_url }}" method="post" id="cart-page-form">
+          {%- for item in cart.items -%}
+            <div class="cart-line" data-line-item data-index="{{ forloop.index0 }}" data-line="{{ forloop.index }}">
+              <div class="cl-img">
+                {%- if item.image -%}
+                  {{ item.image | image_url: width: 200 | image_tag: loading: 'lazy', class: 'prod', alt: item.title }}
+                {%- endif -%}
+              </div>
+              <div class="cl-info">
+                <div class="cl-top">
+                  <h3 class="cl-name"><a href="{{ item.url }}">{{ item.product.title }}</a></h3>
+                  <button class="cl-remove" type="submit" name="updates[]" value="0" data-cart-remove="{{ forloop.index }}" aria-label="Remove {{ item.product.title | escape }}">&times;</button>
+                </div>
+                {%- unless item.variant.title contains 'Default' -%}
+                  <p class="cl-variant">{{ item.variant.title }}</p>
+                {%- endunless -%}
+                <div class="cl-bottom">
+                  <div class="qty" data-qty>
+                    <button class="qty-btn" type="button" data-cart-minus aria-label="Decrease">&minus;</button>
+                    <input class="qty-input" data-qty-input type="text" inputmode="numeric" name="updates[]" value="{{ item.quantity }}" aria-label="Quantity" data-line="{{ forloop.index }}">
+                    <button class="qty-btn" type="button" data-cart-plus aria-label="Increase">+</button>
+                  </div>
+                  <span class="cl-price">{{ item.final_line_price | money }}</span>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+          <noscript>
+            <button class="btn btn-outline" type="submit" name="update">Update cart</button>
+          </noscript>
+        </form>
+      {%- endif -%}
+    </div>
+
+    <aside class="cart-summary" data-reveal>
+      <h2 class="cs-title">{{ section.settings.summary_title | default: 'Summary' }}</h2>
+      <div class="cs-row"><span>Subtotal</span><span data-cart-subtotal>{{ cart.total_price | money }}</span></div>
+      {%- if settings.show_free_shipping_bar and threshold_cents > 0 -%}
+        <div class="cs-ship" data-free-ship>
+          <div class="cs-ship-bar"><span data-free-ship-fill style="width:{{ progress_pct }}%"></span></div>
+          <p class="cs-ship-text" data-free-ship-text>
+            {%- if cart.total_price >= threshold_cents -%}
+              You unlocked free U.S. shipping.
+            {%- else -%}
+              {{ remaining_cents | money }} away from free U.S. shipping.
+            {%- endif -%}
+          </p>
+        </div>
+      {%- endif -%}
+      {%- form 'cart', cart -%}
+        <button class="btn btn-amber btn-block cs-checkout" type="submit" name="checkout" data-checkout {% if cart.item_count == 0 %}disabled{% endif %}>{{ section.settings.checkout_label | default: 'Checkout' }}</button>
+      {%- endform -%}
+      <a class="cs-cont" href="{{ routes.all_products_collection_url }}">{{ section.settings.continue_label | default: 'Continue shopping' }}</a>
+      <ul class="cs-trust">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'trust' -%}
+            <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </aside>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart",
+  "tag": "section",
+  "class": "section-main-cart",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Your cart" },
+    { "type": "text", "id": "summary_title", "label": "Summary title", "default": "Summary" },
+    { "type": "text", "id": "checkout_label", "label": "Checkout button label", "default": "Checkout" },
+    { "type": "text", "id": "continue_label", "label": "Continue shopping label", "default": "Continue shopping" },
+    { "type": "header", "content": "Empty state" },
+    { "type": "text", "id": "empty_title", "label": "Empty title", "default": "Your cart is empty" },
+    { "type": "text", "id": "empty_sub", "label": "Empty subtext", "default": "Gear up before your next drive." },
+    { "type": "text", "id": "empty_cta", "label": "Empty CTA label", "default": "Shop all gear" }
+  ],
+  "blocks": [
+    {
+      "type": "trust",
+      "name": "Trust item",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Free U.S. shipping over $50" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cart",
+      "blocks": [
+        { "type": "trust", "settings": { "text": "Free U.S. shipping over $50" } },
+        { "type": "trust", "settings": { "text": "14-day returns" } },
+        { "type": "trust", "settings": { "text": "Secure checkout" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

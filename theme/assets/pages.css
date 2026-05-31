@@ -1,0 +1,569 @@
+/* ============================================================
+   SLIPSTREAM GEAR — SHARED PAGE STYLES (pages.css)
+   Collection · Product (PDP) · About/Story · Wishlist
+   Built ONLY on slipstream.css tokens (var(--...)). No new tokens,
+   no hardcoded brand colors, no background grids (owner dislikes).
+   Load AFTER slipstream.css on every non-home page:
+     <link rel="stylesheet" href="assets/slipstream.css">
+     <link rel="stylesheet" href="assets/pages.css">
+   Voice: practical, driver-literate. No em-dashes. AA contrast.
+   ============================================================ */
+
+/* ============================================================
+   PAGE HERO — compact dark banner (collection / about top)
+   Mirrors the homepage hero gradient + streak motion, shorter.
+   ============================================================ */
+.page-hero{position:relative;background:linear-gradient(160deg,var(--dark),var(--dark-2));
+  color:var(--paper);overflow:hidden;padding:54px 0 46px}
+.page-hero::after{content:"";position:absolute;left:50%;bottom:-30%;width:64%;height:80%;
+  transform:translateX(-50%);pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(225,29,42,.22),rgba(225,29,42,0) 68%);
+  filter:blur(8px)}
+.page-hero .wrap{position:relative;z-index:2}
+.page-hero .kicker{color:#FF6B73;opacity:1}
+.page-hero-h1{font-family:var(--disp);font-weight:800;letter-spacing:-.02em;
+  font-size:clamp(32px,5vw,56px);margin:0 0 12px;color:var(--paper)}
+.page-hero-sub{font-size:clamp(15px,1.6vw,17px);color:var(--paper);opacity:.84;
+  max-width:520px;margin:0}
+.page-hero .streak-rule{margin-bottom:14px}
+
+/* ============================================================
+   BREADCRUMB — sits on light bg under the header/hero
+   ============================================================ */
+.breadcrumb{display:flex;flex-wrap:wrap;align-items:center;gap:8px;
+  font-family:var(--disp);font-weight:500;font-size:13px;color:var(--muted);
+  padding:18px 0 0}
+/* PDP breadcrumb sits on white directly under the sticky header: add breathing room */
+.product .breadcrumb{padding-top:30px}
+.breadcrumb a{color:var(--muted);transition:color .2s}
+.breadcrumb a:hover{color:var(--ember)}
+.breadcrumb .sep{opacity:.6}
+.breadcrumb [aria-current="page"]{color:var(--ink)}
+/* breadcrumb on a dark page-hero */
+.page-hero .breadcrumb,.page-hero .breadcrumb a{color:rgba(244,245,247,.7)}
+.page-hero .breadcrumb a:hover{color:var(--paper)}
+.page-hero .breadcrumb [aria-current="page"]{color:var(--paper)}
+
+/* ============================================================
+   COLLECTION — filter/sort bar + product grid
+   Reuses the homepage .pcard / .pgrid look; adds the toolbar.
+   ============================================================ */
+.collection{background:var(--bg);padding:34px 0 84px}
+.collection-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  margin:22px 0 30px;padding-bottom:20px;border-bottom:1px solid rgba(31,35,40,.1)}
+.collection-count{font-family:var(--disp);font-weight:600;font-size:14px;color:var(--muted)}
+.collection-count b{color:var(--ink)}
+.collection-tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-left:auto}
+
+/* filter chips (toggle pills) */
+.filter-chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--disp);font-weight:600;font-size:13px;color:var(--ink);
+  background:var(--surface);border:1px solid rgba(31,35,40,.12);border-radius:999px;
+  padding:8px 15px;cursor:pointer;display:inline-flex;align-items:center;min-height:44px;
+  transition:background .2s,border-color .2s,color .2s,transform .2s var(--ease-streak)}
+.chip:hover{transform:translateY(-1px);border-color:var(--ink)}
+.chip:active{transform:translateY(0) scale(.96)}
+.chip[aria-pressed="true"]{background:var(--amber);color:var(--ink);border-color:var(--amber)}
+@keyframes chipPop{0%{transform:scale(1)}50%{transform:scale(1.06)}100%{transform:scale(1)}}
+.chip.just-on{animation:chipPop .22s var(--ease-streak)}
+
+/* sort select */
+.sort-field{display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--disp);font-weight:600;font-size:13px;color:var(--muted)}
+.sort-select{font-family:var(--disp);font-weight:600;font-size:13px;color:var(--ink);
+  background:var(--surface);border:1px solid rgba(31,35,40,.14);border-radius:9px;
+  padding:9px 32px 9px 13px;cursor:pointer;min-height:44px;
+  -webkit-appearance:none;appearance:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23131418' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>");
+  background-repeat:no-repeat;background-position:right 10px center;background-size:14px}
+.sort-select:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+
+/* the grid reuses .pgrid / .pcard from slipstream.css verbatim.
+   Make the whole card linkable without breaking the Add button. */
+.pcard .pcard-link{position:absolute;inset:0;z-index:1}
+.pcard{position:relative}
+.pcard .pbody,.pcard .add,.pcard .save-toggle{position:relative;z-index:2}
+
+/* load-more — centered under the grid */
+.load-more-wrap{display:flex;justify-content:center;margin-top:40px}
+.load-more-wrap .btn{min-width:200px;justify-content:center}
+
+/* empty / no-results state shared with wishlist */
+.empty-state{text-align:center;max-width:440px;margin:40px auto;padding:40px 24px;
+  background:var(--surface);border:1px solid rgba(31,35,40,.08);border-radius:18px}
+.empty-state .es-mark{width:64px;height:64px;margin:0 auto 18px;display:grid;place-items:center;
+  background:var(--tile);border-radius:16px}
+.empty-state .es-mark svg{width:30px;height:30px;fill:none;stroke:var(--ember-surf);
+  stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.empty-state h3{font-size:22px;margin:0 0 8px}
+.empty-state p{font-size:15px;color:var(--body-2);margin:0 0 22px}
+
+/* ============================================================
+   PRODUCT (PDP) — gallery left / buy-box right, stacks on mobile
+   ============================================================ */
+.product{background:var(--bg);padding:24px 0 90px}
+.product-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:start;
+  margin-top:24px}
+
+/* ---- gallery ---- */
+.pdp-gallery{position:sticky;top:88px;align-self:start}
+.pdp-main{position:relative;background:linear-gradient(160deg,#2b3138,#131418);border-radius:18px;
+  aspect-ratio:1/1;display:grid;place-items:center;padding:30px;overflow:hidden;
+  border:1px solid rgba(31,35,40,.08)}
+.pdp-main svg,.pdp-main img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain}
+/* instrument framing: mono corner readout + bottom taillight glow (dark stage only).
+   The REC readout is scoped to camera products only (data-readout="rec") so a
+   charger/caddy/dash-pad PDP never shows a nonsensical recording indicator. */
+.pdp-main[data-readout="rec"]::before{content:"REC \25CF";position:absolute;top:14px;left:16px;z-index:2;
+  font-family:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;font-size:10px;
+  letter-spacing:.12em;color:var(--amber);opacity:.7;pointer-events:none}
+.pdp-main::after{content:"";position:absolute;left:0;right:0;bottom:0;height:45%;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 100%,rgba(225,29,42,.18),transparent 70%)}
+/* gallery cross-fade — setupGallery rewrites .pdp-main on each switch */
+@keyframes galFade{from{opacity:0;transform:translateX(6px)}to{opacity:1;transform:none}}
+.pdp-main .prod{animation:galFade .25s var(--ease-streak)}
+.pdp-thumbs{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
+.pdp-thumb{width:74px;height:74px;border-radius:12px;padding:8px;cursor:pointer;
+  background:linear-gradient(160deg,#2b3138,#131418);border:1.5px solid transparent;
+  display:grid;place-items:center;transition:border-color .2s,transform .2s var(--ease-streak)}
+.pdp-thumb svg,.pdp-thumb img{width:100%;height:100%;object-fit:contain}
+.pdp-thumb:hover{transform:translateY(-2px)}
+.pdp-thumb:active{transform:scale(.94)}
+.pdp-thumb[aria-current="true"],.pdp-thumb.is-active{border-color:var(--amber)}
+@keyframes thumbPop{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
+.pdp-thumb.is-active{animation:thumbPop .22s var(--ease-streak)}
+
+/* ---- buy-box ---- */
+.buybox{max-width:520px}
+.buybox .eyebrow-line{font-family:var(--disp);font-weight:600;font-size:12px;
+  letter-spacing:.18em;color:var(--ember);margin:0 0 10px;text-transform:uppercase}
+.buybox h1{font-family:var(--disp);font-weight:800;letter-spacing:-.02em;
+  font-size:clamp(26px,3.4vw,38px);margin:0 0 12px;color:var(--ink)}
+.buybox .pdp-price{display:flex;align-items:baseline;gap:12px;margin:0 0 16px}
+.buybox .pdp-price .price{font-family:var(--disp);font-weight:800;font-size:30px;color:var(--ink)}
+.buybox .pdp-price .was{color:var(--muted);font-size:18px;text-decoration:line-through}
+.buybox .pdp-price .save-badge{font-family:var(--disp);font-weight:700;font-size:12px;
+  letter-spacing:.04em;color:var(--ink);background:var(--amber);border-radius:6px;padding:4px 9px}
+.buybox .pdp-lead{font-size:15.5px;color:var(--body-2);margin:0 0 22px;max-width:460px}
+
+/* spectags reuse from homepage; PDP wants them a touch larger */
+.buybox .spectags{margin:0 0 22px}
+.buybox .spectags span{font-size:11px;padding:4px 9px}
+
+/* quantity stepper */
+.qty-row{display:flex;align-items:center;gap:16px;margin:0 0 16px;flex-wrap:wrap}
+.qty-stepper{display:inline-flex;align-items:center;background:var(--surface);
+  border:1px solid rgba(31,35,40,.14);border-radius:10px;overflow:hidden}
+.qty-stepper button{width:46px;height:46px;border:0;background:transparent;cursor:pointer;
+  font-family:var(--disp);font-weight:700;font-size:20px;color:var(--ink);
+  display:grid;place-items:center;transition:background .15s,transform .12s var(--ease-streak)}
+.qty-stepper button:hover{background:var(--tile)}
+.qty-stepper button:active:not(:disabled){background:var(--tile);transform:scale(.9)}
+.qty-stepper button:disabled{opacity:.4;cursor:not-allowed}
+.qty-stepper input{width:46px;height:46px;border:0;background:transparent;text-align:center;
+  font-family:var(--disp);font-weight:700;font-size:16px;color:var(--ink);
+  -moz-appearance:textfield}
+@keyframes qtyBump{0%{transform:scale(1)}50%{transform:scale(1.16)}100%{transform:scale(1)}}
+.qty-stepper input.bump{animation:qtyBump .18s var(--ease-streak)}
+.qty-stepper input::-webkit-outer-spin-button,
+.qty-stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.qty-label{font-family:var(--disp);font-weight:600;font-size:13px;color:var(--muted)}
+
+/* ATC + secondary CTA — primary is the ONLY red fill (buy-box rule) */
+.buybox-cta{display:flex;gap:12px;flex-wrap:wrap;margin:0 0 14px}
+.buybox-cta .btn-amber{flex:1;min-width:220px;justify-content:center}
+.buybox-cta .btn-outline{justify-content:center}
+.buybox-cta .save-toggle{flex:0 0 auto}
+
+/* trust pills row */
+.trust-pills{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 24px;
+  padding-top:20px;border-top:1px solid rgba(31,35,40,.1)}
+.trust-pill{display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--disp);font-weight:600;font-size:12.5px;color:var(--ink);
+  background:var(--surface);border:1px solid rgba(31,35,40,.08);border-radius:999px;padding:8px 14px}
+.trust-pill svg{width:15px;height:15px;fill:none;stroke:var(--ember-surf);
+  stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* spec table */
+.spec-table{width:100%;border-collapse:collapse;margin:6px 0 4px;
+  font-size:14.5px}
+.spec-table caption{font-family:var(--disp);font-weight:700;font-size:13px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ember-surf);
+  text-align:left;margin-bottom:10px}
+.spec-table th,.spec-table td{text-align:left;padding:12px 4px;
+  border-bottom:1px solid rgba(31,35,40,.1);vertical-align:top}
+.spec-table th{font-family:var(--disp);font-weight:600;color:var(--muted);width:42%;
+  font-size:13.5px}
+.spec-table td{color:var(--ink)}
+
+/* a detail/info block under the buy-box */
+.pdp-detail{margin-top:30px;max-width:520px}
+.pdp-detail h2{font-size:20px;margin:0 0 10px}
+.pdp-detail p{font-size:15px;color:var(--body-2);margin:0 0 14px}
+
+/* ---- cross-sell row (pairs well with) ---- */
+.cross-sell{background:var(--tile);padding:72px 0}
+.cross-sell .sec-head{margin-bottom:30px}
+.cross-sell .kicker{color:var(--ember-surf)}
+.cross-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+/* cards inside reuse .pcard verbatim */
+
+/* ---- sticky mobile buy-bar (hidden on desktop) ---- */
+.buybar{position:fixed;left:0;right:0;bottom:0;z-index:55;display:none;
+  align-items:center;gap:12px;padding:12px 16px;
+  background:rgba(20,23,26,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border-top:1px solid var(--amber);
+  visibility:hidden;pointer-events:none;
+  transform:translateY(110%);transition:transform .3s var(--ease-expo),visibility .3s var(--ease-expo)}
+.buybar.show{transform:none;visibility:visible;pointer-events:auto}
+.buybar-info{display:flex;flex-direction:column;line-height:1.2;min-width:0}
+.buybar-info .bb-name{font-family:var(--disp);font-weight:600;font-size:13px;color:var(--paper);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.buybar-info .bb-price{font-family:var(--disp);font-weight:800;font-size:16px;color:var(--paper)}
+.buybar .btn-amber{margin-left:auto;flex:0 0 auto}
+
+/* ============================================================
+   ABOUT / STORY
+   ============================================================ */
+/* dark story hero — taller, cinematic; reuse page-hero base + this */
+.story-hero{padding:74px 0 66px}
+.story-hero .page-hero-sub{max-width:580px;font-size:clamp(16px,1.8vw,19px)}
+
+.story-section{background:var(--bg);padding:80px 0}
+.story-lead{max-width:680px;margin:0 auto 10px;text-align:center}
+.story-lead h2{font-size:clamp(26px,3.4vw,40px);margin:0 0 16px}
+.story-lead p{font-size:16px;color:var(--body-2);margin:0 auto;max-width:600px}
+
+/* value rows — alternating text/illustration */
+.value-rows{display:flex;flex-direction:column;gap:30px;margin-top:54px}
+.value-row{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;
+  background:var(--surface);border:1px solid rgba(31,35,40,.07);border-radius:20px;padding:36px}
+.value-row:nth-child(even) .value-art{order:-1}
+.value-copy .v-num{font-family:var(--disp);font-weight:700;font-size:13px;
+  letter-spacing:.14em;color:var(--ember-surf);margin:0 0 8px}
+.value-copy h3{font-size:24px;margin:0 0 12px}
+.value-copy p{font-size:15px;color:var(--body-2);margin:0;max-width:420px}
+.value-art{background:linear-gradient(160deg,#2b3138,#131418);border-radius:16px;
+  aspect-ratio:4/3;display:grid;place-items:center;padding:24px}
+.value-art svg{width:100%;height:100%;object-fit:contain}
+
+/* the road-tested promise — dark band, reuses interstitial language */
+.promise{position:relative;background:linear-gradient(160deg,var(--dark),var(--dark-2));
+  color:var(--paper);padding:80px 0;overflow:hidden}
+.promise::after{content:"";position:absolute;left:50%;top:-20%;width:60%;height:90%;
+  transform:translateX(-50%);pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(225,29,42,.18),rgba(225,29,42,0) 68%);
+  filter:blur(8px)}
+.promise .wrap{position:relative;z-index:2;max-width:780px;text-align:center}
+.promise .kicker{color:#FF6B73}
+.promise h2{color:var(--paper);font-size:clamp(28px,3.6vw,44px);margin:0 0 16px}
+.promise p{color:var(--paper);opacity:.86;font-size:16px;margin:0 auto 14px;max-width:600px}
+.promise-points{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+.promise-point{background:rgba(244,245,247,.05);border:1px solid rgba(244,245,247,.12);
+  border-radius:14px;padding:24px 20px;text-align:left}
+.promise-point .pp-ic{width:36px;height:36px;display:grid;place-items:center;
+  background:rgba(225,29,42,.14);border-radius:10px;margin-bottom:14px}
+.promise-point .pp-ic svg{width:19px;height:19px;fill:none;stroke:var(--amber);
+  stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.promise-point h4{font-family:var(--disp);font-weight:700;font-size:16px;color:var(--paper);margin:0 0 6px}
+.promise-point p{font-size:13.5px;color:var(--paper);opacity:.78;margin:0;text-align:left}
+
+/* about closing CTA: when the news-form holds a lone button (no email row),
+   keep it left-aligned in its column so it does not float oddly on wide viewports */
+.news .news-form:has(> .btn:only-child){justify-content:flex-start}
+
+/* ============================================================
+   WISHLIST — grid + empty state + save toggle
+   ============================================================ */
+.wishlist{background:var(--bg);padding:34px 0 90px}
+.wishlist-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+  margin:22px 0 28px;padding-bottom:20px;border-bottom:1px solid rgba(31,35,40,.1)}
+.wishlist-head h2{font-size:clamp(26px,3.4vw,38px);margin:0}
+.wishlist-count{font-family:var(--disp);font-weight:600;font-size:14px;color:var(--muted)}
+/* grid reuses .pgrid / .pcard verbatim */
+
+/* save / heart toggle (used on cards + PDP) */
+.save-toggle{display:inline-flex;align-items:center;justify-content:center;
+  width:44px;height:44px;border-radius:10px;cursor:pointer;
+  background:var(--surface);border:1px solid rgba(31,35,40,.14);
+  color:var(--ink);transition:background .2s,border-color .2s,transform .2s var(--ease-streak)}
+.save-toggle:hover{transform:translateY(-1px);border-color:var(--ink)}
+.save-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;
+  stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:fill .2s,stroke .2s,transform .22s var(--ease-streak)}
+.save-toggle[aria-pressed="true"]{border-color:var(--amber)}
+.save-toggle[aria-pressed="true"] svg{fill:var(--amber);stroke:var(--amber)}
+/* satisfying fill/pop on user toggle (class-driven via JS reflow-restart, so
+   it never fires on wishlist's seeded aria-pressed or on removal) */
+@keyframes savePop{0%{transform:scale(1)}45%{transform:scale(.88)}100%{transform:scale(1.1)}}
+.save-toggle.is-pop svg{animation:savePop .21s var(--ease-streak)}
+/* card-corner variant: floats over the product image.
+   Fully-opaque chip so the amber 'saved' heart keeps a stable >=3:1
+   contrast regardless of the lit product image behind it, and the
+   resting heart reads as crisp as the header heart. */
+.pcard .save-toggle.save-corner{position:absolute;top:12px;right:12px;z-index:3;
+  width:46px;height:46px;background:var(--paper);
+  border:1px solid rgba(31,35,40,.18);box-shadow:0 2px 8px -2px rgba(0,0,0,.35)}
+.pcard .save-toggle.save-corner svg{width:22px;height:22px;stroke-width:2.2}
+/* remove-from-wishlist button reuses save-toggle look */
+
+/* ============================================================
+   PROSE / LEGAL — readable single column on white
+   Used by: shipping-returns.html, faq.html intro, contact.html intro,
+   and any policy/long-form copy. Reuses .page-hero + .qa accordion above.
+   ============================================================ */
+.prose-section{background:var(--bg);padding:48px 0 84px}
+.prose{max-width:720px;margin:0 auto}
+.prose-section .breadcrumb{margin-bottom:8px}
+.prose h2{font-family:var(--disp);font-weight:700;letter-spacing:-.01em;
+  font-size:clamp(22px,2.6vw,30px);color:var(--ink);margin:40px 0 14px}
+.prose h2:first-child{margin-top:0}
+.prose h3{font-family:var(--disp);font-weight:700;font-size:clamp(18px,2vw,21px);
+  color:var(--ink);margin:28px 0 10px}
+.prose p{font-size:16px;line-height:1.7;color:var(--body-2);margin:0 0 16px}
+.prose a{color:var(--ember-surf);text-decoration:underline;text-underline-offset:2px}
+.prose a:hover{color:var(--ember)}
+.prose ul,.prose ol{margin:0 0 18px;padding-left:22px}
+.prose li{font-size:16px;line-height:1.7;color:var(--body-2);margin:0 0 8px}
+.prose li::marker{color:var(--ember-surf)}
+.prose strong{color:var(--ink);font-weight:600}
+.prose hr{border:0;border-top:1px solid rgba(31,35,40,.12);margin:32px 0}
+/* lead paragraph + small print helpers */
+.prose .prose-lead{font-size:17.5px;color:var(--ink);margin-bottom:24px}
+.prose .prose-updated{font-family:var(--disp);font-weight:600;font-size:13px;
+  letter-spacing:.04em;color:var(--muted);margin:0 0 28px}
+/* a soft callout card for a key shipping/returns fact */
+.prose .prose-note{background:var(--surface);border:1px solid rgba(31,35,40,.08);
+  border-left:3px solid var(--amber);border-radius:12px;padding:18px 20px;margin:0 0 24px}
+.prose .prose-note p:last-child{margin-bottom:0}
+
+/* ============================================================
+   CONTACT FORM — labelled inputs + textarea + submit
+   Matches the newsletter input rhythm but on a light card (AA).
+   Used by: contact.html. Pair with .prose intro above it.
+   ============================================================ */
+.contact-section{background:var(--bg);padding:48px 0 90px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;
+  max-width:960px;margin:0 auto}
+/* left rail: brief intro + direct contact facts */
+.contact-aside h2{font-size:clamp(24px,3vw,32px);margin:0 0 12px}
+.contact-aside p{font-size:15.5px;color:var(--body-2);margin:0 0 16px;max-width:380px}
+.contact-points{list-style:none;margin:18px 0 0;padding:0;display:flex;
+  flex-direction:column;gap:14px}
+.contact-points li{display:flex;align-items:flex-start;gap:12px;
+  font-size:15px;color:var(--ink)}
+.contact-points svg{flex:0 0 auto;width:20px;height:20px;fill:none;stroke:var(--ember-surf);
+  stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-top:1px}
+.contact-points a{color:var(--ember-surf);text-decoration:underline;text-underline-offset:2px}
+.contact-points a:hover{color:var(--ember)}
+.contact-points b{display:block;font-family:var(--disp);font-weight:600}
+/* the form card */
+.contact-form{background:var(--surface);border:1px solid rgba(31,35,40,.08);
+  border-radius:18px;padding:30px;display:flex;flex-direction:column;gap:16px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field label{font-family:var(--disp);font-weight:600;font-size:13px;
+  letter-spacing:.02em;color:var(--ink)}
+.field .req{color:var(--ember-surf)}
+.field input,.field textarea,.field select{font-family:var(--body);font-size:15px;
+  padding:12px 14px;border-radius:10px;border:1px solid rgba(31,35,40,.16);
+  background:var(--paper);color:var(--ink);width:100%;transition:border-color .2s}
+.field textarea{min-height:130px;resize:vertical;line-height:1.6}
+.field input::placeholder,.field textarea::placeholder{color:var(--muted)}
+.field input:hover,.field textarea:hover,.field select:hover{border-color:rgba(31,35,40,.32)}
+.field input:focus,.field textarea:focus,.field select:focus{outline:2px solid var(--amber);
+  outline-offset:1px;border-color:transparent}
+.field .field-help{font-size:12.5px;color:var(--muted);margin:0}
+.contact-form .btn-amber{align-self:flex-start;justify-content:center;min-width:170px}
+/* success line reuses the newsletter .form-msg pattern, restyled for light bg.
+   Collapse its reserved height until shown so no dead gap sits under Send. */
+.contact-form .form-msg{color:var(--ember-surf);
+  height:0;margin-top:0;overflow:hidden;transition:opacity .3s,transform .3s,height .3s,margin-top .3s}
+.contact-form .form-msg.show{height:auto;margin-top:4px}
+
+/* ============================================================
+   CART PAGE — line items table + order-summary card
+   Used by: cart.html. Mirrors the cart-drawer data + tokens but as a
+   full-width page on white. Empty state reuses .empty-state above.
+   ============================================================ */
+.cart-page{background:var(--bg);padding:34px 0 90px}
+.cart-page-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+  margin:22px 0 28px;padding-bottom:20px;border-bottom:1px solid rgba(31,35,40,.1)}
+.cart-page-head h2{font-size:clamp(22px,2.8vw,30px);margin:0}
+.cart-page-head .cart-page-count{font-family:var(--disp);font-weight:600;font-size:14px;color:var(--muted)}
+.cart-layout{display:grid;grid-template-columns:1.6fr .9fr;gap:40px;align-items:start}
+/* line items */
+.cart-lines{list-style:none;margin:0;padding:0}
+.cart-line{display:grid;grid-template-columns:84px 1fr auto;gap:18px;align-items:center;
+  padding:20px 0;border-bottom:1px solid rgba(31,35,40,.1)}
+.cart-line:first-child{padding-top:0}
+.cart-line-media{width:84px;height:84px;border-radius:12px;padding:10px;color:var(--amber);
+  background:linear-gradient(160deg,#2b3138,#131418);display:grid;place-items:center}
+.cart-line-media svg,.cart-line-media img{width:100%;height:100%;object-fit:contain}
+.cart-line-info{min-width:0}
+.cart-line-name{font-family:var(--disp);font-weight:600;font-size:16px;color:var(--ink);
+  margin:0 0 4px}
+.cart-line-name a{color:inherit}
+.cart-line-name a:hover{color:var(--ember)}
+.cart-line-meta{font-size:13.5px;color:var(--muted);margin:0 0 10px}
+.cart-line-end{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.cart-line-price{font-family:var(--disp);font-weight:700;font-size:16px;color:var(--ink)}
+/* qty stepper reuses the PDP .qty-stepper look at a smaller scale */
+.cart-line .qty-stepper button{width:38px;height:38px;font-size:17px}
+.cart-line .qty-stepper input{width:40px;height:38px;font-size:15px}
+.cart-line-rm{border:0;background:transparent;cursor:pointer;padding:0;
+  font-family:var(--disp);font-weight:600;font-size:12.5px;color:var(--muted);
+  text-decoration:underline;text-underline-offset:2px;transition:color .2s}
+.cart-line-rm:hover{color:var(--ember)}
+/* order summary card */
+.cart-summary{background:var(--surface);border:1px solid rgba(31,35,40,.08);
+  border-radius:18px;padding:26px;position:sticky;top:88px}
+.cart-summary h2{font-family:var(--disp);font-weight:700;font-size:18px;
+  letter-spacing:.02em;color:var(--ink);margin:0 0 18px}
+.cart-summary-row{display:flex;justify-content:space-between;align-items:baseline;
+  font-size:15px;color:var(--body-2);margin:0 0 12px}
+.cart-summary-row span:last-child{font-family:var(--disp);font-weight:600;color:var(--ink)}
+.cart-summary-row.is-total{margin:16px 0 18px;padding-top:16px;
+  border-top:1px solid rgba(31,35,40,.12);font-size:18px;color:var(--ink)}
+.cart-summary-row.is-total span:last-child{font-weight:800;font-size:20px}
+.cart-summary-ship{font-size:12.5px;color:var(--muted);margin:0 0 18px}
+.cart-summary .btn-amber{width:100%;justify-content:center}
+.cart-summary-cont{display:block;text-align:center;margin:14px 0 0;
+  font-family:var(--disp);font-weight:600;font-size:13px;color:var(--ember-surf);
+  text-decoration:underline;text-underline-offset:2px}
+.cart-summary-cont:hover{color:var(--ember)}
+.cart-summary-note{font-size:12px;color:var(--muted);margin:14px 0 0;text-align:center}
+
+/* ============================================================
+   RESPONSIVE — match homepage breakpoints (980 / 860 / 560)
+   ============================================================ */
+@media(max-width:980px){
+  .product-grid{grid-template-columns:1fr;gap:30px}
+  .pdp-gallery{position:static}
+  .cross-row{grid-template-columns:repeat(2,1fr)}
+  .value-row{grid-template-columns:1fr;gap:24px;padding:28px}
+  .value-row:nth-child(even) .value-art{order:0}
+  .promise-points{grid-template-columns:1fr}
+  /* Sticky buy-bar must show wherever the two-column buy-box collapses
+     (rule: sticky-bar breakpoint >= grid column-split breakpoint). */
+  .buybar{display:flex}
+  /* clearance lives on the page tail, not just .product, so the fixed
+     bar never covers the cross-sell, bundle CTA, or footer at the bottom */
+  body.has-buybar{padding-bottom:96px}
+  /* new shared pages stack to one column where the PDP two-col does */
+  .contact-grid{grid-template-columns:1fr;gap:32px}
+  .cart-layout{grid-template-columns:1fr;gap:30px}
+  .cart-summary{position:static}
+}
+@media(max-width:560px){
+  .cross-row{grid-template-columns:1fr}
+  .collection-bar{flex-direction:column;align-items:flex-start;gap:14px}
+  .collection-tools{margin-left:0}
+  .buybox-cta .btn-amber{min-width:0;width:100%}
+  .value-art{aspect-ratio:16/10}
+  /* clear 44px tap targets for the primary touch controls at phone width */
+  .chip{padding:11px 16px}
+  .sort-select{padding:12px 34px 12px 14px}
+  /* keep all four PDP thumbs on one row at 375px (4x64 + 3x10 = 286px) */
+  .pdp-thumbs{gap:10px}
+  .pdp-thumb{width:64px;height:64px}
+  /* contact name/email row stacks; cart line drops the thumbnail column */
+  .field-row{grid-template-columns:1fr}
+  .contact-form{padding:22px}
+  .contact-form .btn-amber{align-self:stretch;width:100%}
+  .cart-line{grid-template-columns:64px 1fr;gap:14px}
+  .cart-line-media{width:64px;height:64px}
+  .cart-line-end{grid-column:1/-1;flex-direction:row;align-items:center;
+    justify-content:space-between;width:100%}
+}
+
+/* ============================================================
+   REDUCED MOTION — snap sticky bar + card lifts (homepage parity)
+   ============================================================ */
+@media(prefers-reduced-motion:reduce){
+  .buybar,.chip,.save-toggle,.qty-stepper button,.pdp-thumb{transition-duration:.01ms!important}
+  .buybar{transition:none!important}
+  /* new micro-interactions (items 13-16) */
+  .save-toggle svg,.chip,.qty-stepper input,.pdp-thumb,.pdp-main .prod{animation:none!important}
+  .save-toggle.is-pop svg,.chip.just-on,.qty-stepper input.bump,.pdp-thumb.is-active{animation:none!important}
+}
+body.motion-off .buybar{transition-duration:.01ms!important}
+/* new micro-interactions (items 13-16) */
+body.motion-off .save-toggle svg,body.motion-off .chip,body.motion-off .qty-stepper input,
+body.motion-off .pdp-thumb,body.motion-off .pdp-main .prod{animation:none!important}
+body.motion-off .save-toggle.is-pop svg,body.motion-off .chip.just-on,
+body.motion-off .qty-stepper input.bump,body.motion-off .pdp-thumb.is-active{animation:none!important}
+
+/* ============================================================
+   FAQ PAGE — taller answers + inline links inside accordions
+   (standalone faq.html; home-page .faq answers are shorter)
+   ============================================================ */
+.faq .qa.open .qa-a{max-height:340px}
+.faq .qa-a a{color:var(--ember);text-decoration:underline;text-underline-offset:2px}
+.faq .qa-a a:hover{color:var(--ember-surf)}
+
+/* wishlist: catalog-rendered card uses a category glyph (no per-product SVG in JS) */
+.pimg .wl-glyph{display:grid;place-items:center;width:100%;height:100%}
+.pimg .wl-glyph svg{width:74px;height:74px;fill:none;stroke:var(--amber);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;opacity:.92}
+
+/* Bundle & save card under the PDP add-to-cart */
+.bundle-save{margin-top:16px;padding:16px 18px;border-radius:14px;background:var(--surface);
+  border:1.5px dashed rgba(225,29,42,.4)}
+.bs-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.bs-tag{font-family:var(--disp);font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ember-surf)}
+.bs-save{font-family:var(--disp);font-weight:800;font-size:12px;letter-spacing:.02em;color:var(--ink);
+  background:var(--amber);padding:4px 11px;border-radius:999px}
+.bundle-save .bs-name{font-family:var(--disp);font-weight:700;font-size:18px;color:var(--ink);
+  letter-spacing:-.01em;text-transform:none;margin:0 0 2px}
+.bs-items{font-size:13px;color:var(--body-2);margin:0 0 10px}
+.bs-pricerow{display:flex;align-items:baseline;gap:9px;margin-bottom:12px}
+.bs-pricerow .price{font-family:var(--disp);font-weight:800;font-size:22px;color:var(--ink)}
+.bs-was{color:var(--muted);font-size:14px;text-decoration:line-through}
+.bs-add{width:100%;justify-content:center}
+
+/* ---------- product image lightbox (click to enlarge) ---------- */
+.pdp-main.zoomable{cursor:zoom-in}
+.zoom-badge{position:absolute;top:14px;right:14px;z-index:3;pointer-events:none;
+  width:38px;height:38px;display:grid;place-items:center;border-radius:10px;
+  background:rgba(11,12,14,.55);border:1px solid rgba(244,245,247,.2);
+  backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);transition:background .2s}
+.zoom-badge svg{width:20px;height:20px;fill:none;stroke:var(--paper);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pdp-gallery:hover .zoom-badge{background:var(--amber)}
+.pdp-gallery:hover .zoom-badge svg{stroke:var(--ink)}
+
+.pdp-lightbox{position:fixed;inset:0;z-index:90;visibility:hidden;pointer-events:none}
+.pdp-lightbox.open{visibility:visible;pointer-events:auto}
+.lb-scrim{position:absolute;inset:0;background:rgba(8,9,11,.93);opacity:0;
+  backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);transition:opacity .25s}
+.pdp-lightbox.open .lb-scrim{opacity:1}
+.lb-dialog{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:18px;padding:64px 24px 36px;opacity:0;transform:scale(.98);transition:opacity .25s,transform .3s var(--ease-expo)}
+.pdp-lightbox.open .lb-dialog{opacity:1;transform:none}
+.lb-x{position:absolute;top:18px;right:18px;width:44px;height:44px;display:grid;place-items:center;border:0;
+  border-radius:10px;background:rgba(244,245,247,.1);color:var(--paper);cursor:pointer;z-index:2;transition:background .2s}
+.lb-x:hover{background:rgba(244,245,247,.2)}
+.lb-x svg{width:22px;height:22px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round}
+.lb-stage{display:grid;place-items:center;background:linear-gradient(160deg,#2b3138,#131418);
+  border:1px solid rgba(244,245,247,.1);border-radius:18px;padding:clamp(20px,4vw,44px);
+  width:min(86vw,560px);aspect-ratio:1/1;max-height:70vh}
+.lb-stage .lb-img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 24px 50px rgba(0,0,0,.5))}
+.lb-thumbs{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.lb-thumb{width:62px;height:62px;border-radius:12px;padding:8px;cursor:pointer;
+  background:rgba(244,245,247,.06);border:1.5px solid rgba(244,245,247,.2);transition:border-color .2s}
+.lb-thumb:hover{border-color:rgba(244,245,247,.5)}
+.lb-thumb.is-active{border-color:var(--amber)}
+.lb-thumb svg{width:100%;height:100%;fill:none}
+@media(prefers-reduced-motion:reduce){.lb-scrim,.lb-dialog{transition-duration:.01ms!important}}
+body.motion-off .lb-scrim,body.motion-off .lb-dialog{transition-duration:.01ms!important}
+
+/* ---------- pagination ( < 1 2 > ) ---------- */
+.pager{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:42px;flex-wrap:wrap}
+.pg-btn{min-width:42px;height:42px;display:inline-flex;align-items:center;justify-content:center;
+  font-family:var(--disp);font-weight:700;font-size:15px;color:var(--ink);background:var(--surface);
+  border:1px solid rgba(31,35,40,.14);border-radius:10px;cursor:pointer;
+  transition:background .2s,border-color .2s,color .2s,transform .15s var(--ease-streak)}
+.pg-btn:hover:not([disabled]){border-color:var(--ink);transform:translateY(-1px)}
+.pg-btn:active:not([disabled]){transform:translateY(0) scale(.96)}
+.pg-btn[disabled]{opacity:.4;cursor:not-allowed}
+.pg-num.is-current{background:var(--amber);color:var(--ink);border-color:var(--amber)}
+.pg-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.pg-btn:focus-visible{outline:2px solid var(--amber);outline-offset:2px}

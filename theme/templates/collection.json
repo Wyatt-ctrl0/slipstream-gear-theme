@@ -1,0 +1,45 @@
+{
+  "sections": {
+    "main-collection": {
+      "type": "main-collection",
+      "blocks": {
+        "chip_mess": {
+          "type": "filter_chip",
+          "settings": {
+            "label": "Tame the Mess",
+            "cat": "mess"
+          }
+        },
+        "chip_clean": {
+          "type": "filter_chip",
+          "settings": {
+            "label": "Clean & Detail",
+            "cat": "clean"
+          }
+        },
+        "chip_charged": {
+          "type": "filter_chip",
+          "settings": {
+            "label": "Charged & Connected",
+            "cat": "charged"
+          }
+        },
+        "chip_road": {
+          "type": "filter_chip",
+          "settings": {
+            "label": "Road-Trip Ready",
+            "cat": "road"
+          }
+        }
+      },
+      "block_order": ["chip_mess", "chip_clean", "chip_charged", "chip_road"],
+      "settings": {
+        "kicker": "THE FULL LINEUP",
+        "hero_description": "Every road-tested pick in one place. Filter by how you drive, then load up.",
+        "products_per_page": 12,
+        "show_filters": true
+      }
+    }
+  },
+  "order": ["main-collection"]
+}

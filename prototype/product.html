@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Night-Run Dashcam 2K · Slipstream Gear</title>
+<meta name="description" content="The Night-Run Dashcam 2K records sharp 2K/60fps with a 140-degree view and WDR night clarity. Suction mount, parking mode, up to 32GB. Road-tested for the daily driver.">
+
+<!-- favicon (dark mark for light tab UI; dark-scheme variant on dark tabs) -->
+<link rel="icon" type="image/png" href="../brand/icon.png">
+<link rel="icon" type="image/png" href="../brand/icon-light.png" media="(prefers-color-scheme: dark)">
+
+<!-- Fonts: Saira (headings) + Inter (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/slipstream.css?v=2">
+<link rel="stylesheet" href="assets/pages.css?v=2">
+
+<!-- JS-failure safety net: if the script never runs, reveal everything -->
+<noscript><style>[data-reveal]{opacity:1!important;transform:none!important;filter:none!important}</style></noscript>
+</head>
+<body>
+
+<!-- screen-reader live region for cart updates -->
+<div class="vh" aria-live="polite" data-cart-live></div>
+
+<!-- ===================== STICKY HEADER ===================== -->
+<header class="site-header" data-header>
+  <div class="wrap hdr-inner">
+    <a class="brand" href="index.html" aria-label="Slipstream Gear home">
+      <img src="../brand/logo-lockup-light.png" alt="Slipstream Gear" class="brand-logo">
+    </a>
+    <nav class="hdr-nav" aria-label="Primary">
+      <a href="collection.html">Shop All</a>
+      <a href="index.html#need">Shop by Problem</a>
+      <a href="about.html">Our Story</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="iconbtn" aria-label="Search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+      </button>
+      <a class="iconbtn" href="wishlist.html" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+      </a>
+      <a class="iconbtn" href="cart.html" aria-label="Cart, empty" data-cart-btn>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l-1 12H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <span class="cart-dot" aria-hidden="true" hidden>0</span>
+      </a>
+      <button class="iconbtn burger" aria-label="Menu" data-drawer-toggle aria-expanded="false" aria-controls="mobile-drawer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile nav drawer -->
+<div class="drawer" data-drawer id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="drawer-panel">
+    <a href="collection.html" data-drawer-close>Shop All</a>
+    <a href="index.html#need" data-drawer-close>Shop by Problem</a>
+    <a href="about.html" data-drawer-close>Our Story</a>
+    <a href="faq.html" data-drawer-close>FAQ</a>
+    <a href="wishlist.html" data-drawer-close>Wishlist</a>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- ===================== PDP ===================== -->
+  <section class="product">
+    <div class="wrap">
+
+      <!-- breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <a href="collection.html">Shop All</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <span aria-current="page">Night-Run Dashcam 2K</span>
+      </nav>
+
+      <div class="product-grid">
+
+        <!-- ---------- GALLERY (left) ---------- -->
+        <div class="pdp-gallery" data-reveal style="--i:0">
+          <div class="pdp-main" data-gallery-main data-readout="rec">
+            <!-- hero dashcam on a dark lit stage (lit-lens, amber) -->
+            <svg viewBox="0 0 360 300" class="prod" aria-label="Night-Run Dashcam 2K, front three-quarter view" role="img">
+              <defs>
+                <radialGradient id="lensHero" cx="42%" cy="46%" r="58%">
+                  <stop offset="0%" stop-color="#FF8088"/>
+                  <stop offset="45%" stop-color="#E11D2A"/>
+                  <stop offset="100%" stop-color="#4a0a10"/>
+                </radialGradient>
+                <linearGradient id="metalHero" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#3a4047"/>
+                  <stop offset="100%" stop-color="#20242a"/>
+                </linearGradient>
+              </defs>
+              <!-- windshield suction mount -->
+              <ellipse cx="186" cy="40" rx="40" ry="11" fill="#23272c" stroke="#0B0C0E" stroke-width="2"/>
+              <rect x="178" y="44" width="16" height="34" rx="5" fill="#2b3138"/>
+              <!-- body -->
+              <rect x="64" y="84" width="232" height="116" rx="26" fill="url(#metalHero)" stroke="#11141a" stroke-width="2.5"/>
+              <!-- side screen -->
+              <rect x="232" y="108" width="50" height="68" rx="9" fill="#0e1116"/>
+              <rect x="242" y="118" width="30" height="8" rx="4" fill="#3a4047"/>
+              <rect x="242" y="132" width="22" height="6" rx="3" fill="#2b3138"/>
+              <!-- big lens (lit) -->
+              <circle cx="142" cy="142" r="54" fill="#0B0C0E"/>
+              <circle cx="142" cy="142" r="42" fill="url(#lensHero)"/>
+              <circle cx="142" cy="142" r="42" fill="none" stroke="#E11D2A" stroke-width="2.5" opacity=".7"/>
+              <circle cx="142" cy="142" r="18" fill="#0e1116" opacity=".45"/>
+              <circle cx="126" cy="126" r="9" fill="#fff" opacity=".28"/>
+              <!-- REC dot -->
+              <circle cx="262" cy="160" r="5" fill="#E11D2A"/>
+            </svg>
+          </div>
+
+          <!-- thumbnail chips -->
+          <div class="pdp-thumbs" role="group" aria-label="Product views">
+            <button class="pdp-thumb is-active" aria-pressed="true" aria-label="Front three-quarter view">
+              <svg viewBox="0 0 120 120" aria-hidden="true">
+                <rect x="22" y="40" width="76" height="44" rx="12" fill="#2b3138"/>
+                <ellipse cx="60" cy="26" rx="16" ry="5" fill="#23272c"/>
+                <rect x="55" y="28" width="10" height="14" rx="3" fill="#3a4047"/>
+                <circle cx="48" cy="62" r="19" fill="#0B0C0E"/>
+                <circle cx="48" cy="62" r="13" fill="#E11D2A"/>
+                <circle cx="48" cy="62" r="5" fill="#0e1116" opacity=".5"/>
+                <rect x="78" y="50" width="14" height="24" rx="4" fill="#0e1116"/>
+              </svg>
+            </button>
+            <button class="pdp-thumb" aria-pressed="false" aria-label="Lens close-up">
+              <svg viewBox="0 0 120 120" aria-hidden="true">
+                <circle cx="60" cy="60" r="40" fill="#0B0C0E"/>
+                <circle cx="60" cy="60" r="30" fill="#E11D2A"/>
+                <circle cx="60" cy="60" r="30" fill="none" stroke="#FF8088" stroke-width="2" opacity=".5"/>
+                <circle cx="60" cy="60" r="13" fill="#0e1116" opacity=".55"/>
+                <circle cx="50" cy="50" r="6" fill="#fff" opacity=".3"/>
+              </svg>
+            </button>
+            <button class="pdp-thumb" aria-pressed="false" aria-label="Rear screen view">
+              <svg viewBox="0 0 120 120" aria-hidden="true">
+                <rect x="26" y="32" width="68" height="56" rx="12" fill="#2b3138"/>
+                <rect x="36" y="42" width="48" height="36" rx="6" fill="#0e1116"/>
+                <rect x="42" y="48" width="36" height="5" rx="2.5" fill="#3a4047"/>
+                <rect x="42" y="58" width="28" height="5" rx="2.5" fill="#23272c"/>
+                <circle cx="78" cy="70" r="4" fill="#E11D2A"/>
+              </svg>
+            </button>
+            <button class="pdp-thumb" aria-pressed="false" aria-label="In-cabin mounted view">
+              <svg viewBox="0 0 120 120" aria-hidden="true">
+                <rect x="0" y="78" width="120" height="42" fill="#1a1d22"/>
+                <path d="M0 78 Q60 60 120 78" fill="none" stroke="#2b3138" stroke-width="3"/>
+                <rect x="44" y="34" width="32" height="30" rx="8" fill="#2b3138"/>
+                <circle cx="56" cy="49" r="9" fill="#E11D2A" opacity=".85"/>
+                <rect x="52" y="22" width="6" height="14" rx="3" fill="#3a4047"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- ---------- BUY-BOX (right) ---------- -->
+        <div class="buybox" data-reveal style="--i:1" data-buybox>
+          <p class="eyebrow-line">Charged &amp; Connected</p>
+          <h1>Night-Run Dashcam 2K</h1>
+
+          <div class="pdp-price">
+            <span class="price">$89</span>
+          </div>
+
+          <p class="pdp-lead">Sharp 2K footage on the daily commute and clean night clarity when the headlights take over. Mounts to the windshield in a minute and keeps watch while you are parked.</p>
+
+          <div class="spectags">
+            <span>2K / 60fps</span><span>140&deg; FOV</span><span>WDR night</span>
+          </div>
+
+          <!-- spec table -->
+          <table class="spec-table">
+            <caption>The specs</caption>
+            <tbody>
+              <tr><th scope="row">Resolution</th><td>2K at 60fps</td></tr>
+              <tr><th scope="row">Field of view</th><td>140 degrees</td></tr>
+              <tr><th scope="row">Night clarity</th><td>WDR low-light processing</td></tr>
+              <tr><th scope="row">Storage</th><td>microSD up to 32GB (sold separately)</td></tr>
+              <tr><th scope="row">Parking mode</th><td>Motion-triggered while parked</td></tr>
+            </tbody>
+          </table>
+
+          <!-- quantity + ATC -->
+          <div class="qty-row">
+            <span class="qty-label" id="qty-label">Quantity</span>
+            <div class="qty-stepper" data-qty>
+              <button type="button" aria-label="Decrease quantity" data-qty-dec>&minus;</button>
+              <input type="number" value="1" min="1" max="10" inputmode="numeric"
+                     aria-labelledby="qty-label" data-qty-input>
+              <button type="button" aria-label="Increase quantity" data-qty-inc>+</button>
+            </div>
+          </div>
+
+          <!-- primary ATC is the ONLY red fill; heart uses save-toggle (buy-box rule) -->
+          <div class="buybox-cta">
+            <button class="btn btn-amber" data-add>
+              Add to cart
+              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+            <button class="save-toggle" type="button" aria-pressed="false" aria-label="Save Night-Run Dashcam 2K to wishlist" data-save data-id="night-run-dashcam-2k">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+            </button>
+          </div>
+
+          <!-- bundle and save: buy the Dash Starter Kit straight from the buy-box -->
+          <div class="bundle-save" data-bundle data-reveal>
+            <div class="bs-top">
+              <span class="bs-tag">Bundle &amp; save</span>
+              <span class="bs-save">Save $16</span>
+            </div>
+            <p class="bundle-eyebrow bs-name">Dash Starter Kit</p>
+            <p class="bs-items">Dashcam, MagLock Mount, and Surge 65W Charger.</p>
+            <div class="bs-pricerow"><span class="price">$129</span> <s class="bs-was">$145</s></div>
+            <button class="btn btn-outline bs-add" type="button" data-add>Add the kit and save $16</button>
+          </div>
+
+          <!-- trust pills -->
+          <div class="trust-pills">
+            <span class="trust-pill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h13v8H3z"/><path d="M16 10h4l1 3v2h-5z"/><circle cx="7" cy="17" r="1.6"/><circle cx="18" cy="17" r="1.6"/></svg>Free shipping over $50</span>
+            <span class="trust-pill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>14-day returns</span>
+            <span class="trust-pill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>Road-tested</span>
+            <span class="trust-pill"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Secure checkout</span>
+          </div>
+
+          <!-- honest shipping / returns note -->
+          <div class="pdp-detail">
+            <h2>Shipping &amp; returns</h2>
+            <p>Orders over $50 ship free within the U.S., and smaller orders show a flat rate at checkout before you pay. You have 14 days from delivery to return it. Start a return from your order email and we send return instructions.</p>
+            <p>Reviews open after launch. Until then the promise stands on policy: every pick is driven before it goes live, and checkout is secured by Shopify.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BUNDLE BAND: DASH STARTER KIT ===================== -->
+  <section class="section kit" id="kit">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <p class="kicker">DASH STARTER KIT</p>
+        <h2>Add the dashcam, finish the dash.</h2>
+      </div>
+      <div class="bundle" data-reveal>
+        <div class="bundle-items">
+          <div class="bi" data-reveal-group>
+            <span class="bi-cell" data-reveal style="--i:0">
+              <svg viewBox="0 0 120 120" class="bi-svg" aria-hidden="true"><rect x="34" y="46" width="56" height="34" rx="10" fill="#2b3138"/><ellipse cx="62" cy="34" rx="14" ry="4" fill="#23272c"/><rect x="58" y="36" width="9" height="12" rx="3" fill="#3a4047"/><circle cx="52" cy="64" r="15" fill="#0B0C0E"/><circle cx="52" cy="64" r="10" fill="#E11D2A"/><circle cx="52" cy="64" r="4" fill="#0e1116" opacity=".5"/></svg>
+              <b>Night-Run Dashcam</b>
+            </span>
+            <span class="bi-plus" aria-hidden="true">+</span>
+            <span class="bi-cell" data-reveal style="--i:1">
+              <svg viewBox="0 0 120 120" class="bi-svg" aria-hidden="true"><g transform="rotate(-8 60 60)"><rect x="42" y="30" width="36" height="60" rx="8" fill="#2b3138"/><rect x="47" y="35" width="26" height="50" rx="5" fill="#0e1116"/><circle cx="60" cy="60" r="11" fill="none" stroke="#E11D2A" stroke-width="3.5"/></g></svg>
+              <b>MagLock Mount</b>
+            </span>
+            <span class="bi-plus" aria-hidden="true">+</span>
+            <span class="bi-cell" data-reveal style="--i:2">
+              <svg viewBox="0 0 120 120" class="bi-svg" aria-hidden="true"><rect x="30" y="44" width="44" height="32" rx="9" fill="#2b3138"/><rect x="22" y="48" width="20" height="24" rx="6" fill="#3a4047"/><rect x="27" y="54" width="11" height="5" rx="2.5" fill="#0e1116"/><rect x="27" y="62" width="11" height="5" rx="2.5" fill="#0e1116"/><circle cx="58" cy="60" r="6" fill="none" stroke="#E11D2A" stroke-width="2.4"/><circle cx="58" cy="60" r="2" fill="#E11D2A"/></svg>
+              <b>Surge 65W Charger</b>
+            </span>
+          </div>
+        </div>
+        <div class="bundle-buy">
+          <p class="bundle-eyebrow">Dash starter kit</p>
+          <div class="bundle-price"><span class="price">$129</span> <s class="was">$145</s></div>
+          <p class="bundle-note">Dashcam, mount, and charger in one box. Free U.S. shipping included.</p>
+          <!-- primary ATC stays amber elsewhere; this secondary bundle CTA is outline (buy-box rule).
+               It navigates rather than adds, so the verb reads as navigation, not a purchase. -->
+          <div class="bundle-cta">
+            <button class="btn btn-outline" type="button" data-add>Add the kit and save $16</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- amber speed-rule divider -->
+  <div class="speedrule wrap" aria-hidden="true"><span class="sr-fill" data-pct="100"></span></div>
+
+  <!-- ===================== PAIRS WELL WITH (cross-sell) ===================== -->
+  <section class="cross-sell">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <p class="kicker">PAIRS WELL WITH</p>
+        <h2>Round out the dash.</h2>
+      </div>
+      <div class="cross-row" data-reveal-group>
+
+        <!-- MagLock Vent Mount -->
+        <article class="pcard" data-reveal style="--i:0">
+          <a class="pcard-link" href="product.html?id=maglock-vent-mount" aria-label="MagLock Vent Mount"></a>
+          <div class="pimg">
+            <svg viewBox="0 0 240 180" class="prod" aria-hidden="true">
+              <g stroke="#23272c" stroke-width="6" stroke-linecap="round" opacity=".7">
+                <line x1="150" y1="42" x2="206" y2="42"/><line x1="150" y1="60" x2="206" y2="60"/><line x1="150" y1="78" x2="206" y2="78"/>
+              </g>
+              <rect x="150" y="92" width="42" height="12" rx="6" fill="#2b3138"/>
+              <g transform="rotate(-8 96 96)">
+                <rect x="58" y="40" width="76" height="116" rx="12" fill="#2b3138" stroke="#11141a" stroke-width="2"/>
+                <rect x="66" y="48" width="60" height="100" rx="7" fill="#0e1116"/>
+                <circle cx="96" cy="98" r="20" fill="none" stroke="#E11D2A" stroke-width="5" opacity=".9"/>
+                <circle cx="96" cy="98" r="9" fill="#E11D2A" opacity=".5"/>
+              </g>
+            </svg>
+          </div>
+          <div class="pbody">
+            <h3 class="ttl">MagLock Vent Mount</h3>
+            <div class="spectags"><span>N52 magnets</span><span>360&deg; pivot</span><span>1-hand</span></div>
+            <div class="prow">
+              <span class="price">$24</span>
+              <button class="add" data-add aria-label="Add MagLock Vent Mount to cart">Add</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Surge 65W Dual Charger -->
+        <article class="pcard" data-reveal style="--i:1">
+          <a class="pcard-link" href="product.html?id=surge-65w-dual-charger" aria-label="Surge 65W Dual Charger"></a>
+          <div class="pimg">
+            <svg viewBox="0 0 240 180" class="prod" aria-hidden="true">
+              <rect x="150" y="56" width="54" height="68" rx="12" fill="#23272c" stroke="#11141a" stroke-width="2"/>
+              <rect x="92" y="66" width="76" height="48" rx="14" fill="#2b3138" stroke="#11141a" stroke-width="2"/>
+              <rect x="54" y="62" width="46" height="56" rx="12" fill="#3a4047" stroke="#11141a" stroke-width="2"/>
+              <rect x="64" y="74" width="26" height="9" rx="4.5" fill="#0e1116"/>
+              <rect x="64" y="97" width="26" height="9" rx="4.5" fill="#0e1116"/>
+              <rect x="64" y="74" width="26" height="9" rx="4.5" fill="#E11D2A" opacity=".22"/>
+              <rect x="64" y="97" width="26" height="9" rx="4.5" fill="#E11D2A" opacity=".22"/>
+              <circle cx="129" cy="90" r="9" fill="none" stroke="#E11D2A" stroke-width="3"/>
+              <circle cx="129" cy="90" r="3" fill="#E11D2A"/>
+            </svg>
+          </div>
+          <div class="pbody">
+            <h3 class="ttl">Surge 65W Dual Charger</h3>
+            <div class="spectags"><span>65W PD</span><span>USB-C x2</span><span>GaN cool</span></div>
+            <div class="prow">
+              <span class="price">$32</span>
+              <button class="add" data-add aria-label="Add Surge 65W Dual Charger to cart">Add</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Fold-Flat Trunk Caddy -->
+        <article class="pcard" data-reveal style="--i:2">
+          <a class="pcard-link" href="product.html?id=fold-flat-trunk-caddy" aria-label="Fold-Flat Trunk Caddy"></a>
+          <div class="pimg">
+            <svg viewBox="0 0 240 180" class="prod" aria-hidden="true">
+              <path d="M44 64 H196 L182 146 H58 Z" fill="#2b3138" stroke="#11141a" stroke-width="2"/>
+              <path d="M44 64 H196 L188 80 H52 Z" fill="#0B0C0E"/>
+              <line x1="96" y1="74" x2="92" y2="146" stroke="#0B0C0E" stroke-width="4"/>
+              <line x1="144" y1="74" x2="148" y2="146" stroke="#0B0C0E" stroke-width="4"/>
+              <path d="M44 80 q-16 6 -16 22" fill="none" stroke="#3a4047" stroke-width="6" stroke-linecap="round"/>
+              <path d="M196 80 q16 6 16 22" fill="none" stroke="#3a4047" stroke-width="6" stroke-linecap="round"/>
+              <rect x="44" y="60" width="152" height="7" rx="3.5" fill="#E11D2A"/>
+            </svg>
+          </div>
+          <div class="pbody">
+            <h3 class="ttl">Fold-Flat Trunk Caddy</h3>
+            <div class="spectags"><span>3 bays</span><span>Holds 40lb</span><span>Folds flat</span></div>
+            <div class="prow">
+              <span class="price">$38</span>
+              <button class="add" data-add aria-label="Add Fold-Flat Trunk Caddy to cart">Add</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- No-Slip Dash Pad -->
+        <article class="pcard" data-reveal style="--i:3">
+          <a class="pcard-link" href="product.html?id=no-slip-dash-pad" aria-label="No-Slip Dash Pad"></a>
+          <div class="pimg">
+            <svg viewBox="0 0 240 180" class="prod" aria-hidden="true">
+              <!-- dash pad in perspective -->
+              <path d="M40 92 H200 L176 132 H64 Z" fill="#2b3138" stroke="#11141a" stroke-width="2"/>
+              <path d="M40 92 H200 L194 100 H46 Z" fill="#3a4047"/>
+              <!-- grip dots -->
+              <g fill="#0B0C0E" opacity=".55">
+                <circle cx="78" cy="108" r="3"/><circle cx="100" cy="108" r="3"/><circle cx="122" cy="108" r="3"/><circle cx="144" cy="108" r="3"/>
+                <circle cx="88" cy="120" r="3"/><circle cx="110" cy="120" r="3"/><circle cx="132" cy="120" r="3"/>
+              </g>
+              <!-- phone resting on it -->
+              <rect x="96" y="64" width="48" height="36" rx="6" fill="#0e1116" stroke="#11141a" stroke-width="2"/>
+              <rect x="40" y="88" width="160" height="6" rx="3" fill="#E11D2A"/>
+            </svg>
+          </div>
+          <div class="pbody">
+            <h3 class="ttl">No-Slip Dash Pad</h3>
+            <div class="spectags"><span>Gel grip</span><span>Washable</span><span>Trim to fit</span></div>
+            <div class="prow">
+              <span class="price">$14</span>
+              <button class="add" data-add aria-label="Add No-Slip Dash Pad to cart">Add</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== STICKY MOBILE BUY-BAR ===================== -->
+<!-- appears once you scroll past the buy-box; gated like homepage motion -->
+<div class="buybar" data-buybar aria-hidden="true">
+  <div class="buybar-info">
+    <span class="bb-name">Night-Run Dashcam 2K</span>
+    <span class="bb-price">$89</span>
+  </div>
+  <button class="btn btn-amber" data-add>
+    Add to cart
+    <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6"/></svg>
+  </button>
+</div>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="wrap fgrid">
+    <div class="fcol fbrand">
+      <img src="../brand/logo-lockup-light.png" alt="Slipstream Gear" class="foot-logo">
+      <p>Clever gear for the daily driver. Organized, charged, road-tested.</p>
+    </div>
+    <div class="fcol">
+      <h4>Shop by need</h4>
+      <a href="collection.html?cat=mess">Tame the Mess</a>
+      <a href="collection.html?cat=clean">Clean &amp; Detail</a>
+      <a href="collection.html?cat=charged">Charged &amp; Connected</a>
+      <a href="collection.html?cat=road">Road-Trip Ready</a>
+    </div>
+    <div class="fcol">
+      <h4>Company</h4>
+      <a href="about.html">Our Story</a>
+      <a href="about.html#promise">Road-tested promise</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="collection.html">Shop All</a>
+    </div>
+    <div class="fcol">
+      <h4>Help</h4>
+      <a href="shipping-returns.html">Shipping</a>
+      <a href="shipping-returns.html">14-day returns</a>
+      <a href="wishlist.html">Wishlist</a>
+      <a href="shipping-returns.html">Secure checkout</a>
+    </div>
+  </div>
+  <div class="wrap fbar">
+    <span>&copy; 2026 Slipstream Gear</span>
+    <span>Secure checkout. Powered by Shopify</span>
+  </div>
+</footer>
+
+<script src="assets/slipstream.js?v=2"></script>
+<script src="assets/page-product.js?v=2"></script>
+</body>
+</html>

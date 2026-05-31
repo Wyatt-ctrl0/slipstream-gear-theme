@@ -1,0 +1,94 @@
+{%- liquid
+  assign menu = section.settings.menu
+  assign has_menu = false
+  if linklists[menu].links.size > 0
+    assign has_menu = true
+  endif
+  assign logo_img = settings.logo_light
+  assign logo_w = settings.logo_width | default: 180
+-%}
+
+<header class="site-header" data-header>
+  <div class="wrap hdr-inner">
+    <a class="brand" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }} home">
+      {%- if logo_img != blank -%}
+        {{ logo_img | image_url: width: 360 | image_tag: class: 'brand-logo', alt: shop.name, width: logo_w }}
+      {%- else -%}
+        <img src="{{ 'logo-lockup-light.png' | asset_url }}" alt="{{ shop.name | escape }}" class="brand-logo" width="{{ logo_w }}">
+      {%- endif -%}
+    </a>
+    <nav class="hdr-nav" aria-label="Primary">
+      {%- if has_menu -%}
+        {%- for link in linklists[menu].links -%}
+          <a href="{{ link.url }}"{% if link.active %} aria-current="page"{% endif %}>{{ link.title }}</a>
+        {%- endfor -%}
+      {%- else -%}
+        <a href="{{ routes.all_products_collection_url }}">Shop All</a>
+        <a href="{{ routes.root_url }}#need">Shop by Problem</a>
+        <a href="/pages/about">Our Story</a>
+        <a href="/pages/faq">FAQ</a>
+      {%- endif -%}
+    </nav>
+    <div class="hdr-actions">
+      <button class="iconbtn" aria-label="Search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+      </button>
+      <a class="iconbtn" href="/pages/wishlist" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+      </a>
+      <a class="iconbtn" href="{{ routes.cart_url }}" aria-label="Cart" data-cart-btn>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l-1 12H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <span class="cart-dot" aria-hidden="true"{% if cart.item_count == 0 %} hidden{% endif %}>{{ cart.item_count }}</span>
+      </a>
+      <button class="iconbtn burger" aria-label="Menu" data-drawer-toggle aria-expanded="false" aria-controls="mobile-drawer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile nav drawer -->
+<div class="drawer" data-drawer id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="drawer-panel">
+    {%- if has_menu -%}
+      {%- for link in linklists[menu].links -%}
+        <a href="{{ link.url }}" data-drawer-close>{{ link.title }}</a>
+      {%- endfor -%}
+      <a href="/pages/wishlist" data-drawer-close>Wishlist</a>
+    {%- else -%}
+      <a href="{{ routes.all_products_collection_url }}" data-drawer-close>Shop All</a>
+      <a href="{{ routes.root_url }}#need" data-drawer-close>Shop by Problem</a>
+      <a href="/pages/about" data-drawer-close>Our Story</a>
+      <a href="/pages/faq" data-drawer-close>FAQ</a>
+      <a href="/pages/wishlist" data-drawer-close>Wishlist</a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Primary menu",
+      "default": "main-menu",
+      "info": "If empty, a default Shop All / Shop by Problem / Our Story / FAQ menu is shown."
+    },
+    {
+      "type": "paragraph",
+      "content": "Logo and favicon are set in Theme settings. The cart badge and search are wired automatically."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header"
+    }
+  ]
+}
+{% endschema %}

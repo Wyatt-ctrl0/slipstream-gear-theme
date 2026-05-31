@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-wishlist",
+      "settings": {
+        "eyebrow": "Saved gear",
+        "heading": "Your garage",
+        "lede": "<p>The gear you've saved for later. Add it to your cart when you're ready to roll.</p>",
+        "empty_title": "No saved gear yet",
+        "empty_sub": "Tap the heart on any product to park it here.",
+        "empty_cta": "Browse the gear"
+      }
+    }
+  },
+  "order": ["main"]
+}

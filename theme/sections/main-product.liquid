@@ -1,0 +1,239 @@
+{%- comment -%}
+  main-product.liquid — Product detail (PDP). Ported from preview/product.html + page-product.js.
+  Bound to the real {{ product }} object. Selectors match assets/theme.js setupProduct():
+  [data-product-section] root, [data-buybox] anchor, [data-buybar] sticky, [data-product-form],
+  [data-variant-json], [data-add] + [data-add-label], .pdp-price .price, .bb-name/.bb-price,
+  [data-qty] + [data-qty-input] + [data-qty-dec]/[data-qty-inc], [data-gallery-main] + .pdp-thumb[data-full], save-heart.
+{%- endcomment -%}
+
+{%- assign product_form_id = 'product-form-' | append: section.id -%}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+<section class="section pdp" data-product-section>
+  <div class="wrap pdp-grid">
+
+    {%- comment -%} ---------- GALLERY (left) ---------- {%- endcomment -%}
+    <div class="pdp-gallery" data-reveal>
+      <div class="pdp-main" data-gallery-main>
+        {%- if product.featured_media -%}
+          <img src="{{ product.featured_media | image_url: width: 900 }}"
+               alt="{{ product.featured_media.alt | escape | default: product.title | escape }}"
+               width="600" height="450" loading="eager">
+        {%- else -%}
+          <div class="pdp-noimg" aria-hidden="true">
+            <svg viewBox="0 0 240 180"><rect width="240" height="180" rx="12" fill="#1b1f24"/><path d="M88 96h64M120 72v48" stroke="#3a4047" stroke-width="6" stroke-linecap="round"/></svg>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if product.media.size > 1 -%}
+        <div class="pdp-thumbs" role="group" aria-label="Product images">
+          {%- for media in product.media -%}
+            <button class="pdp-thumb{% if forloop.first %} is-active{% endif %}" type="button"
+                    aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}"
+                    data-full="{{ media | image_url: width: 900 }}"
+                    aria-label="View image {{ forloop.index }}">
+              <img src="{{ media | image_url: width: 160 }}" alt="{{ media.alt | escape | default: product.title | escape }}" width="80" height="60" loading="lazy">
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} ---------- BUY-BOX (right) ---------- {%- endcomment -%}
+    <aside class="pdp-buy" data-buybox data-reveal>
+      {%- if product.type != blank -%}<p class="pdp-eyebrow kicker">{{ product.type }}</p>{%- endif -%}
+      <h1 class="pdp-title">{{ product.title }}</h1>
+
+      <div class="pdp-price">
+        <span class="price">{{ current_variant.price | money }}</span>
+        {%- if current_variant.compare_at_price > current_variant.price -%}
+          <s class="was">{{ current_variant.compare_at_price | money }}</s>
+        {%- endif -%}
+      </div>
+
+      {%- assign lead = product.metafields.custom.lead -%}
+      {%- if lead != blank -%}
+        <p class="pdp-lead">{{ lead }}</p>
+      {%- elsif product.description != blank -%}
+        <p class="pdp-lead">{{ product.description | strip_html | truncatewords: 36 }}</p>
+      {%- endif -%}
+
+      {%- assign spec_tags = product.metafields.custom.spec_tags.value -%}
+      {%- if spec_tags -%}
+        <div class="spectags">
+          {%- for tag in spec_tags limit: 4 -%}<span>{{ tag }}</span>{%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} ---------- ATC FORM ---------- {%- endcomment -%}
+      {%- form 'product', product, id: product_form_id, class: 'product-form', data-product-form: '' -%}
+        <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-id-input>
+
+        {%- unless product.has_only_default_variant -%}
+          <div class="variant-pickers">
+            {%- for option in product.options_with_values -%}
+              <div class="variant-field">
+                <label class="qty-label" for="Option-{{ section.id }}-{{ forloop.index0 }}">{{ option.name }}</label>
+                <select id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                        class="variant-select"
+                        name="options[{{ option.name | escape }}]"
+                        data-option-index="{{ forloop.index0 }}">
+                  {%- for value in option.values -%}
+                    <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>{{ value }}</option>
+                  {%- endfor -%}
+                </select>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endunless -%}
+
+        <div class="pdp-buy-row">
+          <div class="qty" data-qty>
+            <button class="qty-btn" type="button" data-qty-dec aria-label="Decrease quantity">&minus;</button>
+            <input class="qty-n" type="text" inputmode="numeric" name="quantity" value="1" min="1" max="99" data-qty-input aria-label="Quantity">
+            <button class="qty-btn" type="button" data-qty-inc aria-label="Increase quantity">+</button>
+          </div>
+
+          <button class="btn btn-amber add atc" type="submit" name="add" data-add
+                  data-variant-id="{{ current_variant.id }}"
+                  data-product-title="{{ product.title | escape }}"
+                  data-product-price="{{ current_variant.price | money }}"
+                  {% unless current_variant.available %}disabled{% endunless %}>
+            <span data-add-label>{% if current_variant.available %}Add to cart{% else %}Sold out{% endif %}</span>
+            <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+
+          <button class="save-toggle" type="button" aria-pressed="false"
+                  aria-label="Save {{ product.title | escape }} to wishlist"
+                  data-save data-id="{{ product.handle }}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+          </button>
+        </div>
+      {%- endform -%}
+
+      {%- comment -%} ---------- TRUST PILLS ---------- {%- endcomment -%}
+      {%- if section.settings.show_trust_pills -%}
+        <ul class="pdp-trust">
+          {%- if section.settings.trust_free_shipping -%}
+            <li>Free U.S. shipping over {{ settings.free_shipping_threshold | times: 100 | money }}</li>
+          {%- endif -%}
+          {%- if section.settings.trust_returns -%}<li>14-day returns</li>{%- endif -%}
+          {%- if section.settings.trust_road_tested -%}<li>Road-tested pick</li>{%- endif -%}
+          {%- if section.settings.trust_secure -%}<li>Secure checkout</li>{%- endif -%}
+        </ul>
+      {%- endif -%}
+
+      {%- comment -%} ---------- SPEC TABLE (metafield, else description) ---------- {%- endcomment -%}
+      {%- assign spec_table = product.metafields.custom.spec_table.value -%}
+      {%- if spec_table -%}
+        <div class="pdp-spec">
+          <h2 class="pdp-spec-h">Specs</h2>
+          <dl class="spec-list">
+            {%- for row in spec_table -%}
+              <div class="spec-row"><dt>{{ row.label | default: row.first }}</dt><dd>{{ row.value | default: row.last }}</dd></div>
+            {%- endfor -%}
+          </dl>
+        </div>
+      {%- elsif product.description != blank -%}
+        <div class="pdp-spec rte">{{ product.description }}</div>
+      {%- endif -%}
+
+      {%- comment -%} ---------- BUNDLE BAND (outline CTA per buy-box rule) ---------- {%- endcomment -%}
+      {%- if section.settings.show_bundle and section.settings.bundle_product != blank -%}
+        {%- assign bundle = section.settings.bundle_product -%}
+        {%- assign bundle_variant = bundle.selected_or_first_available_variant -%}
+        <div class="pdp-bundle">
+          <p class="bundle-eyebrow">{{ section.settings.bundle_tag | default: 'Bundle and save' }}</p>
+          <div class="bundle-row">
+            <span class="bundle-name">{{ bundle.title }}</span>
+            <span class="price">{{ bundle.price | money }}</span>
+          </div>
+          {%- if section.settings.bundle_items_text != blank -%}<p class="bundle-note">{{ section.settings.bundle_items_text }}</p>{%- endif -%}
+          {%- form 'product', bundle, class: 'bundle-form' -%}
+            <input type="hidden" name="id" value="{{ bundle_variant.id }}">
+            <button class="btn btn-outline" type="submit" name="add" data-add
+                    data-variant-id="{{ bundle_variant.id }}"
+                    data-product-title="{{ bundle.title | escape }}"
+                    data-product-price="{{ bundle.price | money }}"
+                    {% unless bundle_variant.available %}disabled{% endunless %}>
+              {{ section.settings.bundle_cta_label | default: 'Add the bundle' }}
+            </button>
+          {%- endform -%}
+        </div>
+      {%- endif -%}
+    </aside>
+  </div>
+
+  {%- comment -%} ---------- variant JSON for JS option switching ---------- {%- endcomment -%}
+  <script type="application/json" data-variant-json>{{ product.variants | json }}</script>
+
+  {%- comment -%} ---------- amber speed-rule divider ---------- {%- endcomment -%}
+  <div class="speedrule wrap" aria-hidden="true"><span class="sr-fill" data-pct="100"></span></div>
+
+  {%- comment -%} ---------- CROSS-SELL ---------- {%- endcomment -%}
+  {%- if section.settings.show_cross_sell -%}
+    {%- assign cross = product.metafields.custom.complementary_products.value -%}
+    {%- if cross == blank and section.settings.cross_sell_collection != blank -%}
+      {%- assign cross = section.settings.cross_sell_collection.products -%}
+    {%- endif -%}
+    {%- if cross and cross.size > 0 -%}
+      <div class="wrap cross-sell">
+        <div class="sec-head" data-reveal>
+          <p class="kicker">{{ section.settings.cross_sell_kicker | default: 'PAIRS WELL WITH' }}</p>
+          <h2>{{ section.settings.cross_sell_heading | default: 'Round out the dash.' }}</h2>
+        </div>
+        <div class="pgrid" data-reveal-group data-grid>
+          {%- for cross_product in cross limit: 4 -%}
+            {%- render 'product-card', product: cross_product -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- comment -%} ---------- STICKY MOBILE BUY-BAR (inert + disabled when hidden) ---------- {%- endcomment -%}
+  <div class="buybar" data-buybar hidden inert>
+    <div class="wrap buybar-inner">
+      <div class="bb-info">
+        <span class="bb-name">{{ product.title }}</span>
+        <span class="bb-price">{{ current_variant.price | money }}</span>
+      </div>
+      <button class="btn btn-amber bb-add" type="submit" form="{{ product_form_id }}" data-add
+              data-variant-id="{{ current_variant.id }}"
+              data-product-title="{{ product.title | escape }}"
+              data-product-price="{{ current_variant.price | money }}"
+              {% unless current_variant.available %}disabled{% endunless %}>
+        {% if current_variant.available %}Add to cart{% else %}Sold out{% endif %}
+      </button>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product",
+  "tag": "section",
+  "class": "section-main-product",
+  "settings": [
+    { "type": "header", "content": "Cross-sell" },
+    { "type": "checkbox", "id": "show_cross_sell", "label": "Show cross-sell row", "default": true },
+    { "type": "text", "id": "cross_sell_kicker", "label": "Cross-sell kicker", "default": "PAIRS WELL WITH" },
+    { "type": "text", "id": "cross_sell_heading", "label": "Cross-sell heading", "default": "Round out the dash." },
+    { "type": "collection", "id": "cross_sell_collection", "label": "Cross-sell fallback collection", "info": "Used when the product has no complementary products set." },
+    { "type": "header", "content": "Bundle band" },
+    { "type": "checkbox", "id": "show_bundle", "label": "Show bundle band", "default": true },
+    { "type": "product", "id": "bundle_product", "label": "Bundle product" },
+    { "type": "text", "id": "bundle_tag", "label": "Bundle tag", "default": "Bundle and save" },
+    { "type": "text", "id": "bundle_items_text", "label": "Bundle items text", "default": "Three road-tested picks, one box." },
+    { "type": "text", "id": "bundle_cta_label", "label": "Bundle CTA label", "default": "Add the bundle" },
+    { "type": "header", "content": "Trust pills" },
+    { "type": "checkbox", "id": "show_trust_pills", "label": "Show trust pills", "default": true },
+    { "type": "checkbox", "id": "trust_free_shipping", "label": "Free shipping pill", "default": true },
+    { "type": "checkbox", "id": "trust_returns", "label": "14-day returns pill", "default": true },
+    { "type": "checkbox", "id": "trust_road_tested", "label": "Road-tested pill", "default": true },
+    { "type": "checkbox", "id": "trust_secure", "label": "Secure checkout pill", "default": true }
+  ],
+  "presets": [{ "name": "Product" }]
+}
+{% endschema %}

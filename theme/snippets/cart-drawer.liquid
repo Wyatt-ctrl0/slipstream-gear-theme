@@ -1,0 +1,68 @@
+{%- comment -%}
+  Cart drawer — render: {% render 'cart-drawer' %}
+  Reads the global {{ cart }} object. Slide-out cart mirroring the markup the
+  ported theme.js builds (classes from slipstream.css: .cart-drawer/.cart-scrim/
+  .cart-panel/.cart-head/.cart-body/.cart-items/.cart-item/.ci-main/.ci-name/
+  .ci-price/.ci-qty/.ci-dec/.ci-n/.ci-inc/.ci-rm/.cart-foot/.cart-sub/.cart-ship/
+  .cart-checkout/.cart-viewcart/.cart-note/.cart-empty).
+  Layers on the shared data-attribute contract (data-cart-drawer, data-line-item,
+  data-cart-minus/plus, data-qty-input, data-cart-remove=1-based index,
+  data-cart-subtotal). Free-shipping progress gated by theme settings.
+{%- endcomment -%}
+{%- liquid
+  assign threshold_cents = 0
+  if settings.show_free_shipping_bar and settings.free_shipping_threshold > 0
+    assign threshold_cents = settings.free_shipping_threshold | times: 100
+  endif
+  assign remaining = threshold_cents | minus: cart.total_price
+-%}
+<div class="cart-drawer" data-cart-drawer data-drawer aria-hidden="true">
+  <div class="cart-scrim" data-cart-close data-drawer-close aria-hidden="true"></div>
+  <aside class="cart-panel" role="dialog" aria-modal="true" aria-label="Your cart">
+    <div class="cart-head">
+      <h2>Your cart</h2>
+      <button class="cart-x" type="button" data-cart-close data-drawer-close aria-label="Close cart"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+    </div>
+
+    <div class="cart-body">
+      {%- if cart.item_count > 0 -%}
+        <ul class="cart-items" data-cart-items>
+          {%- for item in cart.items -%}
+            <li class="cart-item" data-line-item data-id="{{ item.key }}" data-index="{{ forloop.index }}" data-line="{{ forloop.index }}">
+              <div class="ci-main">
+                <span class="ci-name">{{ item.product.title }}{% unless item.product.has_only_default_variant %} <small>{{ item.variant.title }}</small>{% endunless %}</span>
+                <span class="ci-price">{{ item.final_line_price | money }}</span>
+              </div>
+              <div class="ci-qty">
+                <button type="button" class="ci-dec" data-cart-minus aria-label="Decrease quantity of {{ item.product.title | escape }}">-</button>
+                <input class="ci-n" type="number" min="0" inputmode="numeric" value="{{ item.quantity }}" data-qty-input aria-label="Quantity of {{ item.product.title | escape }}">
+                <button type="button" class="ci-inc" data-cart-plus aria-label="Increase quantity of {{ item.product.title | escape }}">+</button>
+                <button type="button" class="ci-rm" data-cart-remove="{{ forloop.index }}" aria-label="Remove {{ item.product.title | escape }}">Remove</button>
+              </div>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- else -%}
+        <p class="cart-empty" data-cart-empty>Your cart is empty. <a href="{{ routes.all_products_collection_url }}" data-cart-close data-drawer-close>Shop all gear</a>.</p>
+      {%- endif -%}
+    </div>
+
+    <div class="cart-foot">
+      <div class="cart-sub"><span>Subtotal</span><span data-cart-subtotal>{{ cart.total_price | money }}</span></div>
+      {%- if threshold_cents > 0 -%}
+        <p class="cart-ship" data-cart-ship>
+          {%- if remaining > 0 -%}
+            Add {{ remaining | money }} for free U.S. shipping.
+          {%- else -%}
+            You have free U.S. shipping.
+          {%- endif -%}
+        </p>
+      {%- endif -%}
+      <form action="{{ routes.cart_url }}" method="post">
+        <button class="btn btn-amber cart-checkout" type="submit" name="checkout" data-cart-checkout>Checkout</button>
+      </form>
+      <a class="cart-viewcart" href="{{ routes.cart_url }}" data-cart-close data-drawer-close>View full cart</a>
+      <p class="cart-note" data-cart-note>Shipping and taxes calculated at checkout.</p>
+    </div>
+  </aside>
+</div>

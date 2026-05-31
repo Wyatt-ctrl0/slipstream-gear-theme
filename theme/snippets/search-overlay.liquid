@@ -1,0 +1,29 @@
+{%- comment -%}
+  Search overlay — render: {% render 'search-overlay' %}
+  Shell only. theme.js wires predictive search via /search/suggest.json into
+  [data-search-results]. Works without JS as a normal GET to the search route.
+  Class names mirror slipstream.css (.search-overlay/.search-scrim/.search-panel/
+  .search-inner/.search-form/.search-ic/.search-input/.search-x/.search-chips/
+  .search-results) so the ported theme.js + CSS keep working.
+{%- endcomment -%}
+<div class="search-overlay" data-search-overlay aria-hidden="true">
+  <div class="search-scrim" data-search-close aria-hidden="true"></div>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-label="Search gear">
+    <div class="search-inner">
+      <form class="search-form" data-search-form action="{{ routes.search_url }}" method="get" role="search">
+        <input type="hidden" name="type" value="product">
+        <svg class="search-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+        <label class="vh" for="search-overlay-input">Search gear</label>
+        <input type="search" class="search-input" id="search-overlay-input" name="q" data-search-input placeholder="Search gear, e.g. dashcam or charger" aria-label="Search gear" autocomplete="off">
+        <button type="button" class="search-x" data-search-close aria-label="Close search"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+      </form>
+      <div class="search-chips" aria-label="Shop by problem">
+        <a class="s-chip" href="{{ routes.search_url }}?q=mess">Tame the Mess</a>
+        <a class="s-chip" href="{{ routes.search_url }}?q=clean">Clean &amp; Detail</a>
+        <a class="s-chip" href="{{ routes.search_url }}?q=charged">Charged &amp; Connected</a>
+        <a class="s-chip" href="{{ routes.search_url }}?q=road">Road-Trip Ready</a>
+      </div>
+      <div class="search-results" data-search-results role="status" aria-live="polite" aria-atomic="true"></div>
+    </div>
+  </div>
+</div>

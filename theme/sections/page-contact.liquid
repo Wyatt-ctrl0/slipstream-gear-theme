@@ -1,0 +1,69 @@
+<section class="container" style="padding:40px 0 24px">
+  {%- if section.settings.eyebrow != blank -%}
+    <p class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+  {%- endif -%}
+  <h1 class="page-h1" data-reveal>{{ section.settings.heading | default: 'Contact us' }}</h1>
+  {%- if section.settings.lede != blank -%}
+    <p class="page-lede" data-reveal>{{ section.settings.lede }}</p>
+  {%- endif -%}
+</section>
+
+<section class="container contact-grid" style="padding:24px 0 64px">
+  {%- form 'contact', class: 'contact-form' -%}
+    {%- if form.posted_successfully? -%}
+      <p class="form-note" data-toast>{{ section.settings.success_message | default: 'Thanks. Your message is on its way.' }}</p>
+    {%- endif -%}
+    {%- if form.errors -%}
+      <p class="form-note form-error">{{ form.errors | default_errors }}</p>
+    {%- endif -%}
+    <div class="field">
+      <label for="cf-name">Name</label>
+      <input id="cf-name" name="contact[name]" type="text" value="{% if form.name %}{{ form.name }}{% endif %}" required>
+    </div>
+    <div class="field">
+      <label for="cf-email">Email</label>
+      <input id="cf-email" name="contact[email]" type="email" value="{% if form.email %}{{ form.email }}{% endif %}" required>
+    </div>
+    <div class="field">
+      <label for="cf-msg">Message</label>
+      <textarea id="cf-msg" name="contact[body]" rows="5" required>{% if form.body %}{{ form.body }}{% endif %}</textarea>
+    </div>
+    <button class="btn btn-amber" type="submit">{{ section.settings.button_label | default: 'Send message' }}</button>
+  {%- endform -%}
+
+  <aside class="contact-aside" data-reveal>
+    <h2>{{ section.settings.aside_heading | default: 'Other ways to reach us' }}</h2>
+    {%- if section.settings.support_email != blank -%}
+      <p><strong>Email</strong><br><a href="mailto:{{ section.settings.support_email }}">{{ section.settings.support_email }}</a></p>
+    {%- endif -%}
+    {%- if section.settings.hours != blank -%}
+      <p><strong>Support hours</strong><br>{{ section.settings.hours }}</p>
+    {%- endif -%}
+    {%- if section.settings.returns_note != blank -%}
+      <p><strong>Returns</strong><br>{{ section.settings.returns_note }}</p>
+    {%- endif -%}
+  </aside>
+</section>
+
+{% schema %}
+{
+  "name": "Contact page",
+  "tag": "section",
+  "class": "section-page-contact",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Get in touch" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Contact us" },
+    { "type": "richtext", "id": "lede", "label": "Lede", "default": "<p>Questions about an order, a product spec, or a return? We usually reply within one business day.</p>" },
+    { "type": "text", "id": "button_label", "label": "Submit button label", "default": "Send message" },
+    { "type": "text", "id": "success_message", "label": "Success message", "default": "Thanks. Your message is on its way." },
+    { "type": "header", "content": "Aside" },
+    { "type": "text", "id": "aside_heading", "label": "Aside heading", "default": "Other ways to reach us" },
+    { "type": "text", "id": "support_email", "label": "Support email", "default": "support@slipstreamgear.com" },
+    { "type": "text", "id": "hours", "label": "Support hours", "default": "Mon-Fri, 9am-5pm ET" },
+    { "type": "richtext", "id": "returns_note", "label": "Returns note", "default": "<p>14-day returns on unused gear. See our <a href=\"/pages/shipping-returns\">shipping & returns</a> page.</p>" }
+  ],
+  "presets": [
+    { "name": "Contact page" }
+  ]
+}
+{% endschema %}

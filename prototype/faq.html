@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ · Slipstream Gear</title>
+<meta name="description" content="Answers on shipping, returns, fitment, dashcam storage, warranty, order tracking and support. Free U.S. shipping over $50, 14-day returns, ships from the U.S.">
+
+<!-- favicon (dark mark for light tab UI; dark-scheme variant on dark tabs) -->
+<link rel="icon" type="image/png" href="../brand/icon.png">
+<link rel="icon" type="image/png" href="../brand/icon-light.png" media="(prefers-color-scheme: dark)">
+
+<!-- Fonts: Saira (headings) + Inter (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/slipstream.css?v=2">
+<link rel="stylesheet" href="assets/pages.css?v=2">
+
+<!-- JS-failure safety net: if the script never runs, reveal everything -->
+<noscript><style>[data-reveal]{opacity:1!important;transform:none!important;filter:none!important}</style></noscript>
+</head>
+<body>
+
+<!-- screen-reader live region for cart updates -->
+<div class="vh" aria-live="polite" data-cart-live></div>
+
+<!-- ===================== STICKY HEADER ===================== -->
+<header class="site-header" data-header>
+  <div class="wrap hdr-inner">
+    <a class="brand" href="index.html" aria-label="Slipstream Gear home">
+      <img src="../brand/logo-lockup-light.png" alt="Slipstream Gear" class="brand-logo">
+    </a>
+    <nav class="hdr-nav" aria-label="Primary">
+      <a href="collection.html">Shop All</a>
+      <a href="index.html#need">Shop by Problem</a>
+      <a href="about.html">Our Story</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="iconbtn" aria-label="Search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+      </button>
+      <a class="iconbtn" href="wishlist.html" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+      </a>
+      <a class="iconbtn" href="cart.html" aria-label="Cart, empty" data-cart-btn>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l-1 12H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <span class="cart-dot" aria-hidden="true" hidden>0</span>
+      </a>
+      <button class="iconbtn burger" aria-label="Menu" data-drawer-toggle aria-expanded="false" aria-controls="mobile-drawer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile nav drawer -->
+<div class="drawer" data-drawer id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="drawer-panel">
+    <a href="collection.html" data-drawer-close>Shop All</a>
+    <a href="index.html#need" data-drawer-close>Shop by Problem</a>
+    <a href="about.html" data-drawer-close>Our Story</a>
+    <a href="faq.html" data-drawer-close>FAQ</a>
+    <a href="wishlist.html" data-drawer-close>Wishlist</a>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- ===================== PAGE HERO ===================== -->
+  <section class="page-hero" aria-label="Frequently asked questions">
+    <div class="wrap">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <span aria-current="page">FAQ</span>
+      </nav>
+      <p class="kicker">SUPPORT</p>
+      <span class="streak-rule" aria-hidden="true"></span>
+      <h1 class="page-hero-h1">Questions, answered.</h1>
+      <p class="page-hero-sub">Shipping, returns, fitment and the rest. Straight answers, no fine-print games. If yours is not here, support is one click away.</p>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="section faq">
+    <div class="wrap faq-wrap">
+      <div class="sec-head" data-reveal>
+        <p class="kicker">QUESTIONS</p>
+        <h2>The common ones.</h2>
+      </div>
+      <div class="qa-list" data-reveal>
+
+        <div class="qa">
+          <button class="qa-q" aria-expanded="false" aria-controls="faq-a1">Do you offer free shipping?<span class="qa-ic" aria-hidden="true"></span></button>
+          <div class="qa-a" id="faq-a1" hidden><p>Yes. Orders over $50 ship free within the U.S. If your order is under $50, a flat shipping rate shows at checkout before you pay, so there are no surprises.</p></div>
+        </div>
+
+        <div class="qa">
+          <button class="qa-q" aria-expanded="false" aria-controls="faq-a2">Where do orders ship from?<span class="qa-ic" aria-hidden="true"></span></button>
+          <div class="qa-a" id="faq-a2" hidden><p>Everything ships from within the U.S. We currently ship to U.S. addresses only.</p></div>
+        </div>
+
+        <div class="qa">
+          <button class="qa-q" aria-expanded="false" aria-controls="faq-a3">How long will delivery take?<span class="qa-ic" aria-hidden="true"></span></button>
+          <div class="qa-a" id="faq-a3" hidden><p>Orders are packed within a business day or two, then handed to the carrier. Transit time depends on your address and the method shown at checkout. You will get a tracking link by email as soon as the label scans, so you can follow it the whole way.</p></div>
+        </div>
+
+        <div class="qa">
+          <button class="qa-q" aria-expanded="false" aria-controls="faq-a4">What is your return policy?<span class="qa-ic" aria-hidden="true"></span></button>
+          <div class="qa-a" id="faq-a4" hidden><p>You have 14 days from delivery to return an item in resellable condition. Once we receive it, we refund the original payment method.</p></div>
+        </div>
+
+        <div class="qa">
+          <button class="qa-q" aria-expanded="false" aria-controls="faq-a5">How do I start a return?<span class="qa-ic" aria-hidden="true"></span></button>
+          <div class="qa-a" id="faq-a5" hidden><p>Reply to your order confirmation email or reach us through the <a href="contact.html">contact page</a> with your order number. We will send return instructions and a return address. You cover return shipping on general returns, and we cover it on defective or not-as-described items.</p></div>
+        </div>
+
+        <div class="qa">
+          <button class="qa-q" aria-expanded="false" aria-controls="faq-a6">Will this fit my vehicle?<span class="qa-ic" aria-hidden="true"></span></button>
+          <div class="qa-a" id="faq-a6" hidden><p>Most of our gear is built to be universal. Vent mounts clip to standard horizontal and vertical blades, organizers and fillers adjust to common cabin gaps, and pads trim to fit. Each product page lists the specs and dimensions so you can check against your car before you buy. If you are unsure, send us your make and model and we will tell you straight.</p></div>
+        </div>
+
+        <div class="qa">
+          <button class="qa-q" aria-expanded="false" aria-controls="faq-a7">Does the Night-Run Dashcam need a microSD card?<span class="qa-ic" aria-hidden="true"></span></button>
+          <div class="qa-a" id="faq-a7" hidden><p>Yes. The dashcam records to a microSD card, which is not included. We recommend a high-endurance card rated for continuous recording. The camera loop-records, writing over the oldest footage once the card fills, so you always have your most recent drives.</p></div>
+        </div>
+
+        <div class="qa">
+          <button class="qa-q" aria-expanded="false" aria-controls="faq-a8">What if my item arrives defective?<span class="qa-ic" aria-hidden="true"></span></button>
+          <div class="qa-a" id="faq-a8" hidden><p>If something shows up damaged or stops working as it should, contact us with your order number and a quick description or photo. We will sort out a replacement or refund. This is separate from the 14-day return window, so reach out even if some time has passed.</p></div>
+        </div>
+
+        <div class="qa">
+          <button class="qa-q" aria-expanded="false" aria-controls="faq-a9">How do I track my order or reach support?<span class="qa-ic" aria-hidden="true"></span></button>
+          <div class="qa-a" id="faq-a9" hidden><p>Your shipping confirmation email includes a tracking link you can check anytime. For anything else, use our <a href="contact.html">contact page</a> and include your order number so we can find it fast.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CLOSING CTA ===================== -->
+  <section class="section news">
+    <div class="wrap news-inner" data-reveal>
+      <div class="news-copy">
+        <h2>Still stuck?</h2>
+        <p>If your question is not above, send it over. A real person reads every message and we keep replies short and useful.</p>
+      </div>
+      <div class="news-form">
+        <a class="btn btn-amber" href="contact.html">
+          Contact us
+          <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="wrap fgrid">
+    <div class="fcol fbrand">
+      <img src="../brand/logo-lockup-light.png" alt="Slipstream Gear" class="foot-logo">
+      <p>Clever gear for the daily driver. Organized, charged, road-tested.</p>
+    </div>
+    <div class="fcol">
+      <h4>Shop by need</h4>
+      <a href="collection.html?cat=mess">Tame the Mess</a>
+      <a href="collection.html?cat=clean">Clean &amp; Detail</a>
+      <a href="collection.html?cat=charged">Charged &amp; Connected</a>
+      <a href="collection.html?cat=road">Road-Trip Ready</a>
+    </div>
+    <div class="fcol">
+      <h4>Company</h4>
+      <a href="about.html">Our Story</a>
+      <a href="about.html#promise">Road-tested promise</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="collection.html">Shop All</a>
+    </div>
+    <div class="fcol">
+      <h4>Help</h4>
+      <a href="shipping-returns.html">Shipping</a>
+      <a href="shipping-returns.html">14-day returns</a>
+      <a href="wishlist.html">Wishlist</a>
+      <a href="shipping-returns.html">Secure checkout</a>
+    </div>
+  </div>
+  <div class="wrap fbar">
+    <span>&copy; 2026 Slipstream Gear</span>
+    <span>Secure checkout. Powered by Shopify</span>
+  </div>
+</footer>
+
+<script src="assets/slipstream.js?v=2"></script>
+</body>
+</html>

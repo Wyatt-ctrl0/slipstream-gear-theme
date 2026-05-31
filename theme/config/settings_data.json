@@ -1,0 +1,24 @@
+{
+  "current": {
+    "logo_width": 150,
+    "color_accent": "#E11D2A",
+    "color_accent_text": "#C20F1B",
+    "color_ink": "#0B0C0E",
+    "show_free_shipping_bar": true,
+    "free_shipping_threshold": 50,
+    "social_instagram": "",
+    "social_tiktok": "",
+    "social_youtube": "",
+    "social_facebook": ""
+  },
+  "presets": {
+    "Slipstream Gear": {
+      "logo_width": 150,
+      "color_accent": "#E11D2A",
+      "color_accent_text": "#C20F1B",
+      "color_ink": "#0B0C0E",
+      "show_free_shipping_bar": true,
+      "free_shipping_threshold": 50
+    }
+  }
+}

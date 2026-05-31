@@ -1,0 +1,34 @@
+{%- comment -%}
+  Product card — render: {% render 'product-card', product: product %}
+  Mirrors .pcard markup from preview/index.html. Uses real product imagery,
+  real variant id for cart, money filter for price, and a graceful empty state.
+{%- endcomment -%}
+{%- liquid
+  assign card_variant = product.selected_or_first_available_variant
+  assign spec_tags = product.metafields.custom.spec_tags.value
+-%}
+<article class="pcard" data-reveal data-product data-cat="{{ product.type | handle }}" data-price="{{ product.price }}">
+  <a class="pcard-link" href="{{ product.url }}" aria-label="{{ product.title | escape }}"></a>
+  <div class="pimg">
+    <button class="save-toggle save-corner" type="button" aria-pressed="false" aria-label="Save {{ product.title | escape }} to wishlist" data-save data-id="{{ product.handle }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg></button>
+    {%- if product.featured_image -%}
+      {{ product.featured_image | image_url: width: 480 | image_tag: loading: 'lazy', class: 'prod', alt: product.title }}
+    {%- else -%}
+      <div class="prod prod-empty" role="img" aria-label="{{ product.title | escape }}"></div>
+    {%- endif -%}
+  </div>
+  <div class="pbody">
+    <h3 class="ttl">{{ product.title }}</h3>
+    {%- if spec_tags != blank -%}
+      <div class="spectags">
+        {%- for tag in spec_tags limit: 3 -%}
+          <span>{{ tag }}</span>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+    <div class="prow">
+      <span class="price">{{ product.price | money }}</span>
+      <button class="add" data-add data-variant-id="{{ card_variant.id }}" data-product-title="{{ product.title | escape }}" data-product-price="{{ product.price | money }}"{% unless product.available %} disabled{% endunless %}>{% if product.available %}Add{% else %}Sold out{% endif %}</button>
+    </div>
+  </div>
+</article>

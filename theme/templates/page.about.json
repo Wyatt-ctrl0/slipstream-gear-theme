@@ -1,0 +1,40 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-about",
+      "blocks": {
+        "value-1": {
+          "type": "value",
+          "settings": {
+            "title": "Road-tested, not lab-tested",
+            "body": "<p>Every product we carry gets driven. Real miles, real potholes, real summer-parking-lot heat. If it rattles, melts, or quits, it never makes the cut.</p>"
+          }
+        },
+        "value-2": {
+          "type": "value",
+          "settings": {
+            "title": "Honest specs",
+            "body": "<p>No inflated numbers. The output ratings, capacities, and dimensions on our pages are the ones we measured ourselves.</p>"
+          }
+        },
+        "value-3": {
+          "type": "value",
+          "settings": {
+            "title": "Built to outlast the trip",
+            "body": "<p>We obsess over the parts you touch every day: the cables, the clips, the mounts. The boring stuff that makes or breaks a drive.</p>"
+          }
+        }
+      },
+      "block_order": ["value-1", "value-2", "value-3"],
+      "settings": {
+        "eyebrow": "Our story",
+        "heading": "Built by people who live in their cars",
+        "lede": "<p>Not literally. But close. We are commuters, road-trippers, and weekend mechanics who got tired of gear that quit halfway through a drive. So we built our own.</p>",
+        "promise_heading": "The road-tested promise",
+        "promise_body": "<p>If a product doesn't hold up to normal driving life within 14 days, send it back for a refund. No lab-coat fine print.</p>",
+        "promise_cta_label": "Shop the gear"
+      }
+    }
+  },
+  "order": ["main"]
+}

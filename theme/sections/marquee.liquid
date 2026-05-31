@@ -1,0 +1,41 @@
+<div class="ribbon" aria-hidden="true">
+  <div class="track" data-marquee>
+    {% for block in section.blocks %}
+      <span class="mq-item" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</span><i class="mq-tick"></i>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Marquee ribbon",
+  "tag": "section",
+  "class": "shopify-section-marquee",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "message",
+      "name": "Message",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Message",
+          "default": "Free U.S. shipping over $50"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee ribbon",
+      "blocks": [
+        { "type": "message", "settings": { "text": "Free U.S. shipping over $50" } },
+        { "type": "message", "settings": { "text": "14-day returns" } },
+        { "type": "message", "settings": { "text": "Road-tested picks" } },
+        { "type": "message", "settings": { "text": "Secure checkout" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slipstream Gear · Clever gear for the daily driver</title>
+<meta name="description" content="Clever gadgets and gear for your vehicle. Car organizers, detailing tools, phone mounts, fast chargers, dashcams and road-trip kit. Road-tested picks.">
+
+<!-- favicon (dark mark for light tab UI; dark-scheme variant on dark tabs) -->
+<link rel="icon" type="image/png" href="../brand/icon.png">
+<link rel="icon" type="image/png" href="../brand/icon-light.png" media="(prefers-color-scheme: dark)">
+
+<!-- Fonts: Saira (headings) + Inter (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/slipstream.css?v=2">
+
+<!-- JS-failure safety net: if the script never runs, reveal everything -->
+<noscript><style>[data-reveal]{opacity:1!important;transform:none!important;filter:none!important}</style></noscript>
+</head>
+<body>
+
+<!-- screen-reader live region for cart updates -->
+<div class="vh" aria-live="polite" data-cart-live></div>
+
+<!-- ===================== STICKY HEADER ===================== -->
+<header class="site-header" data-header>
+  <div class="wrap hdr-inner">
+    <a class="brand" href="index.html" aria-label="Slipstream Gear home">
+      <img src="../brand/logo-lockup-light.png" alt="Slipstream Gear" class="brand-logo">
+    </a>
+    <nav class="hdr-nav" aria-label="Primary">
+      <a href="collection.html">Shop All</a>
+      <a href="index.html#need">Shop by Problem</a>
+      <a href="about.html">Our Story</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="iconbtn" aria-label="Search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+      </button>
+      <a class="iconbtn" href="wishlist.html" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+      </a>
+      <a class="iconbtn" href="cart.html" aria-label="Cart, empty" data-cart-btn>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l-1 12H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <span class="cart-dot" aria-hidden="true" hidden>0</span>
+      </a>
+      <button class="iconbtn burger" aria-label="Menu" data-drawer-toggle aria-expanded="false" aria-controls="mobile-drawer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile nav drawer -->
+<div class="drawer" data-drawer id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="drawer-panel">
+    <a href="collection.html" data-drawer-close>Shop All</a>
+    <a href="index.html#need" data-drawer-close>Shop by Problem</a>
+    <a href="about.html" data-drawer-close>Our Story</a>
+    <a href="faq.html" data-drawer-close>FAQ</a>
+    <a href="wishlist.html" data-drawer-close>Wishlist</a>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- ===================== HERO: BIG TYPE / SPEED SLASH ===================== -->
+  <section class="hero hero-c" data-hero-section aria-label="Slipstream Gear">
+    <span class="hc-slash" aria-hidden="true"></span>
+    <span class="hc-mark" aria-hidden="true">SLIPSTREAM</span>
+    <div class="wrap hero-cwrap">
+      <p class="eyebrow" data-hero style="--i:0">
+        BUILT FOR THE DAILY DRIVER
+        <span class="streak-rule" data-hero style="--i:1"></span>
+      </p>
+      <h1 class="hc-h1" data-hero style="--i:1">Gear that <em>keeps up.</em></h1>
+      <p class="hc-sub" data-hero style="--i:2">Clever gadgets for your vehicle, road-tested before they earn a spot in your cabin.</p>
+      <div class="hero-cta" data-hero style="--i:3">
+        <a class="btn btn-amber" href="collection.html">
+          Shop all gear
+          <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#kit">The starter kit</a>
+      </div>
+      <div class="hc-spec" data-hero style="--i:4">
+        <span><i></i>Free U.S. shipping over $50</span>
+        <span><i></i>14-day returns</span>
+        <span><i></i>Road-tested picks</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MARQUEE LANE ===================== -->
+  <div class="ribbon" aria-hidden="true">
+    <div class="track" data-marquee>
+      <span class="mq-item">Free U.S. shipping over $50</span><i class="mq-tick"></i>
+      <span class="mq-item">14-day returns</span><i class="mq-tick"></i>
+      <span class="mq-item">Road-tested picks</span><i class="mq-tick"></i>
+      <span class="mq-item">Secure checkout</span><i class="mq-tick"></i>
+    </div>
+  </div>
+
+  <!-- ===================== SHOP BY NEED ===================== -->
+  <section class="section need" id="need">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <p class="kicker">SHOP BY PROBLEM</p>
+        <h2>Find the fix for how you drive.</h2>
+      </div>
+      <div class="lanes" data-reveal-group>
+        <a class="lane-tile" href="collection.html?cat=mess" data-reveal style="--i:0">
+          <span class="lt-num">01</span>
+          <h3>Tame the Mess</h3>
+          <p>Trunk storage, seat-back organizers, and glovebox order.</p>
+          <span class="lt-go">Shop<svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="lane-tile" href="collection.html?cat=clean" data-reveal style="--i:1">
+          <span class="lt-num">02</span>
+          <h3>Clean &amp; Detail</h3>
+          <p>Detailing tools that keep the cabin showroom-fresh.</p>
+          <span class="lt-go">Shop<svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="lane-tile" href="collection.html?cat=charged" data-reveal style="--i:2">
+          <span class="lt-num">03</span>
+          <h3>Charged &amp; Connected</h3>
+          <p>Fast chargers, phone mounts, and dashcams for the dash.</p>
+          <span class="lt-go">Shop<svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="lane-tile" href="collection.html?cat=road" data-reveal style="--i:3">
+          <span class="lt-num">04</span>
+          <h3>Road-Trip Ready</h3>
+          <p>Comfort and kit that earns its keep on the long haul.</p>
+          <span class="lt-go">Shop<svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- amber speed-rule divider -->
+  <div class="speedrule wrap" aria-hidden="true"><span class="sr-fill" data-pct="100"></span></div>
+
+  <!-- ===================== FEATURED GRID: CABIN-READY PICKS ===================== -->
+  <section class="section picks" id="picks">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <p class="kicker">CABIN-READY PICKS</p>
+        <h2>Gear that keeps up.</h2>
+      </div>
+      <div class="pgrid" data-reveal-group>
+
+        <!-- card: dashcam -->
+        <article class="pcard" data-reveal style="--i:0">
+          <a class="pcard-link" href="product.html?id=night-run-dashcam-2k" aria-label="Night-Run Dashcam 2K"></a>
+          <div class="pimg">
+            <button class="save-toggle save-corner" type="button" aria-pressed="false" aria-label="Save Night-Run Dashcam 2K to wishlist" data-save data-id="night-run-dashcam-2k">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+            </button>
+            <svg viewBox="0 0 240 180" class="prod" aria-hidden="true">
+              <defs><radialGradient id="lensA" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#FF4D58"/><stop offset="58%" stop-color="#E11D2A"/><stop offset="100%" stop-color="#340a0d"/>
+              </radialGradient></defs>
+              <!-- windshield mount -->
+              <ellipse cx="111" cy="24" rx="22" ry="7" fill="#23272c" stroke="#11141a" stroke-width="2"/>
+              <rect x="104" y="26" width="14" height="24" rx="4" fill="#3a4047"/>
+              <!-- body -->
+              <rect x="48" y="58" width="150" height="74" rx="16" fill="#2b3138" stroke="#11141a" stroke-width="2"/>
+              <!-- screen -->
+              <rect x="150" y="74" width="36" height="42" rx="6" fill="#0e1116"/>
+              <rect x="156" y="80" width="24" height="6" rx="3" fill="#3a4047"/>
+              <!-- lens -->
+              <circle cx="92" cy="95" r="34" fill="#0B0C0E"/>
+              <circle cx="92" cy="95" r="26" fill="url(#lensA)"/>
+              <circle cx="92" cy="95" r="26" fill="none" stroke="#E11D2A" stroke-width="2" opacity=".6"/>
+              <circle cx="92" cy="95" r="11" fill="#0e1116" opacity=".5"/>
+              <circle cx="84" cy="87" r="5" fill="#fff" opacity=".25"/>
+              <!-- REC -->
+              <circle cx="170" cy="124" r="4" fill="#E11D2A"/>
+            </svg>
+          </div>
+          <div class="pbody">
+            <h3 class="ttl">Night-Run Dashcam 2K</h3>
+            <div class="spectags"><span>2K / 60fps</span><span>140&deg; FOV</span><span>WDR night</span></div>
+            <div class="prow">
+              <span class="price">$89</span>
+              <button class="add" data-add>Add</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- card: phone mount -->
+        <article class="pcard" data-reveal style="--i:1">
+          <a class="pcard-link" href="product.html?id=maglock-vent-mount" aria-label="MagLock Vent Mount"></a>
+          <div class="pimg">
+            <button class="save-toggle save-corner" type="button" aria-pressed="false" aria-label="Save MagLock Vent Mount to wishlist" data-save data-id="maglock-vent-mount">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+            </button>
+            <svg viewBox="0 0 240 180" class="prod" aria-hidden="true">
+              <!-- vent blades -->
+              <g stroke="#23272c" stroke-width="6" stroke-linecap="round" opacity=".7">
+                <line x1="150" y1="42" x2="206" y2="42"/><line x1="150" y1="60" x2="206" y2="60"/><line x1="150" y1="78" x2="206" y2="78"/>
+              </g>
+              <!-- clip arm into vent -->
+              <rect x="150" y="92" width="42" height="12" rx="6" fill="#2b3138"/>
+              <!-- phone, tilted, held by the mount -->
+              <g transform="rotate(-8 96 96)">
+                <rect x="58" y="40" width="76" height="116" rx="12" fill="#2b3138" stroke="#11141a" stroke-width="2"/>
+                <rect x="66" y="48" width="60" height="100" rx="7" fill="#0e1116"/>
+                <!-- magnetic ring (lit) -->
+                <circle cx="96" cy="98" r="20" fill="none" stroke="#E11D2A" stroke-width="5" opacity=".9"/>
+                <circle cx="96" cy="98" r="9" fill="#E11D2A" opacity=".5"/>
+              </g>
+            </svg>
+          </div>
+          <div class="pbody">
+            <h3 class="ttl">MagLock Vent Mount</h3>
+            <div class="spectags"><span>N52 magnets</span><span>360&deg; pivot</span><span>1-hand</span></div>
+            <div class="prow">
+              <span class="price">$24</span>
+              <button class="add" data-add>Add</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- card: trunk organizer -->
+        <article class="pcard" data-reveal style="--i:2">
+          <a class="pcard-link" href="product.html?id=fold-flat-trunk-caddy" aria-label="Fold-Flat Trunk Caddy"></a>
+          <div class="pimg">
+            <button class="save-toggle save-corner" type="button" aria-pressed="false" aria-label="Save Fold-Flat Trunk Caddy to wishlist" data-save data-id="fold-flat-trunk-caddy">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+            </button>
+            <svg viewBox="0 0 240 180" class="prod" aria-hidden="true">
+              <!-- bin body in perspective (open top) -->
+              <path d="M44 64 H196 L182 146 H58 Z" fill="#2b3138" stroke="#11141a" stroke-width="2"/>
+              <!-- open-top inner shadow -->
+              <path d="M44 64 H196 L188 80 H52 Z" fill="#0B0C0E"/>
+              <!-- 3 bays -->
+              <line x1="96" y1="74" x2="92" y2="146" stroke="#0B0C0E" stroke-width="4"/>
+              <line x1="144" y1="74" x2="148" y2="146" stroke="#0B0C0E" stroke-width="4"/>
+              <!-- carry handles -->
+              <path d="M44 80 q-16 6 -16 22" fill="none" stroke="#3a4047" stroke-width="6" stroke-linecap="round"/>
+              <path d="M196 80 q16 6 16 22" fill="none" stroke="#3a4047" stroke-width="6" stroke-linecap="round"/>
+              <!-- amber rim -->
+              <rect x="44" y="60" width="152" height="7" rx="3.5" fill="#E11D2A"/>
+            </svg>
+          </div>
+          <div class="pbody">
+            <h3 class="ttl">Fold-Flat Trunk Caddy</h3>
+            <div class="spectags"><span>3 bays</span><span>Holds 40lb</span><span>Folds flat</span></div>
+            <div class="prow">
+              <span class="price">$38</span>
+              <button class="add" data-add>Add</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- card: charger -->
+        <article class="pcard" data-reveal style="--i:3">
+          <a class="pcard-link" href="product.html?id=surge-65w-dual-charger" aria-label="Surge 65W Dual Charger"></a>
+          <div class="pimg">
+            <button class="save-toggle save-corner" type="button" aria-pressed="false" aria-label="Save Surge 65W Dual Charger to wishlist" data-save data-id="surge-65w-dual-charger">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+            </button>
+            <svg viewBox="0 0 240 180" class="prod" aria-hidden="true">
+              <!-- 12V socket -->
+              <rect x="150" y="56" width="54" height="68" rx="12" fill="#23272c" stroke="#11141a" stroke-width="2"/>
+              <!-- charger barrel into socket -->
+              <rect x="92" y="66" width="76" height="48" rx="14" fill="#2b3138" stroke="#11141a" stroke-width="2"/>
+              <!-- face plate -->
+              <rect x="54" y="62" width="46" height="56" rx="12" fill="#3a4047" stroke="#11141a" stroke-width="2"/>
+              <!-- two USB-C ports (lit) -->
+              <rect x="64" y="74" width="26" height="9" rx="4.5" fill="#0e1116"/>
+              <rect x="64" y="97" width="26" height="9" rx="4.5" fill="#0e1116"/>
+              <rect x="64" y="74" width="26" height="9" rx="4.5" fill="#E11D2A" opacity=".22"/>
+              <rect x="64" y="97" width="26" height="9" rx="4.5" fill="#E11D2A" opacity=".22"/>
+              <!-- power LED -->
+              <circle cx="129" cy="90" r="9" fill="none" stroke="#E11D2A" stroke-width="3"/>
+              <circle cx="129" cy="90" r="3" fill="#E11D2A"/>
+            </svg>
+          </div>
+          <div class="pbody">
+            <h3 class="ttl">Surge 65W Dual Charger</h3>
+            <div class="spectags"><span>65W PD</span><span>USB-C x2</span><span>GaN cool</span></div>
+            <div class="prow">
+              <span class="price">$32</span>
+              <button class="add" data-add>Add</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- amber speed-rule divider -->
+  <div class="speedrule wrap" aria-hidden="true"><span class="sr-fill" data-pct="100"></span></div>
+
+  <!-- ===================== DARK INTERSTITIAL: BUILT FOR THE LONG HAUL ===================== -->
+  <section class="section interstitial">
+    <div class="wrap inter-inner">
+      <div class="inter-copy" data-reveal style="--i:0">
+        <p class="kicker amber-tx">BUILT FOR THE LONG HAUL</p>
+        <h2>Gear that earns its spot.</h2>
+        <p class="inter-lead">Every pick gets driven before it gets sold. If it rattles, slips, or quits on the highway, it never makes the cut.</p>
+        <span class="info-chip">Driven before it goes live</span>
+        <p class="inter-foot">Free U.S. shipping over $50 &middot; 14-day returns &middot; Secure checkout.</p>
+      </div>
+      <div class="inter-shot" data-reveal style="--i:1" aria-hidden="true">
+        <!-- wide cinematic dash-in-context illustration -->
+        <svg viewBox="0 0 420 300" class="shot-svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="dashG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#23272c"/>
+              <stop offset="100%" stop-color="#0B0C0E"/>
+            </linearGradient>
+            <radialGradient id="glowG" cx="50%" cy="40%" r="60%">
+              <stop offset="0%" stop-color="#E11D2A" stop-opacity=".5"/>
+              <stop offset="100%" stop-color="#E11D2A" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect x="0" y="160" width="420" height="140" fill="url(#dashG)"/>
+          <path d="M0 160 Q210 120 420 160" fill="none" stroke="#2b3138" stroke-width="3"/>
+          <ellipse cx="210" cy="150" rx="150" ry="60" fill="url(#glowG)"/>
+          <!-- phone on mount -->
+          <rect x="150" y="96" width="48" height="80" rx="8" fill="#2b3138"/>
+          <rect x="156" y="102" width="36" height="62" rx="5" fill="#0e1116"/>
+          <circle cx="174" cy="133" r="9" fill="#E11D2A" opacity=".85"/>
+          <!-- charger -->
+          <rect x="244" y="150" width="34" height="44" rx="8" fill="#2b3138"/>
+          <circle cx="261" cy="168" r="10" fill="#E11D2A" opacity=".8"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BUNDLE: THE STARTER KIT ===================== -->
+  <section class="section kit" id="kit">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <p class="kicker">THE STARTER KIT</p>
+        <h2>One trip to dialed in.</h2>
+      </div>
+      <div class="bundle" data-reveal>
+        <div class="bundle-items">
+          <div class="bi" data-reveal-group>
+            <span class="bi-cell" data-reveal style="--i:0">
+              <svg viewBox="0 0 120 120" class="bi-svg" aria-hidden="true"><rect x="30" y="44" width="44" height="32" rx="9" fill="#2b3138"/><rect x="22" y="48" width="20" height="24" rx="6" fill="#3a4047"/><rect x="27" y="54" width="11" height="5" rx="2.5" fill="#0e1116"/><rect x="27" y="62" width="11" height="5" rx="2.5" fill="#0e1116"/><circle cx="58" cy="60" r="6" fill="none" stroke="#E11D2A" stroke-width="2.4"/><circle cx="58" cy="60" r="2" fill="#E11D2A"/></svg>
+              <b>Surge 65W Charger</b>
+            </span>
+            <span class="bi-plus" aria-hidden="true">+</span>
+            <span class="bi-cell" data-reveal style="--i:1">
+              <svg viewBox="0 0 120 120" class="bi-svg" aria-hidden="true"><g transform="rotate(-8 60 60)"><rect x="42" y="30" width="36" height="60" rx="8" fill="#2b3138"/><rect x="47" y="35" width="26" height="50" rx="5" fill="#0e1116"/><circle cx="60" cy="60" r="11" fill="none" stroke="#E11D2A" stroke-width="3.5"/></g></svg>
+              <b>MagLock Mount</b>
+            </span>
+            <span class="bi-plus" aria-hidden="true">+</span>
+            <span class="bi-cell" data-reveal style="--i:2">
+              <svg viewBox="0 0 120 120" class="bi-svg" aria-hidden="true"><path d="M28 48 H92 L86 86 H34 Z" fill="#2b3138"/><path d="M28 48 H92 L88 56 H32 Z" fill="#0B0C0E"/><line x1="50" y1="54" x2="48" y2="86" stroke="#0B0C0E" stroke-width="3"/><line x1="72" y1="54" x2="74" y2="86" stroke="#0B0C0E" stroke-width="3"/><rect x="28" y="45" width="64" height="5" rx="2.5" fill="#E11D2A"/></svg>
+              <b>Trunk Caddy</b>
+            </span>
+          </div>
+        </div>
+        <div class="bundle-buy">
+          <p class="bundle-eyebrow">Cabin starter kit</p>
+          <div class="bundle-price"><span class="price">$129</span> <s class="was">$159</s></div>
+          <p class="bundle-note">Three road-tested picks, one box. Free U.S. shipping included.</p>
+          <!-- per-item primary ATC is amber; bundle CTA stays outline (buy-box rule) -->
+          <div class="bundle-cta">
+            <button class="btn btn-amber" data-add>
+              Add the kit
+              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+            <a class="btn btn-outline" href="#picks">Pick items separately</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- amber speed-rule divider -->
+  <div class="speedrule wrap" aria-hidden="true"><span class="sr-fill" data-pct="100"></span></div>
+
+  <!-- ===================== TRUST + PROOF (count-ups) ===================== -->
+  <section class="section proof" aria-labelledby="proof-head">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <p class="kicker">THE PROMISE</p>
+        <h2 id="proof-head">Why drivers can trust the picks.</h2>
+      </div>
+      <div class="proof-stats" data-reveal-group>
+        <div class="stat" data-reveal style="--i:0">
+          <span class="stat-num"><i class="amber-tx">$</i><b data-countup="50">0</b></span>
+          <span class="stat-lbl">Free U.S. shipping over this</span>
+        </div>
+        <div class="stat" data-reveal style="--i:1">
+          <span class="stat-num"><b data-countup="14">0</b><i class="amber-tx">-day</i></span>
+          <span class="stat-lbl">Returns window, no fuss</span>
+        </div>
+        <div class="stat" data-reveal style="--i:2">
+          <span class="stat-num"><i class="amber-tx"></i><b>Driven</b></span>
+          <span class="stat-lbl">Every pick before it goes live</span>
+        </div>
+      </div>
+
+      <div class="proof-note" data-reveal>
+        <p>Reviews open after launch. Until then, the promise stands on policy: every pick is driven before it goes live, shipping is free over $50, returns run 14 days, and checkout is secured by Shopify.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="section faq" id="faq">
+    <div class="wrap faq-wrap">
+      <div class="sec-head" data-reveal>
+        <p class="kicker">QUESTIONS</p>
+        <h2>Before you load up.</h2>
+      </div>
+      <div class="qa-list" data-reveal>
+        <div class="qa">
+          <button class="qa-q" aria-expanded="false" aria-controls="qa-a1">Does the mount fit my vents?<span class="qa-ic" aria-hidden="true"></span></button>
+          <div class="qa-a" id="qa-a1" hidden><p>The MagLock clips to most horizontal and vertical vent blades. The magnet plate sticks to any case or directly to the phone back.</p></div>
+        </div>
+        <div class="qa">
+          <button class="qa-q" aria-expanded="false" aria-controls="qa-a2">How does free shipping work?<span class="qa-ic" aria-hidden="true"></span></button>
+          <div class="qa-a" id="qa-a2" hidden><p>Orders over $50 ship free within the U.S. Smaller orders show a flat rate at checkout before you pay.</p></div>
+        </div>
+        <div class="qa">
+          <button class="qa-q" aria-expanded="false" aria-controls="qa-a3">What is the return window?<span class="qa-ic" aria-hidden="true"></span></button>
+          <div class="qa-a" id="qa-a3" hidden><p>You have 14 days from delivery to return an item. Start a return from your order email and we send return instructions.</p></div>
+        </div>
+        <div class="qa">
+          <button class="qa-q" aria-expanded="false" aria-controls="qa-a4">What does road-tested mean?<span class="qa-ic" aria-hidden="true"></span></button>
+          <div class="qa-a" id="qa-a4" hidden><p>We drive each pick before it goes live. If it rattles, slips, or quits on the highway, it does not make the catalog.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NEWSLETTER BAND ===================== -->
+  <section class="section news">
+    <div class="wrap news-inner" data-reveal>
+      <div class="news-copy">
+        <h2>New gear, before the rush.</h2>
+        <p>Get road-tested drops and the occasional driver tip. No spam, unsubscribe anytime.</p>
+      </div>
+      <form class="news-form" data-fakeform data-toast="You are on the list">
+        <label class="vh" for="news-email">Email address</label>
+        <input id="news-email" type="email" placeholder="you@example.com" required>
+        <button class="btn btn-amber" type="submit">
+          Sign up
+          <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <p class="form-msg">Thanks. Watch your inbox for the next drop.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="wrap fgrid">
+    <div class="fcol fbrand">
+      <img src="../brand/logo-lockup-light.png" alt="Slipstream Gear" class="foot-logo">
+      <p>Clever gear for the daily driver. Organized, charged, road-tested.</p>
+    </div>
+    <div class="fcol">
+      <h4>Shop by need</h4>
+      <a href="collection.html?cat=mess">Tame the Mess</a>
+      <a href="collection.html?cat=clean">Clean &amp; Detail</a>
+      <a href="collection.html?cat=charged">Charged &amp; Connected</a>
+      <a href="collection.html?cat=road">Road-Trip Ready</a>
+    </div>
+    <div class="fcol">
+      <h4>Company</h4>
+      <a href="about.html">Our Story</a>
+      <a href="about.html#promise">Road-tested promise</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="collection.html">Shop All</a>
+    </div>
+    <div class="fcol">
+      <h4>Help</h4>
+      <a href="shipping-returns.html">Shipping</a>
+      <a href="shipping-returns.html">14-day returns</a>
+      <a href="wishlist.html">Wishlist</a>
+      <a href="shipping-returns.html">Secure checkout</a>
+    </div>
+  </div>
+  <div class="wrap fbar">
+    <span>&copy; 2026 Slipstream Gear</span>
+    <span>Secure checkout. Powered by Shopify</span>
+  </div>
+</footer>
+
+<script src="assets/slipstream.js?v=2"></script>
+</body>
+</html>

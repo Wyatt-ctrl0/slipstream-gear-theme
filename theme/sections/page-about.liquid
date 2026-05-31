@@ -1,0 +1,88 @@
+<section class="container" style="padding:40px 0 24px">
+  {%- if section.settings.eyebrow != blank -%}
+    <p class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+  {%- endif -%}
+  <h1 class="page-h1" data-reveal>{{ section.settings.heading | default: 'Built by people who live in their cars' }}</h1>
+  {%- if section.settings.lede != blank -%}
+    <p class="page-lede" data-reveal>{{ section.settings.lede }}</p>
+  {%- endif -%}
+</section>
+
+<section class="container about-grid" style="padding:24px 0 40px">
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'value' -%}
+      <div class="about-card" data-reveal {{ block.shopify_attributes }}>
+        <h2>{{ block.settings.title }}</h2>
+        <p>{{ block.settings.body }}</p>
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+</section>
+
+<section class="container" style="padding:24px 0 64px">
+  <div class="promise" id="promise" data-reveal>
+    <h2 class="promise-h">{{ section.settings.promise_heading | default: 'The road-tested promise' }}</h2>
+    {%- if section.settings.promise_body != blank -%}
+      <p>{{ section.settings.promise_body }}</p>
+    {%- endif -%}
+    {%- if section.settings.promise_cta_label != blank -%}
+      <a class="btn btn-amber" href="{{ section.settings.promise_cta_url | default: routes.all_products_collection_url }}">{{ section.settings.promise_cta_label }}</a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About page",
+  "tag": "section",
+  "class": "section-page-about",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our story" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Built by people who live in their cars" },
+    { "type": "richtext", "id": "lede", "label": "Lede", "default": "<p>Not literally. But close. We are commuters, road-trippers, and weekend mechanics who got tired of gear that quit halfway through a drive. So we built our own.</p>" },
+    { "type": "header", "content": "Promise" },
+    { "type": "text", "id": "promise_heading", "label": "Promise heading", "default": "The road-tested promise" },
+    { "type": "richtext", "id": "promise_body", "label": "Promise body", "default": "<p>If a product doesn't hold up to normal driving life within 14 days, send it back for a refund. No lab-coat fine print.</p>" },
+    { "type": "text", "id": "promise_cta_label", "label": "Promise CTA label", "default": "Shop the gear" },
+    { "type": "url", "id": "promise_cta_url", "label": "Promise CTA link" }
+  ],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value row",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Road-tested, not lab-tested" },
+        { "type": "richtext", "id": "body", "label": "Body", "default": "<p>Every product we carry gets driven. Real miles, real potholes, real summer-parking-lot heat. If it rattles, melts, or quits, it never makes the cut.</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About page",
+      "blocks": [
+        {
+          "type": "value",
+          "settings": {
+            "title": "Road-tested, not lab-tested",
+            "body": "<p>Every product we carry gets driven. Real miles, real potholes, real summer-parking-lot heat. If it rattles, melts, or quits, it never makes the cut.</p>"
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "title": "Honest specs",
+            "body": "<p>No inflated numbers. The output ratings, capacities, and dimensions on our pages are the ones we measured ourselves.</p>"
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "title": "Built to outlast the trip",
+            "body": "<p>We obsess over the parts you touch every day: the cables, the clips, the mounts. The boring stuff that makes or breaks a drive.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

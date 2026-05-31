@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shop all gear · Slipstream Gear</title>
+<meta name="description" content="The full Slipstream Gear lineup. Car organizers, detailing tools, fast chargers, phone mounts and dashcams. Road-tested gear for the daily driver.">
+
+<!-- favicon (dark mark for light tab UI; dark-scheme variant on dark tabs) -->
+<link rel="icon" type="image/png" href="../brand/icon.png">
+<link rel="icon" type="image/png" href="../brand/icon-light.png" media="(prefers-color-scheme: dark)">
+
+<!-- Fonts: Saira (headings) + Inter (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/slipstream.css?v=2">
+<link rel="stylesheet" href="assets/pages.css?v=2">
+
+<!-- JS-failure safety net: if the script never runs, reveal everything -->
+<noscript><style>[data-reveal]{opacity:1!important;transform:none!important;filter:none!important}</style></noscript>
+</head>
+<body>
+
+<!-- screen-reader live region for cart updates -->
+<div class="vh" aria-live="polite" data-cart-live></div>
+
+<!-- ===================== STICKY HEADER ===================== -->
+<header class="site-header" data-header>
+  <div class="wrap hdr-inner">
+    <a class="brand" href="index.html" aria-label="Slipstream Gear home">
+      <img src="../brand/logo-lockup-light.png" alt="Slipstream Gear" class="brand-logo">
+    </a>
+    <nav class="hdr-nav" aria-label="Primary">
+      <a href="collection.html">Shop All</a>
+      <a href="index.html#need">Shop by Problem</a>
+      <a href="about.html">Our Story</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="iconbtn" aria-label="Search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+      </button>
+      <a class="iconbtn" href="wishlist.html" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+      </a>
+      <a class="iconbtn" href="cart.html" aria-label="Cart, empty" data-cart-btn>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l-1 12H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <span class="cart-dot" aria-hidden="true" hidden>0</span>
+      </a>
+      <button class="iconbtn burger" aria-label="Menu" data-drawer-toggle aria-expanded="false" aria-controls="mobile-drawer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile nav drawer -->
+<div class="drawer" data-drawer id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="drawer-panel">
+    <a href="collection.html" data-drawer-close>Shop All</a>
+    <a href="index.html#need" data-drawer-close>Shop by Problem</a>
+    <a href="about.html" data-drawer-close>Our Story</a>
+    <a href="faq.html" data-drawer-close>FAQ</a>
+    <a href="wishlist.html" data-drawer-close>Wishlist</a>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- ===================== PAGE HERO ===================== -->
+  <section class="page-hero" aria-label="Shop all gear">
+    <div class="wrap">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <span aria-current="page">Shop all</span>
+      </nav>
+      <p class="kicker">THE FULL LINEUP</p>
+      <span class="streak-rule" aria-hidden="true"></span>
+      <h1 class="page-hero-h1">Shop all gear</h1>
+      <p class="page-hero-sub">Every road-tested pick in one place. Filter by how you drive, then load up.</p>
+    </div>
+  </section>
+
+  <!-- ===================== COLLECTION ===================== -->
+  <section class="collection">
+    <div class="wrap">
+
+      <h2 class="vh">All gear</h2>
+
+      <!-- filter + sort bar (presentational, no backend) -->
+      <div class="collection-bar">
+        <p class="collection-count" role="status" aria-live="polite" aria-atomic="true"><b data-count-visible>10</b> of <span data-count-total>10</span> products</p>
+        <div class="collection-tools">
+          <div class="filter-chips" role="group" aria-label="Filter by category" data-filters>
+            <button class="chip" type="button" aria-pressed="true" data-filter="all">All</button>
+            <button class="chip" type="button" aria-pressed="false" data-filter="mess">Tame the Mess</button>
+            <button class="chip" type="button" aria-pressed="false" data-filter="clean">Clean &amp; Detail</button>
+            <button class="chip" type="button" aria-pressed="false" data-filter="charged">Charged &amp; Connected</button>
+            <button class="chip" type="button" aria-pressed="false" data-filter="road">Road-Trip Ready</button>
+          </div>
+          <label class="sort-field" for="sort-by">Sort
+            <select class="sort-select" id="sort-by" data-sort>
+              <option value="featured">Featured</option>
+              <option value="price-asc">Price: low to high</option>
+              <option value="price-desc">Price: high to low</option>
+              <option value="name">Name: A to Z</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <!-- product grid -->
+      <div class="pgrid" data-reveal-group data-grid>
+
+        <!-- Night-Run Dashcam 2K — charged -->
+        <article class="pcard" data-reveal data-product data-cat="charged" data-price="89" data-name="Night-Run Dashcam 2K">
+          <a class="pcard-link" href="product.html?id=night-run-dashcam-2k" aria-label="Night-Run Dashcam 2K"></a>
+          <div class="pimg">
+            <button class="save-toggle save-corner" type="button" aria-pressed="false" aria-label="Save Night-Run Dashcam 2K to wishlist" data-save data-id="night-run-dashcam-2k">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+            </button>
+            <svg viewBox="0 0 240 180" class="prod" aria-hidden="true">
+              <defs><radialGradient id="lensC1" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#FF4D58"/><stop offset="58%" stop-color="#E11D2A"/><stop offset="100%" stop-color="#340a0d"/>
+              </radialGradient></defs>
+              <ellipse cx="111" cy="24" rx="22" ry="7" fill="#23272c" stroke="#11141a" stroke-width="2"/>
+              <rect x="104" y="26" width="14" height="24" rx="4" fill="#3a4047"/>
+              <rect x="48" y="58" width="150" height="74" rx="16" fill="#2b3138" stroke="#11141a" stroke-width="2"/>
+              <rect x="150" y="74" width="36" height="42" rx="6" fill="#0e1116"/>
+              <rect x="156" y="80" width="24" height="6" rx="3" fill="#3a4047"/>
+              <circle cx="92" cy="95" r="34" fill="#0B0C0E"/>
+              <circle cx="92" cy="95" r="26" fill="url(#lensC1)"/>
+              <circle cx="92" cy="95" r="26" fill="none" stroke="#E11D2A" stroke-width="2" opacity=".6"/>
+              <circle cx="92" cy="95" r="11" fill="#0e1116" opacity=".5"/>
+              <circle cx="84" cy="87" r="5" fill="#fff" opacity=".25"/>
+              <circle cx="170" cy="124" r="4" fill="#E11D2A"/>
+            </svg>
+          </div>
+          <div class="pbody">
+            <h3 class="ttl">Night-Run Dashcam 2K</h3>
+            <div class="spectags"><span>2K / 60fps</span><span>140&deg; FOV</span><span>WDR night</span></div>
+            <div class="prow">
+              <span class="price">$89</span>
+              <button class="add" data-add aria-label="Add Night-Run Dashcam 2K to cart">Add</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- MagLock Vent Mount — charged -->
+        <article class="pcard" data-reveal data-product data-cat="charged" data-price="24" data-name="MagLock Vent Mount">
+          <a class="pcard-link" href="product.html?id=maglock-vent-mount" aria-label="MagLock Vent Mount"></a>
+          <div class="pimg">
+            <button class="save-toggle save-corner" type="button" aria-pressed="false" aria-label="Save MagLock Vent Mount to wishlist" data-save data-id="maglock-vent-mount">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+            </button>
+            <svg viewBox="0 0 240 180" class="prod" aria-hidden="true">
+              <g stroke="#23272c" stroke-width="6" stroke-linecap="round" opacity=".7">
+                <line x1="150" y1="42" x2="206" y2="42"/><line x1="150" y1="60" x2="206" y2="60"/><line x1="150" y1="78" x2="206" y2="78"/>
+              </g>
+              <rect x="150" y="92" width="42" height="12" rx="6" fill="#2b3138"/>
+              <g transform="rotate(-8 96 96)">
+                <rect x="58" y="40" width="76" height="116" rx="12" fill="#2b3138" stroke="#11141a" stroke-width="2"/>
+                <rect x="66" y="48" width="60" height="100" rx="7" fill="#0e1116"/>
+                <circle cx="96" cy="98" r="20" fill="none" stroke="#E11D2A" stroke-width="5" opacity=".9"/>
+                <circle cx="96" cy="98" r="9" fill="#E11D2A" opacity=".5"/>
+              </g>
+            </svg>
+          </div>
+          <div class="pbody">
+            <h3 class="ttl">MagLock Vent Mount</h3>
+            <div class="spectags"><span>N52 magnets</span><span>360&deg; pivot</span><span>1-hand</span></div>
+            <div class="prow">
+              <span class="price">$24</span>
+              <button class="add" data-add aria-label="Add MagLock Vent Mount to cart">Add</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Fold-Flat Trunk Caddy — mess -->
+        <article class="pcard" data-reveal data-product data-cat="mess" data-price="38" data-name="Fold-Flat Trunk Caddy">
+          <a class="pcard-link" href="product.html?id=fold-flat-trunk-caddy" aria-label="Fold-Flat Trunk Caddy"></a>
+          <div class="pimg">
+            <button class="save-toggle save-corner" type="button" aria-pressed="false" aria-label="Save Fold-Flat Trunk Caddy to wishlist" data-save data-id="fold-flat-trunk-caddy">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+            </button>
+            <svg viewBox="0 0 240 180" class="prod" aria-hidden="true">
+              <path d="M44 64 H196 L182 146 H58 Z" fill="#2b3138" stroke="#11141a" stroke-width="2"/>
+              <path d="M44 64 H196 L188 80 H52 Z" fill="#0B0C0E"/>
+              <line x1="96" y1="74" x2="92" y2="146" stroke="#0B0C0E" stroke-width="4"/>
+              <line x1="144" y1="74" x2="148" y2="146" stroke="#0B0C0E" stroke-width="4"/>
+              <path d="M44 80 q-16 6 -16 22" fill="none" stroke="#3a4047" stroke-width="6" stroke-linecap="round"/>
+              <path d="M196 80 q16 6 16 22" fill="none" stroke="#3a4047" stroke-width="6" stroke-linecap="round"/>
+              <rect x="44" y="60" width="152" height="7" rx="3.5" fill="#E11D2A"/>
+            </svg>
+          </div>
+          <div class="pbody">
+            <h3 class="ttl">Fold-Flat Trunk Caddy</h3>
+            <div class="spectags"><span>3 bays</span><span>Holds 40lb</span><span>Folds flat</span></div>
+            <div class="prow">
+              <span class="price">$38</span>
+              <button class="add" data-add aria-label="Add Fold-Flat Trunk Caddy to cart">Add</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Surge 65W Dual Charger — charged -->
+        <article class="pcard" data-reveal data-product data-cat="charged" data-price="32" data-name="Surge 65W Dual Charger">
+          <a class="pcard-link" href="product.html?id=surge-65w-dual-charger" aria-label="Surge 65W Dual Charger"></a>
+          <div class="pimg">
+            <button class="save-toggle save-corner" type="button" aria-pressed="false" aria-label="Save Surge 65W Dual Charger to wishlist" data-save data-id="surge-65w-dual-charger">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+            </button>
+            <svg viewBox="0 0 240 180" class="prod" aria-hidden="true">
+              <rect x="150" y="56" width="54" height="68" rx="12" fill="#23272c" stroke="#11141a" stroke-width="2"/>
+              <rect x="92" y="66" width="76" height="48" rx="14" fill="#2b3138" stroke="#11141a" stroke-width="2"/>
+              <rect x="54" y="62" width="46" height="56" rx="12" fill="#3a4047" stroke="#11141a" stroke-width="2"/>
+              <rect x="64" y="74" width="26" height="9" rx="4.5" fill="#0e1116"/>
+              <rect x="64" y="97" width="26" height="9" rx="4.5" fill="#0e1116"/>
+              <rect x="64" y="74" width="26" height="9" rx="4.5" fill="#E11D2A" opacity=".22"/>
+              <rect x="64" y="97" width="26" height="9" rx="4.5" fill="#E11D2A" opacity=".22"/>
+              <circle cx="129" cy="90" r="9" fill="none" stroke="#E11D2A" stroke-width="3"/>
+              <circle cx="129" cy="90" r="3" fill="#E11D2A"/>
+            </svg>
+          </div>
+          <div class="pbody">
+            <h3 class="ttl">Surge 65W Dual Charger</h3>
+            <div class="spectags"><span>65W PD</span><span>USB-C x2</span><span>GaN cool</span></div>
+            <div class="prow">
+              <span class="price">$32</span>
+              <button class="add" data-add aria-label="Add Surge 65W Dual Charger to cart">Add</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Seat-Gap Filler (2-pack) — mess (reuse caddy SVG) -->
+        <article class="pcard" data-reveal data-product data-cat="mess" data-price="19" data-name="Seat-Gap Filler (2-pack)">
+          <a class="pcard-link" href="product.html?id=seat-gap-filler-2-pack" aria-label="Seat-Gap Filler 2-pack"></a>
+          <div class="pimg">
+            <button class="save-toggle save-corner" type="button" aria-pressed="false" aria-label="Save Seat-Gap Filler 2-pack to wishlist" data-save data-id="seat-gap-filler-2-pack">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+            </button>
+            <svg viewBox="0 0 240 180" class="prod" aria-hidden="true">
+              <!-- two soft fillers wedged side by side -->
+              <path d="M40 70 q10 -22 34 -22 l14 0 q10 0 10 12 l0 56 q0 12 -12 12 l-36 0 q-14 0 -14 -16 Z" fill="#2b3138" stroke="#11141a" stroke-width="2"/>
+              <path d="M138 70 q10 -22 34 -22 l14 0 q10 0 10 12 l0 56 q0 12 -12 12 l-36 0 q-14 0 -14 -16 Z" fill="#23272c" stroke="#11141a" stroke-width="2"/>
+              <!-- seam stitching -->
+              <line x1="50" y1="62" x2="50" y2="120" stroke="#3a4047" stroke-width="3" stroke-dasharray="4 5"/>
+              <line x1="148" y1="62" x2="148" y2="120" stroke="#3a4047" stroke-width="3" stroke-dasharray="4 5"/>
+              <rect x="40" y="62" width="56" height="6" rx="3" fill="#E11D2A"/>
+            </svg>
+          </div>
+          <div class="pbody">
+            <h3 class="ttl">Seat-Gap Filler (2-pack)</h3>
+            <div class="spectags"><span>Stops drops</span><span>Universal</span><span>2-pack</span></div>
+            <div class="prow">
+              <span class="price">$19</span>
+              <button class="add" data-add aria-label="Add Seat-Gap Filler 2-pack to cart">Add</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Cordless Cabin Vac — clean (reuse charger SVG body as handheld unit) -->
+        <article class="pcard" data-reveal data-product data-cat="clean" data-price="54" data-name="Cordless Cabin Vac">
+          <a class="pcard-link" href="product.html?id=cordless-cabin-vac" aria-label="Cordless Cabin Vac"></a>
+          <div class="pimg">
+            <button class="save-toggle save-corner" type="button" aria-pressed="false" aria-label="Save Cordless Cabin Vac to wishlist" data-save data-id="cordless-cabin-vac">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+            </button>
+            <svg viewBox="0 0 240 180" class="prod" aria-hidden="true">
+              <!-- handheld vac: motor body + grip + nozzle -->
+              <rect x="96" y="58" width="74" height="52" rx="16" fill="#2b3138" stroke="#11141a" stroke-width="2"/>
+              <!-- grip -->
+              <rect x="118" y="104" width="30" height="48" rx="12" fill="#3a4047" stroke="#11141a" stroke-width="2"/>
+              <!-- nozzle -->
+              <path d="M96 70 L52 60 L52 100 L96 96 Z" fill="#23272c" stroke="#11141a" stroke-width="2"/>
+              <rect x="46" y="62" width="8" height="36" rx="4" fill="#0e1116"/>
+              <!-- power ring (lit) -->
+              <circle cx="150" cy="84" r="11" fill="none" stroke="#E11D2A" stroke-width="3"/>
+              <circle cx="150" cy="84" r="4" fill="#E11D2A"/>
+              <!-- vent lines -->
+              <g stroke="#0e1116" stroke-width="3" stroke-linecap="round">
+                <line x1="108" y1="72" x2="108" y2="96"/><line x1="116" y1="72" x2="116" y2="96"/>
+              </g>
+            </svg>
+          </div>
+          <div class="pbody">
+            <h3 class="ttl">Cordless Cabin Vac</h3>
+            <div class="spectags"><span>Cordless</span><span>HEPA</span><span>Crevice tip</span></div>
+            <div class="prow">
+              <span class="price">$54</span>
+              <button class="add" data-add aria-label="Add Cordless Cabin Vac to cart">Add</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Leak-Proof Trash Caddy — mess (reuse caddy SVG) -->
+        <article class="pcard" data-reveal data-product data-cat="mess" data-price="22" data-name="Leak-Proof Trash Caddy">
+          <a class="pcard-link" href="product.html?id=leak-proof-trash-caddy" aria-label="Leak-Proof Trash Caddy"></a>
+          <div class="pimg">
+            <button class="save-toggle save-corner" type="button" aria-pressed="false" aria-label="Save Leak-Proof Trash Caddy to wishlist" data-save data-id="leak-proof-trash-caddy">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+            </button>
+            <svg viewBox="0 0 240 180" class="prod" aria-hidden="true">
+              <!-- tall sealed bin -->
+              <path d="M76 60 H164 L156 150 H84 Z" fill="#2b3138" stroke="#11141a" stroke-width="2"/>
+              <path d="M76 60 H164 L160 72 H80 Z" fill="#0B0C0E"/>
+              <!-- flip lid -->
+              <path d="M72 56 H168 L168 64 H72 Z" fill="#3a4047" stroke="#11141a" stroke-width="2"/>
+              <ellipse cx="120" cy="58" rx="22" ry="5" fill="#0B0C0E"/>
+              <!-- strap handle -->
+              <path d="M84 80 q-14 14 0 40" fill="none" stroke="#3a4047" stroke-width="6" stroke-linecap="round"/>
+              <rect x="72" y="52" width="96" height="6" rx="3" fill="#E11D2A"/>
+            </svg>
+          </div>
+          <div class="pbody">
+            <h3 class="ttl">Leak-Proof Trash Caddy</h3>
+            <div class="spectags"><span>Sealed liner</span><span>Leak-proof</span><span>Wipe-clean</span></div>
+            <div class="prow">
+              <span class="price">$22</span>
+              <button class="add" data-add aria-label="Add Leak-Proof Trash Caddy to cart">Add</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- No-Slip Dash Pad — clean -->
+        <article class="pcard" data-reveal data-product data-cat="mess" data-price="14" data-name="No-Slip Dash Pad">
+          <a class="pcard-link" href="product.html?id=no-slip-dash-pad" aria-label="No-Slip Dash Pad"></a>
+          <div class="pimg">
+            <button class="save-toggle save-corner" type="button" aria-pressed="false" aria-label="Save No-Slip Dash Pad to wishlist" data-save data-id="no-slip-dash-pad">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+            </button>
+            <svg viewBox="0 0 240 180" class="prod" aria-hidden="true">
+              <!-- grippy pad in perspective, phone resting on it -->
+              <path d="M40 116 L150 96 L200 116 L90 140 Z" fill="#2b3138" stroke="#11141a" stroke-width="2"/>
+              <!-- texture dots -->
+              <g fill="#0e1116">
+                <circle cx="78" cy="118" r="2.4"/><circle cx="96" cy="115" r="2.4"/><circle cx="114" cy="112" r="2.4"/>
+                <circle cx="132" cy="116" r="2.4"/><circle cx="100" cy="124" r="2.4"/><circle cx="120" cy="121" r="2.4"/>
+              </g>
+              <!-- phone resting -->
+              <g transform="rotate(-6 120 92)">
+                <rect x="98" y="56" width="44" height="64" rx="8" fill="#23272c" stroke="#11141a" stroke-width="2"/>
+                <rect x="104" y="62" width="32" height="52" rx="5" fill="#0e1116"/>
+              </g>
+              <rect x="40" y="112" width="62" height="5" rx="2.5" fill="#E11D2A"/>
+            </svg>
+          </div>
+          <div class="pbody">
+            <h3 class="ttl">No-Slip Dash Pad</h3>
+            <div class="spectags"><span>Grippy gel</span><span>No residue</span><span>Trim-to-fit</span></div>
+            <div class="prow">
+              <span class="price">$14</span>
+              <button class="add" data-add aria-label="Add No-Slip Dash Pad to cart">Add</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Headrest Hook Set — mess -->
+        <article class="pcard" data-reveal data-product data-cat="mess" data-price="12" data-name="Headrest Hook Set">
+          <a class="pcard-link" href="product.html?id=headrest-hook-set" aria-label="Headrest Hook Set"></a>
+          <div class="pimg">
+            <button class="save-toggle save-corner" type="button" aria-pressed="false" aria-label="Save Headrest Hook Set to wishlist" data-save data-id="headrest-hook-set">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+            </button>
+            <svg viewBox="0 0 240 180" class="prod" aria-hidden="true">
+              <!-- two headrest posts -->
+              <rect x="92" y="40" width="9" height="40" rx="4" fill="#3a4047"/>
+              <rect x="139" y="40" width="9" height="40" rx="4" fill="#3a4047"/>
+              <!-- clamp bridge -->
+              <rect x="80" y="76" width="80" height="22" rx="9" fill="#2b3138" stroke="#11141a" stroke-width="2"/>
+              <!-- two hooks -->
+              <path d="M100 98 q0 26 -22 26 q-14 0 -14 -14" fill="none" stroke="#23272c" stroke-width="8" stroke-linecap="round"/>
+              <path d="M140 98 q0 26 22 26 q14 0 14 -14" fill="none" stroke="#23272c" stroke-width="8" stroke-linecap="round"/>
+              <circle cx="64" cy="110" r="4" fill="#E11D2A"/>
+              <circle cx="176" cy="110" r="4" fill="#E11D2A"/>
+            </svg>
+          </div>
+          <div class="pbody">
+            <h3 class="ttl">Headrest Hook Set</h3>
+            <div class="spectags"><span>2-pack</span><span>Holds 30lb</span><span>No tools</span></div>
+            <div class="prow">
+              <span class="price">$12</span>
+              <button class="add" data-add aria-label="Add Headrest Hook Set to cart">Add</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Tire Pressure Pen — road -->
+        <article class="pcard" data-reveal data-product data-cat="road" data-price="16" data-name="Tire Pressure Pen">
+          <a class="pcard-link" href="product.html?id=tire-pressure-pen" aria-label="Tire Pressure Pen"></a>
+          <div class="pimg">
+            <button class="save-toggle save-corner" type="button" aria-pressed="false" aria-label="Save Tire Pressure Pen to wishlist" data-save data-id="tire-pressure-pen">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
+            </button>
+            <svg viewBox="0 0 240 180" class="prod" aria-hidden="true">
+              <!-- pen-style gauge, diagonal -->
+              <g transform="rotate(-24 120 90)">
+                <rect x="62" y="80" width="116" height="22" rx="11" fill="#2b3138" stroke="#11141a" stroke-width="2"/>
+                <!-- chuck head -->
+                <rect x="168" y="78" width="22" height="26" rx="6" fill="#3a4047" stroke="#11141a" stroke-width="2"/>
+                <rect x="190" y="84" width="10" height="14" rx="3" fill="#0e1116"/>
+                <!-- readout window (lit) -->
+                <rect x="84" y="85" width="40" height="12" rx="3" fill="#0e1116"/>
+                <rect x="88" y="88" width="20" height="6" rx="2" fill="#E11D2A" opacity=".8"/>
+                <!-- clip -->
+                <rect x="70" y="74" width="4" height="22" rx="2" fill="#23272c"/>
+              </g>
+            </svg>
+          </div>
+          <div class="pbody">
+            <h3 class="ttl">Tire Pressure Pen</h3>
+            <div class="spectags"><span>Digital</span><span>0-60 PSI</span><span>Backlit</span></div>
+            <div class="prow">
+              <span class="price">$16</span>
+              <button class="add" data-add aria-label="Add Tire Pressure Pen to cart">Add</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- no-results (hidden until a filter empties the grid; no catalog filter empties it today) -->
+      <div class="empty-state" data-empty hidden>
+        <span class="es-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+        </span>
+        <h3>Nothing in that lane yet</h3>
+        <p>We have not parked anything here. Try another category or browse the full lineup.</p>
+        <button class="btn btn-outline" type="button" data-clear-filter>Show all gear</button>
+      </div>
+
+      <!-- load more -->
+<nav class="pager" data-pager aria-label="Collection pages"></nav>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="wrap fgrid">
+    <div class="fcol fbrand">
+      <img src="../brand/logo-lockup-light.png" alt="Slipstream Gear" class="foot-logo">
+      <p>Clever gear for the daily driver. Organized, charged, road-tested.</p>
+    </div>
+    <div class="fcol">
+      <h4>Shop by need</h4>
+      <a href="collection.html?cat=mess">Tame the Mess</a>
+      <a href="collection.html?cat=clean">Clean &amp; Detail</a>
+      <a href="collection.html?cat=charged">Charged &amp; Connected</a>
+      <a href="collection.html?cat=road">Road-Trip Ready</a>
+    </div>
+    <div class="fcol">
+      <h4>Company</h4>
+      <a href="about.html">Our Story</a>
+      <a href="about.html#promise">Road-tested promise</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="collection.html">Shop All</a>
+    </div>
+    <div class="fcol">
+      <h4>Help</h4>
+      <a href="shipping-returns.html">Shipping</a>
+      <a href="shipping-returns.html">14-day returns</a>
+      <a href="wishlist.html">Wishlist</a>
+      <a href="shipping-returns.html">Secure checkout</a>
+    </div>
+  </div>
+  <div class="wrap fbar">
+    <span>&copy; 2026 Slipstream Gear</span>
+    <span>Secure checkout. Powered by Shopify</span>
+  </div>
+</footer>
+
+<script src="assets/slipstream.js?v=2"></script>
+<script src="assets/page-collection.js?v=2"></script>
+</body>
+</html>

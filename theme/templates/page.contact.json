@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-contact",
+      "settings": {
+        "eyebrow": "Get in touch",
+        "heading": "Contact us",
+        "lede": "<p>Questions about an order, a product spec, or a return? We usually reply within one business day.</p>",
+        "button_label": "Send message",
+        "success_message": "Thanks. Your message is on its way.",
+        "aside_heading": "Other ways to reach us",
+        "support_email": "support@slipstreamgear.com",
+        "hours": "Mon-Fri, 9am-5pm ET",
+        "returns_note": "<p>14-day returns on unused gear. See our <a href=\"/pages/shipping-returns\">shipping & returns</a> page.</p>"
+      }
+    }
+  },
+  "order": ["main"]
+}

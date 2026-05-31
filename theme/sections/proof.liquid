@@ -1,0 +1,105 @@
+<div class="speedrule wrap" aria-hidden="true"><span class="sr-fill" data-pct="100"></span></div>
+
+<section class="section proof" aria-labelledby="proof-head">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      {% if section.settings.kicker != blank %}<p class="kicker">{{ section.settings.kicker | escape }}</p>{% endif %}
+      {% if section.settings.heading != blank %}<h2 id="proof-head">{{ section.settings.heading | escape }}</h2>{% endif %}
+    </div>
+    <div class="proof-stats" data-reveal-group>
+      {% for block in section.blocks %}
+        <div class="stat" data-reveal style="--i:{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          <span class="stat-num">
+            {%- if block.settings.prefix != blank -%}<i class="amber-tx">{{ block.settings.prefix | escape }}</i>{%- endif -%}
+            {%- if block.settings.count != blank -%}
+              <b data-countup="{{ block.settings.count | escape }}">0</b>
+            {%- else -%}
+              <b>{{ block.settings.static_value | escape }}</b>
+            {%- endif -%}
+            {%- if block.settings.suffix != blank -%}<i class="amber-tx">{{ block.settings.suffix | escape }}</i>{%- endif -%}
+          </span>
+          <span class="stat-lbl">{{ block.settings.label | escape }}</span>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if section.settings.note != blank %}
+      <div class="proof-note" data-reveal>
+        <p>{{ section.settings.note | escape }}</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Proof stats",
+  "tag": "section",
+  "class": "shopify-section-proof",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "THE PROMISE"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why drivers can trust the picks."
+    },
+    {
+      "type": "textarea",
+      "id": "note",
+      "label": "Proof note",
+      "default": "Reviews open after launch. Until then, the promise stands on policy: every pick is driven before it goes live, shipping is free over $50, returns run 14 days, and checkout is secured by Shopify."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "prefix",
+          "label": "Prefix (e.g. $)"
+        },
+        {
+          "type": "text",
+          "id": "count",
+          "label": "Count-up number (leave blank for static value)"
+        },
+        {
+          "type": "text",
+          "id": "static_value",
+          "label": "Static value (used when count-up is blank)"
+        },
+        {
+          "type": "text",
+          "id": "suffix",
+          "label": "Suffix (e.g. -day)"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Free U.S. shipping over this"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Proof stats",
+      "blocks": [
+        { "type": "stat", "settings": { "prefix": "$", "count": "50", "label": "Free U.S. shipping over this" } },
+        { "type": "stat", "settings": { "count": "14", "suffix": "-day", "label": "Returns window, no fuss" } },
+        { "type": "stat", "settings": { "static_value": "Driven", "label": "Every pick before it goes live" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

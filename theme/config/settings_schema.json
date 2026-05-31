@@ -1,0 +1,93 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Slipstream Gear",
+    "theme_version": "1.0.0",
+    "theme_author": "Slipstream Gear",
+    "theme_documentation_url": "https://slipstreamgear.com",
+    "theme_support_url": "https://slipstreamgear.com/pages/contact"
+  },
+  {
+    "name": "Branding",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo_light",
+        "label": "Logo (light, for dark header)",
+        "info": "White speed-lines + red arrow lockup. Used in the header and footer. Falls back to the bundled logo if empty."
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_dark",
+        "label": "Logo (dark, for light backgrounds)"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "label": "Logo width",
+        "min": 90,
+        "max": 240,
+        "step": 5,
+        "unit": "px",
+        "default": 150
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "32x32 px recommended."
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "info": "Racing-red palette. Token names are legacy (amber/blue) but hold red/graphite values to match the design system.",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Primary accent (racing red)",
+        "default": "#E11D2A"
+      },
+      {
+        "type": "color",
+        "id": "color_accent_text",
+        "label": "Red-as-text (ember, AA on white)",
+        "default": "#C20F1B"
+      },
+      {
+        "type": "color",
+        "id": "color_ink",
+        "label": "Ink / near-black",
+        "default": "#0B0C0E"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_free_shipping_bar",
+        "label": "Show free-shipping progress in cart",
+        "default": true
+      },
+      {
+        "type": "number",
+        "id": "free_shipping_threshold",
+        "label": "Free U.S. shipping threshold (in dollars)",
+        "default": 50,
+        "info": "Used for the cart progress bar and trust copy."
+      }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      { "type": "text", "id": "social_instagram", "label": "Instagram URL" },
+      { "type": "text", "id": "social_tiktok", "label": "TikTok URL" },
+      { "type": "text", "id": "social_youtube", "label": "YouTube URL" },
+      { "type": "text", "id": "social_facebook", "label": "Facebook URL" }
+    ]
+  }
+]

@@ -1,0 +1,103 @@
+<section class="section need" id="need">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      {% if section.settings.kicker != blank %}<p class="kicker">{{ section.settings.kicker | escape }}</p>{% endif %}
+      {% if section.settings.heading != blank %}<h2>{{ section.settings.heading | escape }}</h2>{% endif %}
+    </div>
+    <div class="lanes" data-reveal-group>
+      {% for block in section.blocks %}
+        {%- liquid
+          assign tile_url = block.settings.link
+          if tile_url == blank and block.settings.collection != blank
+            assign tile_url = block.settings.collection.url
+          endif
+          if tile_url == blank
+            assign tile_url = routes.all_products_collection_url
+          endif
+        -%}
+        <a class="lane-tile" href="{{ tile_url }}" data-reveal style="--i:{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          <span class="lt-num">{{ block.settings.number | escape }}</span>
+          <h3>{{ block.settings.title | escape }}</h3>
+          <p>{{ block.settings.body | escape }}</p>
+          <span class="lt-go">{{ block.settings.link_label | default: 'Shop' | escape }}<svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Shop by need",
+  "tag": "section",
+  "class": "shopify-section-need",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "SHOP BY PROBLEM"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Find the fix for how you drive."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "lane",
+      "name": "Lane tile",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Tame the Mess"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Body",
+          "default": "Trunk storage, seat-back organizers, and glovebox order."
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (overrides collection)"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link label",
+          "default": "Shop"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Shop by need",
+      "blocks": [
+        { "type": "lane", "settings": { "number": "01", "title": "Tame the Mess", "body": "Trunk storage, seat-back organizers, and glovebox order." } },
+        { "type": "lane", "settings": { "number": "02", "title": "Clean & Detail", "body": "Detailing tools that keep the cabin showroom-fresh." } },
+        { "type": "lane", "settings": { "number": "03", "title": "Charged & Connected", "body": "Fast chargers, phone mounts, and dashcams for the dash." } },
+        { "type": "lane", "settings": { "number": "04", "title": "Road-Trip Ready", "body": "Comfort and kit that earns its keep on the long haul." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
