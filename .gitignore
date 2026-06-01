@@ -15,6 +15,11 @@ node_modules/
 # Scratch / validation artifacts
 _*.js
 _*.txt
+_*.png
 RC_*
 INTEGRITY_*
 _z_*
+
+# Browser-audit scratch
+.playwright-cli/
+_audit*
