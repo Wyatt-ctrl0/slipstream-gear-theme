@@ -35,10 +35,15 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;font-family:var(--body);color:var(--ink);background:var(--bg);
-  -webkit-font-smoothing:antialiased;line-height:1.55}
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  line-height:1.55;text-rendering:optimizeLegibility}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
-h1,h2,h3,h4{font-family:var(--disp);margin:0;letter-spacing:-.01em;line-height:1.05;font-weight:700}
+h1,h2,h3,h4{font-family:var(--disp);margin:0;letter-spacing:-.01em;line-height:1.05;font-weight:700;
+  font-kerning:normal;text-wrap:balance}
+/* in-page anchors (#need #picks #kit #faq #promise #top …) clear the 64px sticky header
+   instead of landing under it on jump navigation */
+[id]{scroll-margin-top:84px}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
@@ -274,7 +279,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,
   letter-spacing:.02em;color:var(--body-2);background:var(--tile);border:1px solid rgba(31,35,40,.08);
   padding:3px 7px;border-radius:5px}
 .prow{display:flex;align-items:center;justify-content:space-between}
-.price{font-family:var(--disp);font-weight:700;font-size:19px;color:var(--ink)}
+.price{font-family:var(--disp);font-weight:700;font-size:19px;color:var(--ink);
+  font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
 .add{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:84px;
   font-family:var(--disp);font-weight:600;
   font-size:13px;color:var(--ink);background:var(--amber);
@@ -304,7 +310,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,
   gap:48px;align-items:center}
 .inter-copy h2{color:var(--paper);font-size:clamp(28px,3.6vw,42px);margin-bottom:16px}
 .inter-copy .kicker{color:#FF6B73}
-.inter-lead{color:var(--paper);opacity:.86;font-size:16px;max-width:440px;margin:0 0 22px}
+.inter-lead{color:var(--paper);opacity:.88;font-size:16px;max-width:46ch;margin:0 0 22px;
+  line-height:1.6;text-wrap:pretty}
 .info-chip{display:inline-block;background:var(--blue-tx);color:#fff;font-family:var(--disp);
   font-weight:600;font-size:13px;letter-spacing:.02em;padding:8px 15px;border-radius:8px}
 .inter-foot{font-size:13px;color:var(--paper);opacity:.72;margin:18px 0 0}
@@ -341,8 +348,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,
 .proof-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:48px}
 .stat{background:var(--bg);border-radius:14px;padding:26px;text-align:center;
   border:1px solid rgba(31,35,40,.06)}
+/* tabular-nums so the count-up (0 to 50, 0 to 14) holds a steady width per
+   frame instead of reflowing as digits change */
 .stat-num{font-family:var(--disp);font-weight:800;font-size:clamp(34px,4.4vw,48px);
-  color:var(--ink);display:flex;align-items:baseline;justify-content:center;gap:2px}
+  color:var(--ink);display:flex;align-items:baseline;justify-content:center;gap:2px;
+  font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
 .stat-num i{font-style:normal;font-size:.6em}
 .stat-lbl{display:block;margin-top:8px;font-size:14px;color:var(--body-2)}
 
@@ -495,8 +505,8 @@ body.motion-off .add.added,body.motion-off .btn-amber.added,body.motion-off .car
 .hc-h1{font-family:var(--disp);font-weight:800;font-size:clamp(54px,11vw,158px);line-height:.9;
   letter-spacing:-.035em;color:var(--paper);text-transform:uppercase;margin:0 0 8px;max-width:14ch}
 .hc-h1 em{font-style:normal;color:var(--amber)}
-.hc-sub{font-size:clamp(16px,1.5vw,20px);color:rgba(255,255,255,.8);max-width:440px;
-  margin:18px 0 32px;line-height:1.5}
+.hc-sub{font-size:clamp(16px,1.5vw,20px);color:rgba(255,255,255,.85);max-width:46ch;
+  margin:18px 0 32px;line-height:1.55;text-wrap:pretty}
 .hc-spec{display:flex;gap:28px;flex-wrap:wrap;margin-top:42px;font-family:var(--disp);font-weight:600;
   font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55)}
 .hc-spec span{display:inline-flex;align-items:center;gap:9px}
@@ -553,12 +563,14 @@ body.motion-off .save-toggle.is-pop svg{animation:none!important}
 .cart-item{padding:16px 0;border-bottom:1px solid rgba(244,245,247,.1)}
 .ci-main{display:flex;justify-content:space-between;gap:12px;margin-bottom:9px}
 .ci-name{font-family:var(--disp);font-weight:600;font-size:14px;color:var(--paper)}
-.ci-price{font-family:var(--disp);font-weight:700;color:var(--paper)}
+.ci-price{font-family:var(--disp);font-weight:700;color:var(--paper);
+  font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
 .ci-qty{display:flex;align-items:center;gap:10px}
 .ci-qty button{min-width:30px;height:30px;border:1px solid rgba(244,245,247,.25);background:transparent;
   color:var(--paper);border-radius:7px;cursor:pointer;font-family:var(--disp);font-size:15px;transition:border-color .2s}
 .ci-qty button:hover{border-color:var(--amber)}
-.ci-n{min-width:18px;text-align:center;font-family:var(--disp);font-weight:700;color:var(--paper)}
+.ci-n{min-width:18px;text-align:center;font-family:var(--disp);font-weight:700;color:var(--paper);
+  font-variant-numeric:tabular-nums}
 .ci-rm{margin-left:auto;border:0!important;color:rgba(244,245,247,.65)!important;font-size:12px;
   min-width:auto!important;text-decoration:underline}
 .ci-rm:hover{color:var(--paper)!important}
