@@ -81,7 +81,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,
   border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
 .site-header.scrolled{border-bottom-color:var(--amber);box-shadow:0 6px 20px -10px rgba(0,0,0,.7)}
 .hdr-inner{display:flex;align-items:center;gap:24px;height:64px}
-.brand-logo{height:30px;width:auto}
+.brand-logo{height:44px;width:auto;display:block}
 .hdr-nav{display:flex;gap:26px;margin-left:auto}
 .hdr-nav a{font-family:var(--disp);font-weight:500;font-size:14px;color:var(--paper);
   opacity:.82;position:relative;padding:4px 0;transition:opacity .2s}
@@ -400,7 +400,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,
 .site-footer{background:var(--dark);color:var(--paper);
   border-top:1px solid var(--amber)}
 .fgrid{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:30px;padding:56px 0 30px}
-.foot-logo{height:30px;width:auto;margin-bottom:14px}
+.foot-logo{height:40px;width:auto;margin-bottom:16px}
 .fbrand p{font-size:14px;color:var(--paper);opacity:.74;max-width:260px;margin:0}
 .fcol h4{font-family:var(--disp);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
   color:var(--amber);margin:0 0 16px}
