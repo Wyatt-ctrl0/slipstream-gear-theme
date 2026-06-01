@@ -333,9 +333,15 @@
 .prose .prose-lead{font-size:17.5px;color:var(--ink);margin-bottom:24px}
 .prose .prose-updated{font-family:var(--disp);font-weight:600;font-size:13px;
   letter-spacing:.04em;color:var(--muted);margin:0 0 28px}
-/* a soft callout card for a key shipping/returns fact */
-.prose .prose-note{background:var(--surface);border:1px solid rgba(31,35,40,.08);
-  border-left:3px solid var(--amber);border-radius:12px;padding:18px 20px;margin:0 0 24px}
+/* a soft callout card for a key shipping/returns fact.
+   Full amber-tinted surface with a leading kicker label instead of a
+   side-stripe accent (side-stripe borders read as a template tell). */
+.prose .prose-note{position:relative;background:linear-gradient(180deg,rgba(225,29,42,.06),rgba(225,29,42,.03));
+  border:1px solid rgba(225,29,42,.22);border-radius:12px;padding:18px 20px;margin:0 0 24px}
+.prose .prose-note::before{content:"GOOD TO KNOW";display:block;
+  font-family:var(--disp);font-weight:700;font-size:11px;letter-spacing:.16em;
+  color:var(--ember-surf);margin:0 0 8px}
+.prose .prose-note p{color:var(--ink)}
 .prose .prose-note p:last-child{margin-bottom:0}
 
 /* ============================================================

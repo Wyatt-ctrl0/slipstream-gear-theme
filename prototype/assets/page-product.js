@@ -42,28 +42,19 @@
   function setupGallery() {
     var main = $('[data-gallery-main]'); var thumbs = $$('.pdp-thumb');
     if (!main || !thumbs.length) return;
-    var originalMain = main.innerHTML;   // cache the lush gradient hero once
-    thumbs.forEach(function (t, idx) {
+    var mainImg = main.querySelector('img');
+    thumbs.forEach(function (t) {
       t.addEventListener('click', function () {
         thumbs.forEach(function (o) {
           o.classList.remove('is-active'); o.setAttribute('aria-pressed', 'false');
         });
         t.classList.add('is-active'); t.setAttribute('aria-pressed', 'true');
-        if (idx === 0) {
-          // restore the original hero-quality artwork for the default view
-          main.innerHTML = originalMain;
-          var restored = main.querySelector('svg');
-          if (restored) restored.classList.add('prod');
-        } else {
-          var svg = t.querySelector('svg');
-          if (svg) {
-            var clone = svg.cloneNode(true);
-            clone.setAttribute('class', 'prod');
-            // gallery art is decorative; keep it out of the a11y tree
-            clone.setAttribute('aria-hidden', 'true');
-            main.innerHTML = '';
-            main.appendChild(clone);
-          }
+        var src = t.getAttribute('data-full') || (t.querySelector('img') && t.querySelector('img').src);
+        if (src && mainImg) {
+          mainImg.src = src;
+          mainImg.alt = t.getAttribute('aria-label') || mainImg.alt;
+          // re-trigger the cross-fade
+          mainImg.classList.remove('prod'); void mainImg.offsetWidth; mainImg.classList.add('prod');
         }
       });
     });
@@ -166,10 +157,10 @@
     var stage = $('[data-lb-stage]', lb), thumbsWrap = $('[data-lb-thumbs]', lb), lastFocus = null;
 
     function renderStage() {
-      var s = main.querySelector('svg');
+      var s = main.querySelector('svg, img');
       stage.innerHTML = s ? s.outerHTML : '';
-      var ns = stage.querySelector('svg');
-      if (ns) { ns.setAttribute('class', 'lb-img'); ns.setAttribute('role', 'img'); ns.setAttribute('aria-label', 'Product image'); }
+      var ns = stage.querySelector('svg, img');
+      if (ns) { ns.setAttribute('class', 'lb-img'); ns.setAttribute('role', 'img'); ns.setAttribute('aria-label', ns.getAttribute('alt') || 'Product image'); }
     }
 
     if (hasThumbs && pageThumbs.length) {

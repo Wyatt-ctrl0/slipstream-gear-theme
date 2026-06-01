@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0B0C0E">
 <title>Night-Run Dashcam 2K · Slipstream Gear</title>
 <meta name="description" content="The Night-Run Dashcam 2K records sharp 2K/60fps with a 140-degree view and WDR night clarity. Suction mount, parking mode, up to 32GB. Road-tested for the daily driver.">
 
@@ -15,14 +16,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="assets/slipstream.css?v=4">
-<link rel="stylesheet" href="assets/pages.css?v=4">
+<link rel="stylesheet" href="assets/slipstream.css?v=5">
+<link rel="stylesheet" href="assets/pages.css?v=5">
 
 <!-- JS-failure safety net: if the script never runs, reveal everything -->
 <noscript><style>[data-reveal]{opacity:1!important;transform:none!important;filter:none!important}</style></noscript>
 </head>
 <body>
 
+<a class="skip-link" href="#top">Skip to content</a>
 <!-- screen-reader live region for cart updates -->
 <div class="vh" aria-live="polite" data-cart-live></div>
 
@@ -86,79 +88,23 @@
 
         <!-- ---------- GALLERY (left) ---------- -->
         <div class="pdp-gallery" data-reveal style="--i:0">
-          <div class="pdp-main" data-gallery-main data-readout="rec">
-            <!-- hero dashcam on a dark lit stage (lit-lens, amber) -->
-            <svg viewBox="0 0 360 300" class="prod" aria-label="Night-Run Dashcam 2K, front three-quarter view" role="img">
-              <defs>
-                <radialGradient id="lensHero" cx="42%" cy="46%" r="58%">
-                  <stop offset="0%" stop-color="#FF8088"/>
-                  <stop offset="45%" stop-color="#E11D2A"/>
-                  <stop offset="100%" stop-color="#4a0a10"/>
-                </radialGradient>
-                <linearGradient id="metalHero" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#3a4047"/>
-                  <stop offset="100%" stop-color="#20242a"/>
-                </linearGradient>
-              </defs>
-              <!-- windshield suction mount -->
-              <ellipse cx="186" cy="40" rx="40" ry="11" fill="#23272c" stroke="#0B0C0E" stroke-width="2"/>
-              <rect x="178" y="44" width="16" height="34" rx="5" fill="#2b3138"/>
-              <!-- body -->
-              <rect x="64" y="84" width="232" height="116" rx="26" fill="url(#metalHero)" stroke="#11141a" stroke-width="2.5"/>
-              <!-- side screen -->
-              <rect x="232" y="108" width="50" height="68" rx="9" fill="#0e1116"/>
-              <rect x="242" y="118" width="30" height="8" rx="4" fill="#3a4047"/>
-              <rect x="242" y="132" width="22" height="6" rx="3" fill="#2b3138"/>
-              <!-- big lens (lit) -->
-              <circle cx="142" cy="142" r="54" fill="#0B0C0E"/>
-              <circle cx="142" cy="142" r="42" fill="url(#lensHero)"/>
-              <circle cx="142" cy="142" r="42" fill="none" stroke="#E11D2A" stroke-width="2.5" opacity=".7"/>
-              <circle cx="142" cy="142" r="18" fill="#0e1116" opacity=".45"/>
-              <circle cx="126" cy="126" r="9" fill="#fff" opacity=".28"/>
-              <!-- REC dot -->
-              <circle cx="262" cy="160" r="5" fill="#E11D2A"/>
-            </svg>
+          <div class="pdp-main" data-gallery-main>
+            <img class="prod" src="assets/products/dashcam-1.png" alt="Night-Run Dashcam 2K, front three-quarter view" width="900" height="675">
           </div>
 
           <!-- thumbnail chips -->
           <div class="pdp-thumbs" role="group" aria-label="Product views">
-            <button class="pdp-thumb is-active" aria-pressed="true" aria-label="Front three-quarter view">
-              <svg viewBox="0 0 120 120" aria-hidden="true">
-                <rect x="22" y="40" width="76" height="44" rx="12" fill="#2b3138"/>
-                <ellipse cx="60" cy="26" rx="16" ry="5" fill="#23272c"/>
-                <rect x="55" y="28" width="10" height="14" rx="3" fill="#3a4047"/>
-                <circle cx="48" cy="62" r="19" fill="#0B0C0E"/>
-                <circle cx="48" cy="62" r="13" fill="#E11D2A"/>
-                <circle cx="48" cy="62" r="5" fill="#0e1116" opacity=".5"/>
-                <rect x="78" y="50" width="14" height="24" rx="4" fill="#0e1116"/>
-              </svg>
+            <button class="pdp-thumb is-active" aria-pressed="true" aria-label="Front three-quarter view" data-full="assets/products/dashcam-1.png">
+              <img src="assets/products/dashcam-1.png" alt="" width="120" height="120" loading="lazy">
             </button>
-            <button class="pdp-thumb" aria-pressed="false" aria-label="Lens close-up">
-              <svg viewBox="0 0 120 120" aria-hidden="true">
-                <circle cx="60" cy="60" r="40" fill="#0B0C0E"/>
-                <circle cx="60" cy="60" r="30" fill="#E11D2A"/>
-                <circle cx="60" cy="60" r="30" fill="none" stroke="#FF8088" stroke-width="2" opacity=".5"/>
-                <circle cx="60" cy="60" r="13" fill="#0e1116" opacity=".55"/>
-                <circle cx="50" cy="50" r="6" fill="#fff" opacity=".3"/>
-              </svg>
+            <button class="pdp-thumb" aria-pressed="false" aria-label="Front view, lens facing" data-full="assets/products/dashcam-2.png">
+              <img src="assets/products/dashcam-2.png" alt="" width="120" height="120" loading="lazy">
             </button>
-            <button class="pdp-thumb" aria-pressed="false" aria-label="Rear screen view">
-              <svg viewBox="0 0 120 120" aria-hidden="true">
-                <rect x="26" y="32" width="68" height="56" rx="12" fill="#2b3138"/>
-                <rect x="36" y="42" width="48" height="36" rx="6" fill="#0e1116"/>
-                <rect x="42" y="48" width="36" height="5" rx="2.5" fill="#3a4047"/>
-                <rect x="42" y="58" width="28" height="5" rx="2.5" fill="#23272c"/>
-                <circle cx="78" cy="70" r="4" fill="#E11D2A"/>
-              </svg>
+            <button class="pdp-thumb" aria-pressed="false" aria-label="Rear screen view" data-full="assets/products/dashcam-3.png">
+              <img src="assets/products/dashcam-3.png" alt="" width="120" height="120" loading="lazy">
             </button>
-            <button class="pdp-thumb" aria-pressed="false" aria-label="In-cabin mounted view">
-              <svg viewBox="0 0 120 120" aria-hidden="true">
-                <rect x="0" y="78" width="120" height="42" fill="#1a1d22"/>
-                <path d="M0 78 Q60 60 120 78" fill="none" stroke="#2b3138" stroke-width="3"/>
-                <rect x="44" y="34" width="32" height="30" rx="8" fill="#2b3138"/>
-                <circle cx="56" cy="49" r="9" fill="#E11D2A" opacity=".85"/>
-                <rect x="52" y="22" width="6" height="14" rx="3" fill="#3a4047"/>
-              </svg>
+            <button class="pdp-thumb" aria-pressed="false" aria-label="Lens close-up" data-full="assets/products/dashcam-4.png">
+              <img src="assets/products/dashcam-4.png" alt="" width="120" height="120" loading="lazy">
             </button>
           </div>
         </div>
@@ -456,7 +402,7 @@
   </div>
 </footer>
 
-<script src="assets/slipstream.js?v=2"></script>
+<script src="assets/slipstream.js?v=3"></script>
 <script src="assets/page-product.js?v=2"></script>
 </body>
 </html>

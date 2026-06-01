@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0B0C0E">
 <title>Slipstream Gear · Clever gear for the daily driver</title>
 <meta name="description" content="Clever gadgets and gear for your vehicle. Car organizers, detailing tools, phone mounts, fast chargers, dashcams and road-trip kit. Road-tested picks.">
 
@@ -15,13 +16,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="assets/slipstream.css?v=4">
+<link rel="stylesheet" href="assets/slipstream.css?v=5">
 
 <!-- JS-failure safety net: if the script never runs, reveal everything -->
 <noscript><style>[data-reveal]{opacity:1!important;transform:none!important;filter:none!important}</style></noscript>
 </head>
 <body>
 
+<a class="skip-link" href="#top">Skip to content</a>
 <!-- screen-reader live region for cart updates -->
 <div class="vh" aria-live="polite" data-cart-live></div>
 
@@ -159,27 +161,8 @@
             <button class="save-toggle save-corner" type="button" aria-pressed="false" aria-label="Save Night-Run Dashcam 2K to wishlist" data-save data-id="night-run-dashcam-2k">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 4 15.5 4 9.5A4.5 4.5 0 0 1 12 7A4.5 4.5 0 0 1 20 9.5C20 15.5 12 21 12 21Z"/></svg>
             </button>
-            <svg viewBox="0 0 240 180" class="prod" aria-hidden="true">
-              <defs><radialGradient id="lensA" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#FF4D58"/><stop offset="58%" stop-color="#E11D2A"/><stop offset="100%" stop-color="#340a0d"/>
-              </radialGradient></defs>
-              <!-- windshield mount -->
-              <ellipse cx="111" cy="24" rx="22" ry="7" fill="#23272c" stroke="#11141a" stroke-width="2"/>
-              <rect x="104" y="26" width="14" height="24" rx="4" fill="#3a4047"/>
-              <!-- body -->
-              <rect x="48" y="58" width="150" height="74" rx="16" fill="#2b3138" stroke="#11141a" stroke-width="2"/>
-              <!-- screen -->
-              <rect x="150" y="74" width="36" height="42" rx="6" fill="#0e1116"/>
-              <rect x="156" y="80" width="24" height="6" rx="3" fill="#3a4047"/>
-              <!-- lens -->
-              <circle cx="92" cy="95" r="34" fill="#0B0C0E"/>
-              <circle cx="92" cy="95" r="26" fill="url(#lensA)"/>
-              <circle cx="92" cy="95" r="26" fill="none" stroke="#E11D2A" stroke-width="2" opacity=".6"/>
-              <circle cx="92" cy="95" r="11" fill="#0e1116" opacity=".5"/>
-              <circle cx="84" cy="87" r="5" fill="#fff" opacity=".25"/>
-              <!-- REC -->
-              <circle cx="170" cy="124" r="4" fill="#E11D2A"/>
-            </svg>
+            <img class="prod" src="assets/products/dashcam-1.png" alt="Night-Run Dashcam 2K" width="240" height="180" loading="lazy">
+
           </div>
           <div class="pbody">
             <h3 class="ttl">Night-Run Dashcam 2K</h3>
@@ -495,6 +478,6 @@
   </div>
 </footer>
 
-<script src="assets/slipstream.js?v=2"></script>
+<script src="assets/slipstream.js?v=3"></script>
 </body>
 </html>

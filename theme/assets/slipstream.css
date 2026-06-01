@@ -66,6 +66,17 @@ h1,h2,h3,h4{font-family:var(--disp);margin:0;letter-spacing:-.01em;line-height:1
 
 .amber-tx{color:var(--ember)}    /* any amber-COLORED text uses ember */
 
+/* ---------- skip link (WCAG 2.4.1 bypass blocks) ----------
+   First focusable element; off-screen until focused, then drops in as an
+   amber tab over the dark header so keyboard users skip the repeated nav. */
+.skip-link{position:fixed;top:0;left:50%;z-index:200;
+  transform:translate(-50%,-130%);
+  font-family:var(--disp);font-weight:700;font-size:14px;letter-spacing:.01em;
+  color:var(--ink);background:var(--amber);padding:11px 20px;border-radius:0 0 10px 10px;
+  box-shadow:0 8px 20px -8px rgba(0,0,0,.6);
+  transition:transform .25s var(--ease-streak)}
+.skip-link:focus{transform:translate(-50%,0);outline:2px solid var(--ink);outline-offset:2px}
+
 /* ---------- global keyboard focus (WCAG 2.4.7) ---------- */
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,
 .btn:focus-visible,.iconbtn:focus-visible,.qa-q:focus-visible,
@@ -266,6 +277,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,
   opacity:.5;transition:opacity .3s}
 .pcard:hover .pimg::after{opacity:1}
 .prod{position:relative;z-index:1;width:100%;height:100%;transition:transform .3s var(--ease-streak)}
+/* real product photos already carry the dark stage + red glow: let them fill
+   the tile edge-to-edge (cover) so there is no double-background seam, and lift
+   slightly on hover for life */
+.pimg:has(img.prod){padding:0}
+img.prod{object-fit:cover}
+.pcard:hover img.prod{transform:scale(1.04)}
 .pbody{padding:16px 16px 18px}
 .ttl{font-size:16px;position:relative;display:inline-block;padding-bottom:4px}
 .ttl::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;
@@ -506,7 +523,7 @@ body.motion-off .add.added,body.motion-off .btn-amber.added,body.motion-off .car
   letter-spacing:-.035em;color:var(--paper);text-transform:uppercase;margin:0 0 8px;max-width:14ch}
 .hc-h1 em{font-style:normal;color:var(--amber)}
 .hc-sub{font-size:clamp(16px,1.5vw,20px);color:rgba(255,255,255,.85);max-width:46ch;
-  margin:18px 0 32px;line-height:1.55;text-wrap:pretty}
+  margin:18px 0 32px;line-height:1.62;text-wrap:pretty}   /* light-on-dark: open the leading */
 .hc-spec{display:flex;gap:28px;flex-wrap:wrap;margin-top:42px;font-family:var(--disp);font-weight:600;
   font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55)}
 .hc-spec span{display:inline-flex;align-items:center;gap:9px}
