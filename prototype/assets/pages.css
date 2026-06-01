@@ -126,7 +126,10 @@
 .pdp-thumb{width:74px;height:74px;border-radius:12px;padding:8px;cursor:pointer;
   background:linear-gradient(160deg,#2b3138,#131418);border:1.5px solid transparent;
   display:grid;place-items:center;transition:border-color .2s,transform .2s var(--ease-streak)}
-.pdp-thumb svg,.pdp-thumb img{width:100%;height:100%;object-fit:contain}
+.pdp-thumb svg{width:100%;height:100%;object-fit:contain}
+/* real photo thumbs fill the tile (they carry their own dark backdrop) */
+.pdp-thumb:has(img){padding:0;overflow:hidden}
+.pdp-thumb img{width:100%;height:100%;object-fit:cover}
 .pdp-thumb:hover{transform:translateY(-2px)}
 .pdp-thumb:active{transform:scale(.94)}
 .pdp-thumb[aria-current="true"],.pdp-thumb.is-active{border-color:var(--amber)}
@@ -562,6 +565,8 @@ body.motion-off .qty-stepper input.bump,body.motion-off .pdp-thumb.is-active{ani
 .lb-thumb:hover{border-color:rgba(244,245,247,.5)}
 .lb-thumb.is-active{border-color:var(--amber)}
 .lb-thumb svg{width:100%;height:100%;fill:none}
+.lb-thumb:has(img){padding:0;overflow:hidden}
+.lb-thumb img{width:100%;height:100%;object-fit:cover}
 @media(prefers-reduced-motion:reduce){.lb-scrim,.lb-dialog{transition-duration:.01ms!important}}
 body.motion-off .lb-scrim,body.motion-off .lb-dialog{transition-duration:.01ms!important}
 

@@ -126,7 +126,10 @@
 .pdp-thumb{width:74px;height:74px;border-radius:12px;padding:8px;cursor:pointer;
   background:linear-gradient(160deg,#2b3138,#131418);border:1.5px solid transparent;
   display:grid;place-items:center;transition:border-color .2s,transform .2s var(--ease-streak)}
-.pdp-thumb svg,.pdp-thumb img{width:100%;height:100%;object-fit:contain}
+.pdp-thumb svg{width:100%;height:100%;object-fit:contain}
+/* real photo thumbs fill the tile (they carry their own dark backdrop) */
+.pdp-thumb:has(img){padding:0;overflow:hidden}
+.pdp-thumb img{width:100%;height:100%;object-fit:cover}
 .pdp-thumb:hover{transform:translateY(-2px)}
 .pdp-thumb:active{transform:scale(.94)}
 .pdp-thumb[aria-current="true"],.pdp-thumb.is-active{border-color:var(--amber)}
@@ -333,9 +336,15 @@
 .prose .prose-lead{font-size:17.5px;color:var(--ink);margin-bottom:24px}
 .prose .prose-updated{font-family:var(--disp);font-weight:600;font-size:13px;
   letter-spacing:.04em;color:var(--muted);margin:0 0 28px}
-/* a soft callout card for a key shipping/returns fact */
-.prose .prose-note{background:var(--surface);border:1px solid rgba(31,35,40,.08);
-  border-left:3px solid var(--amber);border-radius:12px;padding:18px 20px;margin:0 0 24px}
+/* a soft callout card for a key shipping/returns fact.
+   Full amber-tinted surface with a leading kicker label instead of a
+   side-stripe accent (side-stripe borders read as a template tell). */
+.prose .prose-note{position:relative;background:linear-gradient(180deg,rgba(225,29,42,.06),rgba(225,29,42,.03));
+  border:1px solid rgba(225,29,42,.22);border-radius:12px;padding:18px 20px;margin:0 0 24px}
+.prose .prose-note::before{content:"GOOD TO KNOW";display:block;
+  font-family:var(--disp);font-weight:700;font-size:11px;letter-spacing:.16em;
+  color:var(--ember-surf);margin:0 0 8px}
+.prose .prose-note p{color:var(--ink)}
 .prose .prose-note p:last-child{margin-bottom:0}
 
 /* ============================================================
@@ -556,6 +565,8 @@ body.motion-off .qty-stepper input.bump,body.motion-off .pdp-thumb.is-active{ani
 .lb-thumb:hover{border-color:rgba(244,245,247,.5)}
 .lb-thumb.is-active{border-color:var(--amber)}
 .lb-thumb svg{width:100%;height:100%;fill:none}
+.lb-thumb:has(img){padding:0;overflow:hidden}
+.lb-thumb img{width:100%;height:100%;object-fit:cover}
 @media(prefers-reduced-motion:reduce){.lb-scrim,.lb-dialog{transition-duration:.01ms!important}}
 body.motion-off .lb-scrim,body.motion-off .lb-dialog{transition-duration:.01ms!important}
 
